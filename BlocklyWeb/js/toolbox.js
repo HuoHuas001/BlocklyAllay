@@ -1,0 +1,398 @@
+/**
+ * BlocklyAllay Toolbox Configuration
+ */
+
+const TOOLBOX = {
+    kind: 'categoryToolbox',
+    contents: [
+        {
+            kind: 'category',
+            name: '服务器事件',
+            colour: '#5C81A6',
+            contents: [
+                { kind: 'block', type: 'event_player_connect' },
+                { kind: 'block', type: 'event_player_disconnect' },
+                { kind: 'block', type: 'event_player_login' },
+                { kind: 'block', type: 'event_player_kick' },
+                { kind: 'block', type: 'event_player_spawn' },
+                { kind: 'block', type: 'event_player_ban' },
+                { kind: 'block', type: 'event_player_unban' },
+                { kind: 'block', type: 'event_ip_ban' },
+                { kind: 'block', type: 'event_ip_unban' },
+                { kind: 'block', type: 'event_server_stop' },
+                { kind: 'block', type: 'event_whitelist_add_player' },
+                { kind: 'block', type: 'event_whitelist_remove_player' },
+            ]
+        },
+        {
+            kind: 'category',
+            name: '玩家事件',
+            colour: '#5BA55B',
+            contents: [
+                { kind: 'block', type: 'event_player_join' },
+                { kind: 'block', type: 'event_player_quit' },
+                { kind: 'block', type: 'event_player_chat' },
+                { kind: 'block', type: 'event_player_command' },
+                { kind: 'block', type: 'event_player_move' },
+                { kind: 'block', type: 'event_player_interact_block' },
+                { kind: 'block', type: 'event_player_drop_item' },
+                { kind: 'block', type: 'event_player_block_pick' },
+                { kind: 'block', type: 'event_player_book_edit' },
+                { kind: 'block', type: 'event_player_bucket_empty' },
+                { kind: 'block', type: 'event_player_bucket_fill' },
+                { kind: 'block', type: 'event_player_change_skin' },
+                { kind: 'block', type: 'event_player_craft_item' },
+                { kind: 'block', type: 'event_player_eat' },
+                { kind: 'block', type: 'event_player_enchant_item' },
+                { kind: 'block', type: 'event_player_experience_level_change' },
+                { kind: 'block', type: 'event_player_food_level_change' },
+                { kind: 'block', type: 'event_player_interact_entity' },
+                { kind: 'block', type: 'event_player_item_held' },
+                { kind: 'block', type: 'event_player_punch_air' },
+                { kind: 'block', type: 'event_player_punch_block' },
+                { kind: 'block', type: 'event_player_toggle_crawl' },
+                { kind: 'block', type: 'event_player_toggle_flight' },
+                { kind: 'block', type: 'event_player_toggle_glide' },
+                { kind: 'block', type: 'event_player_toggle_swim' },
+                { kind: 'block', type: 'event_player_use_item_in_air' },
+            ]
+        },
+        {
+            kind: 'category',
+            name: '方块事件',
+            colour: '#A55B80',
+            contents: [
+                { kind: 'block', type: 'event_block_break' },
+                { kind: 'block', type: 'event_block_place' },
+                { kind: 'block', type: 'event_block_burn' },
+                { kind: 'block', type: 'event_block_explode' },
+                { kind: 'block', type: 'event_block_fade' },
+                { kind: 'block', type: 'event_block_fall' },
+                { kind: 'block', type: 'event_block_grow' },
+                { kind: 'block', type: 'event_block_ignite' },
+                { kind: 'block', type: 'event_block_neighbor_update' },
+                { kind: 'block', type: 'event_block_random_update' },
+                { kind: 'block', type: 'event_block_schedule_update' },
+                { kind: 'block', type: 'event_block_spread' },
+                { kind: 'block', type: 'event_item_frame_use' },
+                { kind: 'block', type: 'event_liquid_decay' },
+                { kind: 'block', type: 'event_liquid_flow' },
+                { kind: 'block', type: 'event_liquid_harden' },
+                { kind: 'block', type: 'event_sign_text_change' },
+                { kind: 'block', type: 'event_sign_wax' },
+                { kind: 'block', type: 'event_anvil_damage' },
+            ]
+        },
+        {
+            kind: 'category',
+            name: '命令事件',
+            colour: '#A5745B',
+            contents: [
+                { kind: 'block', type: 'event_command_execute' },
+            ]
+        },
+        {
+            kind: 'category',
+            name: '容器事件',
+            colour: '#A5A55B',
+            contents: [
+                { kind: 'block', type: 'event_container_open' },
+                { kind: 'block', type: 'event_container_close' },
+                { kind: 'block', type: 'event_container_item_move' },
+                { kind: 'block', type: 'event_container_item_pickup' },
+                { kind: 'block', type: 'event_anvil_take_result' },
+                { kind: 'block', type: 'event_brewing_stand_brew' },
+                { kind: 'block', type: 'event_brewing_stand_consume_fuel' },
+                { kind: 'block', type: 'event_brewing_stand_start_brew' },
+                { kind: 'block', type: 'event_campfire_smelt' },
+                { kind: 'block', type: 'event_furnace_smelt' },
+                { kind: 'block', type: 'event_furnace_consume_fuel' },
+                { kind: 'block', type: 'event_grindstone_take_result' },
+            ]
+        },
+        {
+            kind: 'category',
+            name: '实体事件',
+            colour: '#745BA5',
+            contents: [
+                { kind: 'block', type: 'event_entity_damage' },
+                { kind: 'block', type: 'event_entity_die' },
+                { kind: 'block', type: 'event_entity_spawn' },
+                { kind: 'block', type: 'event_entity_despawn' },
+                { kind: 'block', type: 'event_entity_combust' },
+                { kind: 'block', type: 'event_entity_effect_add' },
+                { kind: 'block', type: 'event_entity_effect_remove' },
+                { kind: 'block', type: 'event_entity_explode' },
+                { kind: 'block', type: 'event_entity_fall' },
+                { kind: 'block', type: 'event_entity_health_change' },
+                { kind: 'block', type: 'event_entity_move' },
+                { kind: 'block', type: 'event_entity_set_motion' },
+                { kind: 'block', type: 'event_entity_shoot_bow' },
+                { kind: 'block', type: 'event_entity_shoot_crossbow' },
+                { kind: 'block', type: 'event_entity_teleport' },
+                { kind: 'block', type: 'event_entity_trample_farmland' },
+                { kind: 'block', type: 'event_firework_explode' },
+                { kind: 'block', type: 'event_projectile_hit' },
+                { kind: 'block', type: 'event_projectile_launch' },
+            ]
+        },
+        {
+            kind: 'category',
+            name: '计分板事件',
+            colour: '#A55B5B',
+            contents: [
+                { kind: 'block', type: 'event_scoreboard_add' },
+                { kind: 'block', type: 'event_scoreboard_remove' },
+                { kind: 'block', type: 'event_scoreboard_all_lines_remove' },
+                { kind: 'block', type: 'event_scoreboard_line_add' },
+                { kind: 'block', type: 'event_scoreboard_line_remove' },
+                { kind: 'block', type: 'event_scoreboard_line_value_change' },
+            ]
+        },
+        {
+            kind: 'category',
+            name: '世界事件',
+            colour: '#5BA5A5',
+            contents: [
+                { kind: 'block', type: 'event_chunk_load' },
+                { kind: 'block', type: 'event_chunk_unload' },
+                { kind: 'block', type: 'event_difficulty_change' },
+                { kind: 'block', type: 'event_game_rule_change' },
+                { kind: 'block', type: 'event_spawn_point_change' },
+                { kind: 'block', type: 'event_time_change' },
+                { kind: 'block', type: 'event_weather_change' },
+                { kind: 'block', type: 'event_world_data_save' },
+                { kind: 'block', type: 'event_world_load' },
+                { kind: 'block', type: 'event_world_unload' },
+            ]
+        },
+        {
+            kind: 'category',
+            name: '插件事件',
+            colour: '#808080',
+            contents: [
+                { kind: 'block', type: 'event_plugin_enable' },
+                { kind: 'block', type: 'event_plugin_disable' },
+                { kind: 'block', type: 'event_script_load' },
+                { kind: 'block', type: 'event_script_enable' },
+                { kind: 'block', type: 'event_script_disable' },
+                { kind: 'block', type: 'event_script_unload' },
+            ]
+        },
+        { kind: 'sep' },
+        {
+            kind: 'category',
+            name: '玩家',
+            colour: '#5BA55B',
+            contents: [
+                { kind: 'block', type: 'player_get_name' },
+                { kind: 'block', type: 'player_get_display_name' },
+                { kind: 'block', type: 'player_send_message' },
+                { kind: 'block', type: 'player_get_position' },
+                { kind: 'block', type: 'player_teleport' },
+                { kind: 'block', type: 'player_get_health' },
+                { kind: 'block', type: 'player_set_health' },
+                { kind: 'block', type: 'player_kick' },
+                { kind: 'block', type: 'player_get_gamemode' },
+                { kind: 'block', type: 'player_get_online' },
+                { kind: 'block', type: 'player_get_by_name' },
+            ]
+        },
+        {
+            kind: 'category',
+            name: '世界',
+            colour: '#A55B80',
+            contents: [
+                { kind: 'block', type: 'world_broadcast' },
+                { kind: 'block', type: 'world_get_worlds' },
+                { kind: 'block', type: 'world_get_by_name' },
+                { kind: 'block', type: 'world_get_time' },
+                { kind: 'block', type: 'world_set_time' },
+                { kind: 'block', type: 'world_get_online_count' },
+                { kind: 'block', type: 'world_get_max_players' },
+                { kind: 'block', type: 'world_get_current_tick' },
+            ]
+        },
+        {
+            kind: 'category',
+            name: '实体',
+            colour: '#A5745B',
+            contents: [
+                { kind: 'block', type: 'entity_get_type' },
+                { kind: 'block', type: 'entity_get_position' },
+                { kind: 'block', type: 'entity_get_health' },
+                { kind: 'block', type: 'entity_set_health' },
+            ]
+        },
+        {
+            kind: 'category',
+            name: '物品',
+            colour: '#A5A55B',
+            contents: [
+                { kind: 'block', type: 'item_get_type' },
+                { kind: 'block', type: 'item_get_count' },
+                { kind: 'block', type: 'item_get_name' },
+            ]
+        },
+        {
+            kind: 'category',
+            name: '表单',
+            colour: '#745BA5',
+            contents: [
+                { kind: 'block', type: 'form_simple_create' },
+                { kind: 'block', type: 'form_simple_title' },
+                { kind: 'block', type: 'form_simple_content' },
+                { kind: 'block', type: 'form_simple_button' },
+                { kind: 'block', type: 'form_simple_button_with_image' },
+                { kind: 'block', type: 'form_simple_button_with_url' },
+                { kind: 'block', type: 'form_simple_label' },
+                { kind: 'block', type: 'form_simple_header' },
+                { kind: 'block', type: 'form_simple_divider' },
+                { kind: 'block', type: 'form_simple_show' },
+                { kind: 'block', type: 'form_simple_on_close' },
+                { kind: 'block', type: 'form_modal_create' },
+                { kind: 'block', type: 'form_modal_setup' },
+                { kind: 'block', type: 'form_modal_show' },
+                { kind: 'block', type: 'form_modal_on_close' },
+                { kind: 'block', type: 'form_custom_create' },
+                { kind: 'block', type: 'form_custom_input' },
+                { kind: 'block', type: 'form_custom_input_with_default' },
+                { kind: 'block', type: 'form_custom_toggle' },
+                { kind: 'block', type: 'form_custom_dropdown' },
+                { kind: 'block', type: 'form_custom_dropdown_with_default' },
+                { kind: 'block', type: 'form_custom_slider' },
+                { kind: 'block', type: 'form_custom_slider_with_step' },
+                { kind: 'block', type: 'form_custom_slider_with_default' },
+                { kind: 'block', type: 'form_custom_step_slider' },
+                { kind: 'block', type: 'form_custom_step_slider_with_default' },
+                { kind: 'block', type: 'form_custom_label' },
+                { kind: 'block', type: 'form_custom_header' },
+                { kind: 'block', type: 'form_custom_divider' },
+                { kind: 'block', type: 'form_custom_path_icon' },
+                { kind: 'block', type: 'form_custom_url_icon' },
+                { kind: 'block', type: 'form_custom_show' },
+                { kind: 'block', type: 'form_custom_on_close' },
+            ]
+        },
+        {
+            kind: 'category',
+            name: 'Boss血条',
+            colour: '#A55B5B',
+            contents: [
+                { kind: 'block', type: 'bossbar_create' },
+                { kind: 'block', type: 'bossbar_set_title' },
+                { kind: 'block', type: 'bossbar_set_progress' },
+                { kind: 'block', type: 'bossbar_set_color' },
+                { kind: 'block', type: 'bossbar_show' },
+                { kind: 'block', type: 'bossbar_hide' },
+                { kind: 'block', type: 'bossbar_get_title' },
+                { kind: 'block', type: 'bossbar_get_progress' },
+                { kind: 'block', type: 'bossbar_get_color' },
+                { kind: 'block', type: 'bossbar_set_style' },
+                { kind: 'block', type: 'bossbar_get_style' },
+                { kind: 'block', type: 'bossbar_set_darken_sky' },
+                { kind: 'block', type: 'bossbar_is_darken_sky' },
+                { kind: 'block', type: 'bossbar_remove_all_viewers' },
+                { kind: 'block', type: 'bossbar_get_viewer_count' },
+            ]
+        },
+        {
+            kind: 'category',
+            name: '定时器',
+            colour: '#5BA5A5',
+            contents: [
+                { kind: 'block', type: 'scheduler_run_later' },
+                { kind: 'block', type: 'scheduler_run_repeating' },
+                { kind: 'block', type: 'scheduler_run_delayed_repeating' },
+            ]
+        },
+        {
+            kind: 'category',
+            name: '工具',
+            colour: '#808080',
+            contents: [
+                { kind: 'block', type: 'util_log' },
+                { kind: 'block', type: 'util_info' },
+                { kind: 'block', type: 'util_warn' },
+                { kind: 'block', type: 'util_error' },
+                { kind: 'block', type: 'util_debug' },
+                { kind: 'block', type: 'util_cancel_event' },
+                { kind: 'block', type: 'event_off' },
+                { kind: 'block', type: 'event_cleanup' },
+            ]
+        },
+        { kind: 'sep' },
+        {
+            kind: 'category',
+            name: '逻辑',
+            colour: '%{BKY_LOGIC_HUE}',
+            contents: [
+                { kind: 'block', type: 'controls_if' },
+                { kind: 'block', type: 'logic_compare' },
+                { kind: 'block', type: 'logic_operation' },
+                { kind: 'block', type: 'logic_negate' },
+                { kind: 'block', type: 'logic_boolean' },
+            ]
+        },
+        {
+            kind: 'category',
+            name: '循环',
+            colour: '%{BKY_LOOPS_HUE}',
+            contents: [
+                { kind: 'block', type: 'controls_repeat_ext' },
+                { kind: 'block', type: 'controls_whileUntil' },
+                { kind: 'block', type: 'controls_for' },
+                { kind: 'block', type: 'controls_forEach' },
+                { kind: 'block', type: 'controls_flow_statements' },
+            ]
+        },
+        {
+            kind: 'category',
+            name: '数学',
+            colour: '%{BKY_MATH_HUE}',
+            contents: [
+                { kind: 'block', type: 'math_number' },
+                { kind: 'block', type: 'math_arithmetic' },
+                { kind: 'block', type: 'math_single' },
+                { kind: 'block', type: 'math_round' },
+                { kind: 'block', type: 'math_random_int' },
+            ]
+        },
+        {
+            kind: 'category',
+            name: '文本',
+            colour: '%{BKY_TEXTS_HUE}',
+            contents: [
+                { kind: 'block', type: 'text' },
+                { kind: 'block', type: 'text_join' },
+                { kind: 'block', type: 'text_append' },
+                { kind: 'block', type: 'text_length' },
+                { kind: 'block', type: 'text_indexOf' },
+            ]
+        },
+        {
+            kind: 'category',
+            name: '列表',
+            colour: '%{BKY_LISTS_HUE}',
+            contents: [
+                { kind: 'block', type: 'lists_create_empty' },
+                { kind: 'block', type: 'lists_create_with' },
+                { kind: 'block', type: 'lists_length' },
+                { kind: 'block', type: 'lists_getIndex' },
+                { kind: 'block', type: 'lists_setIndex' },
+            ]
+        },
+        {
+            kind: 'category',
+            name: '变量',
+            colour: '%{BKY_VARIABLES_HUE}',
+            custom: 'VARIABLE'
+        },
+        {
+            kind: 'category',
+            name: '函数',
+            colour: '%{BKY_PROCEDURES_HUE}',
+            custom: 'PROCEDURE'
+        }
+    ]
+};
