@@ -4,18 +4,15 @@
 
 // Register Simple Command
 Blockly.Blocks['command_register_simple'] = {
-    init: function() {
+    init: function () {
         this.appendValueInput('NAME')
             .setCheck('String')
             .appendField('注册命令');
-        this.appendDummyInput()
-            .appendField('描述');
         this.appendValueInput('DESCRIPTION')
-            .setCheck('String');
-        this.appendValueInput('PERMISSION')
             .setCheck('String')
-            .appendField('权限');
-        this.appendStatementInput('HANDLER')
+            .appendField('描述');
+        this.appendValueInput('HANDLER')
+            .setCheck('Function')
             .appendField('处理函数');
         this.setInputsInline(false);
         this.setColour('#A5745B');
@@ -24,9 +21,9 @@ Blockly.Blocks['command_register_simple'] = {
     }
 };
 
-// Register Command With Aliases
-Blockly.Blocks['command_register_with_aliases'] = {
-    init: function() {
+// Register Command With Permission
+Blockly.Blocks['command_register_with_permission'] = {
+    init: function () {
         this.appendValueInput('NAME')
             .setCheck('String')
             .appendField('注册命令');
@@ -36,10 +33,30 @@ Blockly.Blocks['command_register_with_aliases'] = {
         this.appendValueInput('PERMISSION')
             .setCheck('String')
             .appendField('权限');
+        this.appendValueInput('HANDLER')
+            .setCheck('Function')
+            .appendField('处理函数');
+        this.setInputsInline(false);
+        this.setColour('#A5745B');
+        this.setTooltip('注册一个带权限的命令');
+        this.setHelpUrl('');
+    }
+};
+
+// Register Command With Aliases
+Blockly.Blocks['command_register_with_aliases'] = {
+    init: function () {
+        this.appendValueInput('NAME')
+            .setCheck('String')
+            .appendField('注册命令');
+        this.appendValueInput('DESCRIPTION')
+            .setCheck('String')
+            .appendField('描述');
         this.appendValueInput('ALIASES')
             .setCheck('Array')
             .appendField('别名');
-        this.appendStatementInput('HANDLER')
+        this.appendValueInput('HANDLER')
+            .setCheck('Function')
             .appendField('处理函数');
         this.setInputsInline(false);
         this.setColour('#A5745B');
@@ -50,7 +67,7 @@ Blockly.Blocks['command_register_with_aliases'] = {
 
 // Command Get Sender
 Blockly.Blocks['command_context_sender'] = {
-    init: function() {
+    init: function () {
         this.appendDummyInput()
             .appendField('命令执行者');
         this.setOutput(true, 'CommandSender');
@@ -62,7 +79,7 @@ Blockly.Blocks['command_context_sender'] = {
 
 // Command Get Command Name
 Blockly.Blocks['command_context_command'] = {
-    init: function() {
+    init: function () {
         this.appendDummyInput()
             .appendField('命令名称');
         this.setOutput(true, 'String');
@@ -74,7 +91,7 @@ Blockly.Blocks['command_context_command'] = {
 
 // Command Get Args
 Blockly.Blocks['command_context_args'] = {
-    init: function() {
+    init: function () {
         this.appendDummyInput()
             .appendField('命令参数列表');
         this.setOutput(true, 'Array');
@@ -86,7 +103,7 @@ Blockly.Blocks['command_context_args'] = {
 
 // Command Get Arg By Index
 Blockly.Blocks['command_context_get_arg'] = {
-    init: function() {
+    init: function () {
         this.appendValueInput('INDEX')
             .setCheck('Number')
             .appendField('获取第');
@@ -101,10 +118,10 @@ Blockly.Blocks['command_context_get_arg'] = {
 
 // Command Send Message
 Blockly.Blocks['command_send_message'] = {
-    init: function() {
+    init: function () {
         this.appendValueInput('SENDER')
             .setCheck('CommandSender')
-            .appendField('向命令执行者');
+            .appendField('向');
         this.appendValueInput('MESSAGE')
             .setCheck('String')
             .appendField('发送消息');
@@ -119,7 +136,7 @@ Blockly.Blocks['command_send_message'] = {
 
 // Command Has Permission
 Blockly.Blocks['command_has_permission'] = {
-    init: function() {
+    init: function () {
         this.appendValueInput('SENDER')
             .setCheck('CommandSender')
             .appendField('命令执行者是否有权限');
@@ -135,7 +152,7 @@ Blockly.Blocks['command_has_permission'] = {
 
 // Command Is Player
 Blockly.Blocks['command_is_player'] = {
-    init: function() {
+    init: function () {
         this.appendValueInput('SENDER')
             .setCheck('CommandSender')
             .appendField('命令执行者是否为玩家');
@@ -148,7 +165,7 @@ Blockly.Blocks['command_is_player'] = {
 
 // Command Is Console
 Blockly.Blocks['command_is_console'] = {
-    init: function() {
+    init: function () {
         this.appendValueInput('SENDER')
             .setCheck('CommandSender')
             .appendField('命令执行者是否为控制台');
@@ -161,7 +178,7 @@ Blockly.Blocks['command_is_console'] = {
 
 // Command Get Player
 Blockly.Blocks['command_get_player'] = {
-    init: function() {
+    init: function () {
         this.appendValueInput('SENDER')
             .setCheck('CommandSender')
             .appendField('将命令执行者转换为玩家对象');
@@ -172,9 +189,23 @@ Blockly.Blocks['command_get_player'] = {
     }
 };
 
+// Command Handler Function
+Blockly.Blocks['command_handler_function'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField('命令处理函数');
+        this.appendStatementInput('DO')
+            .appendField('执行');
+        this.setOutput(true, 'Function');
+        this.setColour('#A5745B');
+        this.setTooltip('创建一个命令处理函数');
+        this.setHelpUrl('');
+    }
+};
+
 // Unregister Command
 Blockly.Blocks['command_unregister'] = {
-    init: function() {
+    init: function () {
         this.appendValueInput('NAME')
             .setCheck('String')
             .appendField('注销命令');

@@ -240,8 +240,10 @@ const TOOLBOX = {
             colour: '#A5745B',
             contents: [
                 { kind: 'block', type: 'command_register_simple' },
+                { kind: 'block', type: 'command_register_with_permission' },
                 { kind: 'block', type: 'command_register_with_aliases' },
                 { kind: 'block', type: 'command_unregister' },
+                { kind: 'block', type: 'command_handler_function' },
                 { kind: 'sep' },
                 { kind: 'block', type: 'command_context_sender' },
                 { kind: 'block', type: 'command_context_command' },

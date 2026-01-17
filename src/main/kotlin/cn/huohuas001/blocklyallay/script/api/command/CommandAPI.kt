@@ -27,7 +27,12 @@ class CommandAPI(private val plugin: BlocklyAllay) {
     fun registerCommand(name: String, description: String, callback: Any?) {
         val command = JSCommand(name, description, callback)
         registeredCommands.add(command)
-        Registries.COMMANDS.register(command)
+        try{
+            Registries.COMMANDS.register(command)
+            plugin.pluginLogger.info("已注册命令: $name - $description")
+        } catch (e: Exception) {
+            plugin.pluginLogger.error("命令注册出错: $name", e)
+        }
     }
 
     /**
@@ -36,7 +41,12 @@ class CommandAPI(private val plugin: BlocklyAllay) {
     fun registerCommand(name: String, description: String, permission: String, callback: Any?) {
         val command = JSCommand(name, description, permission, callback)
         registeredCommands.add(command)
-        Registries.COMMANDS.register(command)
+        try{
+            Registries.COMMANDS.register(command)
+            plugin.pluginLogger.info("已注册命令: $name - $description")
+        } catch (e: Exception) {
+            plugin.pluginLogger.error("命令注册出错: $name", e)
+        }
     }
 
     /**
@@ -45,7 +55,12 @@ class CommandAPI(private val plugin: BlocklyAllay) {
     fun registerCommand(name: String, description: String, aliases: List<String>, callback: Any?) {
         val command = JSCommand(name, description, aliases, callback)
         registeredCommands.add(command)
-        Registries.COMMANDS.register(command)
+        try{
+            Registries.COMMANDS.register(command)
+            plugin.pluginLogger.info("已注册命令: $name - $description")
+        } catch (e: Exception) {
+            plugin.pluginLogger.error("命令注册出错: $name", e)
+        }
     }
 
     /**
@@ -54,7 +69,14 @@ class CommandAPI(private val plugin: BlocklyAllay) {
     fun registerCommand(config: CommandConfig) {
         val command = JSCommand(config)
         registeredCommands.add(command)
-        Registries.COMMANDS.register(command)
+        val name = config.name
+        val description = config.description
+        try{
+            Registries.COMMANDS.register(command)
+            plugin.pluginLogger.info("已注册命令: $name - $description")
+        } catch (e: Exception) {
+            plugin.pluginLogger.error("命令注册出错: $name", e)
+        }
     }
 
     /**

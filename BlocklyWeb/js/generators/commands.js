@@ -10,16 +10,25 @@
     generator.forBlock['command_register_simple'] = function (block, gen) {
         const name = gen.valueToCode(block, 'NAME', Order);
         const description = gen.valueToCode(block, 'DESCRIPTION', Order) || '""';
-        const handler = gen.statementToCode(block, 'HANDLER', Order);
+        const handler = gen.valueToCode(block, 'HANDLER', Order);
 
         return `allay.getCommandAPI().registerCommand(${name}, ${description}, ${handler});\n`;
+    };
+
+    generator.forBlock['command_register_with_permission'] = function (block, gen) {
+        const name = gen.valueToCode(block, 'NAME', Order);
+        const description = gen.valueToCode(block, 'DESCRIPTION', Order) || '""';
+        const permission = gen.valueToCode(block, 'PERMISSION', Order) || '""';
+        const handler = gen.valueToCode(block, 'HANDLER', Order);
+
+        return `allay.getCommandAPI().registerCommand(${name}, ${description}, ${permission}, ${handler});\n`;
     };
 
     generator.forBlock['command_register_with_aliases'] = function (block, gen) {
         const name = gen.valueToCode(block, 'NAME', Order);
         const description = gen.valueToCode(block, 'DESCRIPTION', Order) || '""';
         const aliases = gen.valueToCode(block, 'ALIASES', Order) || '[]';
-        const handler = gen.statementToCode(block, 'HANDLER', Order);
+        const handler = gen.valueToCode(block, 'HANDLER', Order);
 
         return `allay.getCommandAPI().registerCommand(${name}, ${description}, ${aliases}, ${handler});\n`;
     };
@@ -72,6 +81,15 @@
         const sender = gen.valueToCode(block, 'SENDER', Order);
 
         return `${sender}.isConsole();\n`;
+    };
+
+    generator.forBlock['command_handler_function'] = function (block, gen) {
+        const body = gen.statementToCode(block, 'DO');
+
+        const code = `function(context) {
+${body}}
+`;
+        return [code, Order];
     };
 
     generator.forBlock['command_get_player'] = function (block, gen) {
