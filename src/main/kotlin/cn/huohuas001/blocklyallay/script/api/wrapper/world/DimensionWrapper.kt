@@ -1,4 +1,4 @@
-package cn.huohuas001.blocklyallay.script.api.wrapper
+package cn.huohuas001.blocklyallay.script.api.wrapper.world
 
 import org.allaymc.api.world.Dimension
 

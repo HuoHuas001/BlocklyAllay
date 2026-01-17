@@ -1,6 +1,6 @@
 package cn.huohuas001.blocklyallay.script.api.event.command
 
-import cn.huohuas001.blocklyallay.script.api.wrapper.CommandSenderWrapper
+import cn.huohuas001.blocklyallay.script.api.wrapper.command.CommandSenderWrapper
 import org.allaymc.api.eventbus.event.command.CommandExecuteEvent
 
 /**

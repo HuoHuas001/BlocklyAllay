@@ -1,4 +1,4 @@
-package cn.huohuas001.blocklyallay.script.api.wrapper
+package cn.huohuas001.blocklyallay.script.api.wrapper.chunk
 
 import org.allaymc.api.world.chunk.Chunk
 

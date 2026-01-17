@@ -1,0 +1,1154 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../server/">
+      
+      
+        <link rel="next" href="../world/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>玩家API - BlocklyAllay Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#api" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="BlocklyAllay Docs" class="md-header__button md-logo" aria-label="BlocklyAllay Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BlocklyAllay Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              玩家API
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../server/" class="md-tabs__link">
+          
+  
+  
+  API文档
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blocks/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  积木参考
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../examples/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  示例脚本
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="BlocklyAllay Docs" class="md-nav__button md-logo" aria-label="BlocklyAllay Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    BlocklyAllay Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    首页
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    API文档
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            API文档
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    服务器API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    玩家API
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    玩家API
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      获取玩家信息
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="获取玩家信息">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#playergetname" class="md-nav__link">
+    <span class="md-ellipsis">
+      player.getName()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#playergetdisplayname" class="md-nav__link">
+    <span class="md-ellipsis">
+      player.getDisplayName()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#playergethealth" class="md-nav__link">
+    <span class="md-ellipsis">
+      player.getHealth()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#playergetposition" class="md-nav__link">
+    <span class="md-ellipsis">
+      player.getPosition()
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      玩家交互
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="玩家交互">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#playersendmessagemessage" class="md-nav__link">
+    <span class="md-ellipsis">
+      player.sendMessage(message)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#playerkickreason" class="md-nav__link">
+    <span class="md-ellipsis">
+      player.kick(reason)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      玩家管理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="玩家管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#allaygetonlineplayers" class="md-nav__link">
+    <span class="md-ellipsis">
+      allay.getOnlinePlayers()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allaygetplayername" class="md-nav__link">
+    <span class="md-ellipsis">
+      allay.getPlayer(name)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      玩家事件
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="玩家事件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#onplayerjoinplayer" class="md-nav__link">
+    <span class="md-ellipsis">
+      onPlayerJoin(player)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onplayerquitplayer" class="md-nav__link">
+    <span class="md-ellipsis">
+      onPlayerQuit(player)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onplayerchatplayer-message" class="md-nav__link">
+    <span class="md-ellipsis">
+      onPlayerChat(player, message)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      示例：玩家管理系统
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      注意事项
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../world/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    世界API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    事件API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scheduler/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    调度器API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../forms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    表单API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bossbar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    BossBar API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../entities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    实体API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../items/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    物品API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    工具API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    命令API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blocks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    积木参考
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    示例脚本
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="api">玩家API</h1>
+<p>玩家API提供了管理和操作玩家的各种功能，包括获取玩家信息、发送消息、传送玩家等。</p>
+<h2 id="_1">获取玩家信息</h2>
+<h3 id="playergetname">player.getName()</h3>
+<p>获取玩家的名称。</p>
+<p><strong>返回值：</strong>
+- 玩家名称字符串（String）</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">onPlayerJoin</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">player</span><span class="p">.</span><span class="nx">getName</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;玩家名称: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">name</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="playergetdisplayname">player.getDisplayName()</h3>
+<p>获取玩家的显示名称。</p>
+<p><strong>返回值：</strong>
+- 玩家显示名称字符串（String）</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">onPlayerJoin</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">displayName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">player</span><span class="p">.</span><span class="nx">getDisplayName</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;玩家显示名称: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">displayName</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="playergethealth">player.getHealth()</h3>
+<p>获取玩家的当前生命值。</p>
+<p><strong>返回值：</strong>
+- 玩家生命值（Number）</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">onPlayerJoin</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">health</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">player</span><span class="p">.</span><span class="nx">getHealth</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">player</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="s2">&quot;你的当前生命值: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">health</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="playergetposition">player.getPosition()</h3>
+<p>获取玩家的当前位置。</p>
+<p><strong>返回值：</strong>
+- 包含x、y、z坐标的位置对象</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">onPlayerMove</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">player</span><span class="p">.</span><span class="nx">getPosition</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">player</span><span class="p">.</span><span class="nx">getName</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot; 的位置: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">pos</span><span class="p">.</span><span class="nx">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;, &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">pos</span><span class="p">.</span><span class="nx">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;, &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">pos</span><span class="p">.</span><span class="nx">z</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h2 id="_2">玩家交互</h2>
+<h3 id="playersendmessagemessage">player.sendMessage(message)</h3>
+<p>向玩家发送消息。</p>
+<p><strong>参数：</strong>
+- <code>message</code> - 要发送的消息（String）</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">onPlayerJoin</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">player</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="s2">&quot;欢迎来到服务器!&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">player</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="s2">&quot;这是第二条消息&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="playerkickreason">player.kick(reason)</h3>
+<p>将玩家踢出服务器。</p>
+<p><strong>参数：</strong>
+- <code>reason</code> - 踢出原因（String）</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">onPlayerChat</span><span class="p">(</span><span class="nx">player</span><span class="p">,</span><span class="w"> </span><span class="nx">message</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s2">&quot;作弊&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">player</span><span class="p">.</span><span class="nx">kick</span><span class="p">(</span><span class="s2">&quot;禁止作弊!&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h2 id="_3">玩家管理</h2>
+<h3 id="allaygetonlineplayers">allay.getOnlinePlayers()</h3>
+<p>获取服务器上所有在线玩家的列表。</p>
+<p><strong>返回值：</strong>
+- 在线玩家对象数组（Array）</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">broadcastMessage</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">onlinePlayers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getOnlinePlayers</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">onlinePlayers</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">player</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;向 &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">onlinePlayers</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot; 名玩家发送了广播消息&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="allaygetplayername">allay.getPlayer(name)</h3>
+<p>根据名称获取玩家对象。</p>
+<p><strong>参数：</strong>
+- <code>name</code> - 玩家名称（String）</p>
+<p><strong>返回值：</strong>
+- 玩家对象，如果玩家不在线则返回null</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">onPlayerCommand</span><span class="p">(</span><span class="nx">player</span><span class="p">,</span><span class="w"> </span><span class="nx">command</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">command</span><span class="p">.</span><span class="nx">startsWith</span><span class="p">(</span><span class="s2">&quot;/tpall&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 获取命令中指定的玩家名称</span>
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">targetName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">command</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)[</span><span class="mf">1</span><span class="p">];</span>
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">targetPlayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getPlayer</span><span class="p">(</span><span class="nx">targetName</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">targetPlayer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kd">var</span><span class="w"> </span><span class="nx">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">targetPlayer</span><span class="p">.</span><span class="nx">getPosition</span><span class="p">();</span>
+<span class="w">            </span><span class="c1">// 传送所有玩家到目标玩家位置</span>
+<span class="w">            </span><span class="kd">var</span><span class="w"> </span><span class="nx">onlinePlayers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getOnlinePlayers</span><span class="p">();</span>
+<span class="w">            </span><span class="nx">onlinePlayers</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">p</span><span class="p">.</span><span class="nx">teleport</span><span class="p">(</span><span class="nx">pos</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">pos</span><span class="p">.</span><span class="nx">y</span><span class="p">,</span><span class="w"> </span><span class="nx">pos</span><span class="p">.</span><span class="nx">z</span><span class="p">);</span>
+<span class="w">                </span><span class="nx">p</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="s2">&quot;你已被传送到 &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">targetName</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot; 位置!&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="p">});</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">player</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="s2">&quot;玩家 &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">targetName</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot; 不在线!&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h2 id="_4">玩家事件</h2>
+<h3 id="onplayerjoinplayer">onPlayerJoin(player)</h3>
+<p>当玩家加入服务器时触发。</p>
+<p><strong>参数：</strong>
+- <code>player</code> - 玩家对象</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">onPlayerJoin</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">player</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="s2">&quot;欢迎来到服务器!&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">player</span><span class="p">.</span><span class="nx">getName</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot; 已加入服务器&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="onplayerquitplayer">onPlayerQuit(player)</h3>
+<p>当玩家离开服务器时触发。</p>
+<p><strong>参数：</strong>
+- <code>player</code> - 玩家对象</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">onPlayerQuit</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">player</span><span class="p">.</span><span class="nx">getName</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot; 已离开服务器&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="onplayerchatplayer-message">onPlayerChat(player, message)</h3>
+<p>当玩家发送聊天消息时触发。</p>
+<p><strong>参数：</strong>
+- <code>player</code> - 玩家对象
+- <code>message</code> - 聊天消息内容（String）</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">onPlayerChat</span><span class="p">(</span><span class="nx">player</span><span class="p">,</span><span class="w"> </span><span class="nx">message</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">player</span><span class="p">.</span><span class="nx">getName</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">message</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h2 id="_5">示例：玩家管理系统</h2>
+<div class="highlight"><pre><span></span><code><span class="c1">// 玩家管理系统示例</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="nx">playerData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{};</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">onLoad</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;玩家管理系统已加载&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">onEnable</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;玩家管理系统已启用&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 每分钟检查一次玩家数据</span>
+<span class="w">    </span><span class="nx">allay</span><span class="p">.</span><span class="nx">runRepeating</span><span class="p">(</span><span class="mf">1200</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">savePlayerData</span><span class="p">();</span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="k">this</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">onDisable</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;玩家管理系统已禁用&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">savePlayerData</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">allay</span><span class="p">.</span><span class="nx">cleanup</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">onPlayerJoin</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">player</span><span class="p">.</span><span class="nx">getName</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// 初始化玩家数据</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">playerData</span><span class="p">[</span><span class="nx">name</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">playerData</span><span class="p">[</span><span class="nx">name</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">joinCount</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">totalPlayTime</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">lastJoinTime</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">playerData</span><span class="p">[</span><span class="nx">name</span><span class="p">].</span><span class="nx">joinCount</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">playerData</span><span class="p">[</span><span class="nx">name</span><span class="p">].</span><span class="nx">lastJoinTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+
+<span class="w">    </span><span class="nx">player</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="s2">&quot;欢迎回来，&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">player</span><span class="p">.</span><span class="nx">getDisplayName</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;!&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">player</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="s2">&quot;这是你第 &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">playerData</span><span class="p">[</span><span class="nx">name</span><span class="p">].</span><span class="nx">joinCount</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot; 次加入服务器&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot; 已加入服务器，总加入次数: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">playerData</span><span class="p">[</span><span class="nx">name</span><span class="p">].</span><span class="nx">joinCount</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">onPlayerQuit</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">player</span><span class="p">.</span><span class="nx">getName</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">playerData</span><span class="p">[</span><span class="nx">name</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 计算本次游戏时间</span>
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">playTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">playerData</span><span class="p">[</span><span class="nx">name</span><span class="p">].</span><span class="nx">lastJoinTime</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">playerData</span><span class="p">[</span><span class="nx">name</span><span class="p">].</span><span class="nx">totalPlayTime</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">playTime</span><span class="p">;</span>
+
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot; 已离开服务器，本次游戏时间: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">playTime</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1000</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot; 秒&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot; 总游戏时间: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">playerData</span><span class="p">[</span><span class="nx">name</span><span class="p">].</span><span class="nx">totalPlayTime</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1000</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot; 秒&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">savePlayerData</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">playerData</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getFiles</span><span class="p">().</span><span class="nx">writeFile</span><span class="p">(</span><span class="s2">&quot;player_data.json&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;玩家数据已保存&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="_6">注意事项</h2>
+<ol>
+<li>玩家对象在玩家离线后会失效，不要长期存储玩家对象引用</li>
+<li>在处理大量玩家时，注意性能问题，避免在循环中执行复杂操作</li>
+<li>向玩家发送消息时，注意消息内容的格式和长度</li>
+<li>使用<code>getPlayer(name)</code>获取玩家时，需要检查返回值是否为null</li>
+<li>玩家的位置坐标是相对于世界的，不同世界的坐标不兼容</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "search.suggest", "search.highlight", "content.code.annotate", "content.code.copy"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1391 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../items/">
+      
+      
+        <link rel="next" href="../commands/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>工具API - BlocklyAllay Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#api" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="BlocklyAllay Docs" class="md-header__button md-logo" aria-label="BlocklyAllay Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BlocklyAllay Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              工具API
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../server/" class="md-tabs__link">
+          
+  
+  
+  API文档
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blocks/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  积木参考
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../examples/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  示例脚本
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="BlocklyAllay Docs" class="md-nav__button md-logo" aria-label="BlocklyAllay Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    BlocklyAllay Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    首页
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    API文档
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            API文档
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    服务器API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../players/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    玩家API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../world/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    世界API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    事件API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scheduler/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    调度器API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../forms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    表单API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bossbar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    BossBar API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../entities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    实体API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../items/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    物品API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    工具API
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    工具API
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      日志记录
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="日志记录">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#consolelogmessage" class="md-nav__link">
+    <span class="md-ellipsis">
+      console.log(message)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consoleinfomessage" class="md-nav__link">
+    <span class="md-ellipsis">
+      console.info(message)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consolewarnmessage" class="md-nav__link">
+    <span class="md-ellipsis">
+      console.warn(message)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consoleerrormessage" class="md-nav__link">
+    <span class="md-ellipsis">
+      console.error(message)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consoledebugmessage" class="md-nav__link">
+    <span class="md-ellipsis">
+      console.debug(message)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      事件处理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="事件处理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eventcancel" class="md-nav__link">
+    <span class="md-ellipsis">
+      event.cancel()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allayoffeventtype" class="md-nav__link">
+    <span class="md-ellipsis">
+      allay.off(eventType)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allaycleanup" class="md-nav__link">
+    <span class="md-ellipsis">
+      allay.cleanup()
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      调度器
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="调度器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#allayrunlaterdelay-callback-thisarg" class="md-nav__link">
+    <span class="md-ellipsis">
+      allay.runLater(delay, callback, thisArg)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allayrunrepeatingperiod-callback-thisarg" class="md-nav__link">
+    <span class="md-ellipsis">
+      allay.runRepeating(period, callback, thisArg)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allayrundelayedrepeatingdelay-period-callback-thisarg" class="md-nav__link">
+    <span class="md-ellipsis">
+      allay.runDelayedRepeating(delay, period, callback, thisArg)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      文件操作
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="文件操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#allaygetfilesreadfilepath" class="md-nav__link">
+    <span class="md-ellipsis">
+      allay.getFiles().readFile(path)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allaygetfileswritefilepath-content-overwrite" class="md-nav__link">
+    <span class="md-ellipsis">
+      allay.getFiles().writeFile(path, content, overwrite)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allaygetfilesfileexistspath" class="md-nav__link">
+    <span class="md-ellipsis">
+      allay.getFiles().fileExists(path)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allaygetfilesdeletefilepath" class="md-nav__link">
+    <span class="md-ellipsis">
+      allay.getFiles().deleteFile(path)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allaygetfileslistfilespath" class="md-nav__link">
+    <span class="md-ellipsis">
+      allay.getFiles().listFiles(path)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#http" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTTP请求
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HTTP请求">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#allaygethttpgeturl" class="md-nav__link">
+    <span class="md-ellipsis">
+      allay.getHttp().get(url)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allaygethttpposturl-body-contenttype" class="md-nav__link">
+    <span class="md-ellipsis">
+      allay.getHttp().post(url, body, contentType)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#json" class="md-nav__link">
+    <span class="md-ellipsis">
+      JSON处理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="JSON处理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jsonparsetext" class="md-nav__link">
+    <span class="md-ellipsis">
+      JSON.parse(text)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jsonstringifyvalue" class="md-nav__link">
+    <span class="md-ellipsis">
+      JSON.stringify(value)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      对象操作
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="对象操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      创建对象
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      获取对象属性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      设置对象属性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      检查对象属性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      删除对象属性
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    命令API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blocks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    积木参考
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    示例脚本
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="api">工具 API</h1>
+<p>工具 API 提供了各种实用功能，包括日志记录、事件处理、调度器、文件操作、HTTP 请求、JSON 处理和对象操作等。</p>
+<h2 id="_1">日志记录</h2>
+<p>BlocklyAllay 使用标准的 JavaScript <code>console</code> 对象进行日志记录。</p>
+<h3 id="consolelogmessage">console.log(message)</h3>
+<p>在控制台打印日志消息。</p>
+<p><strong>参数：</strong></p>
+<ul>
+<li><code>message</code> - 要打印的消息（任意类型）</li>
+</ul>
+<p><strong>示例：</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;这是一条日志消息&quot;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mf">123</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">({</span><span class="w"> </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;value&quot;</span><span class="w"> </span><span class="p">});</span>
+</code></pre></div>
+<h3 id="consoleinfomessage">console.info(message)</h3>
+<p>在控制台打印信息消息。</p>
+<p><strong>参数：</strong></p>
+<ul>
+<li><code>message</code> - 要打印的消息（任意类型）</li>
+</ul>
+<p><strong>示例：</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s2">&quot;这是一条信息消息&quot;</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="consolewarnmessage">console.warn(message)</h3>
+<p>在控制台打印警告消息。</p>
+<p><strong>参数：</strong></p>
+<ul>
+<li><code>message</code> - 要打印的消息（任意类型）</li>
+</ul>
+<p><strong>示例：</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="s2">&quot;这是一条警告消息&quot;</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="consoleerrormessage">console.error(message)</h3>
+<p>在控制台打印错误消息。</p>
+<p><strong>参数：</strong></p>
+<ul>
+<li><code>message</code> - 要打印的消息（任意类型）</li>
+</ul>
+<p><strong>示例：</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;这是一条错误消息&quot;</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="consoledebugmessage">console.debug(message)</h3>
+<p>在控制台打印调试消息。</p>
+<p><strong>参数：</strong></p>
+<ul>
+<li><code>message</code> - 要打印的消息（任意类型）</li>
+</ul>
+<p><strong>示例：</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="s2">&quot;这是一条调试消息&quot;</span><span class="p">);</span>
+</code></pre></div>
+<h2 id="_2">事件处理</h2>
+<p>事件处理 API 通过 <code>allay</code> 对象实现。</p>
+<h3 id="eventcancel">event.cancel()</h3>
+<p>取消当前事件（仅在可取消的事件中有效）。</p>
+<p><strong>示例：</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">onPlayerChat</span><span class="p">(</span><span class="nx">player</span><span class="p">,</span><span class="w"> </span><span class="nx">message</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s2">&quot;敏感词&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">player</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="s2">&quot;请不要使用敏感词!&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">event</span><span class="p">.</span><span class="nx">cancel</span><span class="p">();</span><span class="w"> </span><span class="c1">// 取消聊天消息发送</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="allayoffeventtype">allay.off(eventType)</h3>
+<p>取消监听指定事件。</p>
+<p><strong>参数：</strong></p>
+<ul>
+<li><code>eventType</code> - 事件类型字符串</li>
+</ul>
+<p><strong>示例：</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nx">allay</span><span class="p">.</span><span class="nx">off</span><span class="p">(</span><span class="s2">&quot;player.join&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// 取消监听玩家加入事件</span>
+</code></pre></div>
+<h3 id="allaycleanup">allay.cleanup()</h3>
+<p>清理所有事件监听和定时任务。</p>
+<p><strong>示例：</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nx">allay</span><span class="p">.</span><span class="nx">cleanup</span><span class="p">();</span><span class="w"> </span><span class="c1">// 清理所有事件监听和定时任务</span>
+</code></pre></div>
+<h2 id="_3">调度器</h2>
+<p>调度器 API 通过 <code>allay</code> 对象实现。</p>
+<h3 id="allayrunlaterdelay-callback-thisarg">allay.runLater(delay, callback, thisArg)</h3>
+<p>在指定 tick 数后执行一次回调函数。</p>
+<p><strong>参数：</strong></p>
+<ul>
+<li><code>delay</code> - 延迟的 tick 数（Number）</li>
+<li><code>callback</code> - 要执行的回调函数</li>
+<li><code>thisArg</code> - 回调函数中的 <code>this</code> 值（可选）</li>
+</ul>
+<p><strong>示例：</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nx">allay</span><span class="p">.</span><span class="nx">runLater</span><span class="p">(</span>
+<span class="w">  </span><span class="mf">20</span><span class="p">,</span>
+<span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;1秒后执行&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="k">this</span>
+<span class="p">);</span>
+</code></pre></div>
+<h3 id="allayrunrepeatingperiod-callback-thisarg">allay.runRepeating(period, callback, thisArg)</h3>
+<p>每隔指定 tick 数重复执行回调函数。</p>
+<p><strong>参数：</strong></p>
+<ul>
+<li><code>period</code> - 重复执行的间隔 tick 数（Number）</li>
+<li><code>callback</code> - 要执行的回调函数</li>
+<li><code>thisArg</code> - 回调函数中的 <code>this</code> 值（可选）</li>
+</ul>
+<p><strong>示例：</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nx">allay</span><span class="p">.</span><span class="nx">runRepeating</span><span class="p">(</span>
+<span class="w">  </span><span class="mf">20</span><span class="p">,</span>
+<span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;每秒执行一次&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="k">this</span>
+<span class="p">);</span>
+</code></pre></div>
+<h3 id="allayrundelayedrepeatingdelay-period-callback-thisarg">allay.runDelayedRepeating(delay, period, callback, thisArg)</h3>
+<p>在延迟后每隔指定 tick 数重复执行回调函数。</p>
+<p><strong>参数：</strong></p>
+<ul>
+<li><code>delay</code> - 初始延迟的 tick 数（Number）</li>
+<li><code>period</code> - 重复执行的间隔 tick 数（Number）</li>
+<li><code>callback</code> - 要执行的回调函数</li>
+<li><code>thisArg</code> - 回调函数中的 <code>this</code> 值（可选）</li>
+</ul>
+<p><strong>示例：</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nx">allay</span><span class="p">.</span><span class="nx">runDelayedRepeating</span><span class="p">(</span>
+<span class="w">  </span><span class="mf">40</span><span class="p">,</span>
+<span class="w">  </span><span class="mf">20</span><span class="p">,</span>
+<span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;2秒后开始，每秒执行一次&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="k">this</span>
+<span class="p">);</span>
+</code></pre></div>
+<h2 id="_4">文件操作</h2>
+<p>文件操作 API 通过 <code>allay.getFiles()</code> 对象实现。</p>
+<h3 id="allaygetfilesreadfilepath">allay.getFiles().readFile(path)</h3>
+<p>读取文件内容。</p>
+<p><strong>参数：</strong></p>
+<ul>
+<li><code>path</code> - 文件路径（String）</li>
+</ul>
+<p><strong>返回值：</strong></p>
+<ul>
+<li>文件内容字符串，或 null（如果读取失败）</li>
+</ul>
+<p><strong>示例：</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">content</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getFiles</span><span class="p">().</span><span class="nx">readFile</span><span class="p">(</span><span class="s2">&quot;config.json&quot;</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">content</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;文件内容：&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">content</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="allaygetfileswritefilepath-content-overwrite">allay.getFiles().writeFile(path, content, overwrite)</h3>
+<p>写入内容到文件。</p>
+<p><strong>参数：</strong></p>
+<ul>
+<li><code>path</code> - 文件路径（String）</li>
+<li><code>content</code> - 要写入的内容（String）</li>
+<li><code>overwrite</code> - 是否覆盖现有文件（Boolean，默认为 true）</li>
+</ul>
+<p><strong>返回值：</strong></p>
+<ul>
+<li>是否写入成功（Boolean）</li>
+</ul>
+<p><strong>示例：</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nx">allay</span><span class="p">.</span><span class="nx">getFiles</span><span class="p">().</span><span class="nx">writeFile</span><span class="p">(</span><span class="s2">&quot;test.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Hello World&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="allaygetfilesfileexistspath">allay.getFiles().fileExists(path)</h3>
+<p>检查文件是否存在。</p>
+<p><strong>参数：</strong></p>
+<ul>
+<li><code>path</code> - 文件路径（String）</li>
+</ul>
+<p><strong>返回值：</strong></p>
+<ul>
+<li>文件是否存在（Boolean）</li>
+</ul>
+<p><strong>示例：</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">allay</span><span class="p">.</span><span class="nx">getFiles</span><span class="p">().</span><span class="nx">fileExists</span><span class="p">(</span><span class="s2">&quot;config.json&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;配置文件存在&quot;</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;配置文件不存在&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="allaygetfilesdeletefilepath">allay.getFiles().deleteFile(path)</h3>
+<p>删除指定文件。</p>
+<p><strong>参数：</strong>
+- <code>path</code> - 文件路径（String）</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="nx">allay</span><span class="p">.</span><span class="nx">getFiles</span><span class="p">().</span><span class="nx">deleteFile</span><span class="p">(</span><span class="s2">&quot;temp.txt&quot;</span><span class="p">);</span>
+</code></pre></div></p>
+<h3 id="allaygetfileslistfilespath">allay.getFiles().listFiles(path)</h3>
+<p>列出目录中的文件。</p>
+<p><strong>参数：</strong>
+- <code>path</code> - 目录路径（String）</p>
+<p><strong>返回值：</strong>
+- 文件列表数组（Array）</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">files</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getFiles</span><span class="p">().</span><span class="nx">listFiles</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">);</span>
+<span class="nx">files</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">file</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;文件：&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">file</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></p>
+<h2 id="http">HTTP请求</h2>
+<p>HTTP请求API通过 <code>allay.getHttp()</code> 对象实现。</p>
+<h3 id="allaygethttpgeturl">allay.getHttp().get(url)</h3>
+<p>发送HTTP GET请求。</p>
+<p><strong>参数：</strong>
+- <code>url</code> - 请求URL（String）</p>
+<p><strong>返回值：</strong>
+- 响应内容字符串，或null（如果请求失败）</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getHttp</span><span class="p">().</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;https://api.example.com/data&quot;</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">response</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;GET响应：&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">response</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="allaygethttpposturl-body-contenttype">allay.getHttp().post(url, body, contentType)</h3>
+<p>发送HTTP POST请求。</p>
+<p><strong>参数：</strong>
+- <code>url</code> - 请求URL（String）
+- <code>body</code> - 请求正文（String）
+- <code>contentType</code> - 请求内容类型（String，默认："application/json"）</p>
+<p><strong>返回值：</strong>
+- 响应内容字符串，或null（如果请求失败）</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getHttp</span><span class="p">().</span><span class="nx">post</span><span class="p">(</span>
+<span class="w">    </span><span class="s2">&quot;https://api.example.com/data&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;value&quot;</span><span class="p">}),</span><span class="w"> </span>
+<span class="w">    </span><span class="s2">&quot;application/json&quot;</span>
+<span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">response</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;POST响应：&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">response</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h2 id="json">JSON处理</h2>
+<p>JSON处理API使用标准的JavaScript <code>JSON</code> 对象。</p>
+<h3 id="jsonparsetext">JSON.parse(text)</h3>
+<p>将JSON字符串转换为JavaScript对象。</p>
+<p><strong>参数：</strong>
+- <code>text</code> - JSON字符串（String）</p>
+<p><strong>返回值：</strong>
+- 解析后的JavaScript对象</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">jsonStr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;{&quot;name&quot;: &quot;测试&quot;, &quot;value&quot;: 123}&#39;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">jsonStr</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span><span class="w"> </span><span class="c1">// 输出：测试</span>
+</code></pre></div></p>
+<h3 id="jsonstringifyvalue">JSON.stringify(value)</h3>
+<p>将JavaScript对象转换为JSON字符串。</p>
+<p><strong>参数：</strong>
+- <code>value</code> - 要转换的JavaScript对象</p>
+<p><strong>返回值：</strong>
+- JSON字符串</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;测试&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="mf">123</span><span class="p">};</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">jsonStr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">jsonStr</span><span class="p">);</span><span class="w"> </span><span class="c1">// 输出：{&quot;name&quot;:&quot;测试&quot;,&quot;value&quot;:123}</span>
+</code></pre></div></p>
+<h2 id="_5">对象操作</h2>
+<p>对象操作使用JavaScript原生语法。</p>
+<h3 id="_6">创建对象</h3>
+<p>创建一个新的空对象。</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{};</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">objWithProps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;测试&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="mf">123</span><span class="p">};</span>
+</code></pre></div></p>
+<h3 id="_7">获取对象属性</h3>
+<p>获取对象的属性值。</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;测试&quot;</span><span class="p">};</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">obj</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span><span class="w"> </span><span class="c1">// 或 obj[&quot;name&quot;]</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span><span class="w"> </span><span class="c1">// 输出：测试</span>
+</code></pre></div></p>
+<h3 id="_8">设置对象属性</h3>
+<p>设置对象的属性值。</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{};</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;测试&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// 或 obj[&quot;name&quot;] = &quot;测试&quot;</span>
+</code></pre></div></p>
+<h3 id="_9">检查对象属性</h3>
+<p>检查对象是否包含指定属性。</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;测试&quot;</span><span class="p">};</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">obj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;对象包含name属性&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="_10">删除对象属性</h3>
+<p>删除对象的指定属性。</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;测试&quot;</span><span class="p">};</span>
+<span class="ow">delete</span><span class="w"> </span><span class="nx">obj</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+</code></pre></div></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "search.suggest", "search.highlight", "content.code.annotate", "content.code.copy"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,42 @@
+site_name: BlocklyAllay Docs
+
+docs_dir: docs
+
+nav:
+  - 首页: index.md
+  - API文档:
+    - 服务器API: api/server.md
+    - 玩家API: api/players.md
+    - 世界API: api/world.md
+    - 事件API: api/events.md
+    - 调度器API: api/scheduler.md
+    - 表单API: api/forms.md
+    - BossBar API: api/bossbar.md
+    - 实体API: api/entities.md
+    - 物品API: api/items.md
+    - 工具API: api/utils.md
+    - 命令API: api/commands.md
+  - 积木参考: blocks.md
+  - 示例脚本: examples.md
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - toc.integrate
+    - search.suggest
+    - search.highlight
+    - content.code.annotate
+    - content.code.copy
+
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.inlinehilite
+  - pymdownx.details
+
+plugins:
+  - search

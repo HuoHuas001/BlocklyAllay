@@ -1,5 +1,6 @@
-package cn.huohuas001.blocklyallay.script.api.wrapper
+package cn.huohuas001.blocklyallay.script.api.wrapper.container
 
+import cn.huohuas001.blocklyallay.script.api.wrapper.EntityPlayerWrapper
 import org.allaymc.api.container.ContainerViewer
 import org.allaymc.api.entity.interfaces.EntityPlayer
 

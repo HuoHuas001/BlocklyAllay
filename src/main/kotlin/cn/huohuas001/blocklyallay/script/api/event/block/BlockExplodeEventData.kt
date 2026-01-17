@@ -1,6 +1,6 @@
 package cn.huohuas001.blocklyallay.script.api.event.block
 
-import cn.huohuas001.blocklyallay.script.api.wrapper.BlockWrapper
+import cn.huohuas001.blocklyallay.script.api.wrapper.block.BlockWrapper
 import org.allaymc.api.eventbus.event.block.BlockExplodeEvent
 
 /**

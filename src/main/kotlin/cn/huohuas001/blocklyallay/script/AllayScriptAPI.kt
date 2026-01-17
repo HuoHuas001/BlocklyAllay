@@ -2,10 +2,13 @@ package cn.huohuas001.blocklyallay.script
 
 import cn.huohuas001.blocklyallay.BlocklyAllay
 import cn.huohuas001.blocklyallay.script.api.bossbar.BossBarAPI
+import cn.huohuas001.blocklyallay.script.api.command.CommandAPI
 import cn.huohuas001.blocklyallay.script.api.data.ServerAPI
 import cn.huohuas001.blocklyallay.script.api.event.EventListener
 import cn.huohuas001.blocklyallay.script.api.event.RegisteredHandler
 import cn.huohuas001.blocklyallay.script.api.form.FormAPI
+import cn.huohuas001.blocklyallay.script.api.util.FileAPI
+import cn.huohuas001.blocklyallay.script.api.util.HttpAPI
 import org.allaymc.api.player.Player
 import org.allaymc.api.server.Server
 import org.allaymc.api.world.World
@@ -35,6 +38,13 @@ class AllayScriptAPI(private val plugin: BlocklyAllay) {
     init {
         Server.getInstance().eventBus.registerListener(eventListener)
     }
+
+    // ==================== API 实例 ====================
+    
+    private val fileAPI = FileAPI(plugin)
+    private val httpAPI = HttpAPI(plugin)
+    private val formAPI = FormAPI()
+    private val bossBarAPI = BossBarAPI()
 
     // ==================== 服务器 API ====================
 
@@ -133,9 +143,6 @@ class AllayScriptAPI(private val plugin: BlocklyAllay) {
 
     // ==================== 表单 API ====================
 
-    private val formAPI = FormAPI()
-    private val bossBarAPI = BossBarAPI()
-
     fun getFormAPI(): FormAPI = formAPI
 
     fun getForms(): FormAPI = formAPI
@@ -145,12 +152,20 @@ class AllayScriptAPI(private val plugin: BlocklyAllay) {
     fun getBossBarAPI(): BossBarAPI = bossBarAPI
 
     fun getBossBar(): BossBarAPI = bossBarAPI
+    
+    // ==================== Command API ====================
 
-    // ==================== 工具 API ====================
+    private val commandAPI = CommandAPI(plugin)
 
-    fun log(message: String) {
-        plugin.pluginLogger.info("[Script] $message")
-    }
+    fun getCommandAPI(): CommandAPI = commandAPI
+    
+    fun getFiles(): FileAPI = fileAPI
+    
+    // ==================== HTTP API ====================
+    
+    fun getHttpAPI(): HttpAPI = httpAPI
+    
+    fun getHttp(): HttpAPI = httpAPI
 
     fun cleanup() {
         eventHandlers.clear()

@@ -1,7 +1,8 @@
-package cn.huohuas001.blocklyallay.script.api.wrapper
+package cn.huohuas001.blocklyallay.script.api.wrapper.command
 
+import cn.huohuas001.blocklyallay.script.api.wrapper.EntityPlayerWrapper
+import cn.huohuas001.blocklyallay.script.api.wrapper.EntityWrapper
 import org.allaymc.api.command.CommandSender
-import org.allaymc.api.permission.Tristate
 
 /**
  * 包装CommandSender对象，暴露给JavaScript脚本使用。

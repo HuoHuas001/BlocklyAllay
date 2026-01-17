@@ -1,4 +1,4 @@
-package cn.huohuas001.blocklyallay.script.api.wrapper
+package cn.huohuas001.blocklyallay.script.api.wrapper.block
 
 import org.allaymc.api.block.dto.Block
 

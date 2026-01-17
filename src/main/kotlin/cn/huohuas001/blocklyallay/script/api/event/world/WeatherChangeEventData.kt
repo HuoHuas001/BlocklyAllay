@@ -1,6 +1,6 @@
 package cn.huohuas001.blocklyallay.script.api.event.world
 
-import cn.huohuas001.blocklyallay.script.api.wrapper.WorldWrapper
+import cn.huohuas001.blocklyallay.script.api.wrapper.world.WorldWrapper
 import org.allaymc.api.eventbus.event.world.WeatherChangeEvent
 
 /**

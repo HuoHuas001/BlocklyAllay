@@ -1,6 +1,6 @@
 package cn.huohuas001.blocklyallay.script.api.event.entity
 
-import cn.huohuas001.blocklyallay.script.api.wrapper.BlockWrapper
+import cn.huohuas001.blocklyallay.script.api.wrapper.block.BlockWrapper
 import cn.huohuas001.blocklyallay.script.api.wrapper.EntityWrapper
 import org.allaymc.api.eventbus.event.entity.ProjectileHitEvent
 

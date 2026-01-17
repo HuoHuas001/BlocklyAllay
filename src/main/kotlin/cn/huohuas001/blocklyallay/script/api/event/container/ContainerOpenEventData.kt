@@ -1,7 +1,7 @@
 package cn.huohuas001.blocklyallay.script.api.event.container
 
-import cn.huohuas001.blocklyallay.script.api.wrapper.ContainerViewerWrapper
-import cn.huohuas001.blocklyallay.script.api.wrapper.ContainerWrapper
+import cn.huohuas001.blocklyallay.script.api.wrapper.container.ContainerViewerWrapper
+import cn.huohuas001.blocklyallay.script.api.wrapper.container.ContainerWrapper
 import org.allaymc.api.eventbus.event.container.ContainerOpenEvent
 
 /**

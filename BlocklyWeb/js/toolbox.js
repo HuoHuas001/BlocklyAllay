@@ -236,6 +236,27 @@ const TOOLBOX = {
         },
         {
             kind: 'category',
+            name: '命令',
+            colour: '#A5745B',
+            contents: [
+                { kind: 'block', type: 'command_register_simple' },
+                { kind: 'block', type: 'command_register_with_aliases' },
+                { kind: 'block', type: 'command_unregister' },
+                { kind: 'sep' },
+                { kind: 'block', type: 'command_context_sender' },
+                { kind: 'block', type: 'command_context_command' },
+                { kind: 'block', type: 'command_context_args' },
+                { kind: 'block', type: 'command_context_get_arg' },
+                { kind: 'sep' },
+                { kind: 'block', type: 'command_send_message' },
+                { kind: 'block', type: 'command_has_permission' },
+                { kind: 'block', type: 'command_is_player' },
+                { kind: 'block', type: 'command_is_console' },
+                { kind: 'block', type: 'command_get_player' },
+            ]
+        },
+        {
+            kind: 'category',
             name: '表单',
             colour: '#745BA5',
             contents: [
@@ -319,6 +340,18 @@ const TOOLBOX = {
                 { kind: 'block', type: 'util_cancel_event' },
                 { kind: 'block', type: 'event_off' },
                 { kind: 'block', type: 'event_cleanup' },
+                { kind: 'sep' },
+                { kind: 'block', type: 'file_read' },
+                { kind: 'block', type: 'file_write' },
+                { kind: 'block', type: 'file_exists' },
+                { kind: 'block', type: 'file_delete' },
+                { kind: 'block', type: 'file_list' },
+                { kind: 'sep' },
+                { kind: 'block', type: 'http_get' },
+                { kind: 'block', type: 'http_post' },
+                { kind: 'sep' },
+                { kind: 'block', type: 'json_parse' },
+                { kind: 'block', type: 'json_stringify' },
             ]
         },
         { kind: 'sep' },
@@ -380,6 +413,18 @@ const TOOLBOX = {
                 { kind: 'block', type: 'lists_length' },
                 { kind: 'block', type: 'lists_getIndex' },
                 { kind: 'block', type: 'lists_setIndex' },
+            ]
+        },
+        {
+            kind: 'category',
+            name: '对象',
+            colour: '#FF6B6B',
+            contents: [
+                { kind: 'block', type: 'object_create' },
+                { kind: 'block', type: 'object_get_property' },
+                { kind: 'block', type: 'object_set_property' },
+                { kind: 'block', type: 'object_has_property' },
+                { kind: 'block', type: 'object_delete_property' },
             ]
         },
         {

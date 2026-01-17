@@ -1,0 +1,1571 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../world/">
+      
+      
+        <link rel="next" href="../scheduler/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>事件API - BlocklyAllay Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#api" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="BlocklyAllay Docs" class="md-header__button md-logo" aria-label="BlocklyAllay Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BlocklyAllay Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              事件API
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../server/" class="md-tabs__link">
+          
+  
+  
+  API文档
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blocks/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  积木参考
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../examples/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  示例脚本
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="BlocklyAllay Docs" class="md-nav__button md-logo" aria-label="BlocklyAllay Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    BlocklyAllay Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    首页
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    API文档
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            API文档
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    服务器API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../players/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    玩家API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../world/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    世界API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    事件API
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    事件API
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      脚本生命周期事件
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="脚本生命周期事件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#onload" class="md-nav__link">
+    <span class="md-ellipsis">
+      onLoad()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onenable" class="md-nav__link">
+    <span class="md-ellipsis">
+      onEnable()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ondisable" class="md-nav__link">
+    <span class="md-ellipsis">
+      onDisable()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onunload" class="md-nav__link">
+    <span class="md-ellipsis">
+      onUnload()
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      玩家事件
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="玩家事件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#onplayerjoinplayer" class="md-nav__link">
+    <span class="md-ellipsis">
+      onPlayerJoin(player)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onplayerquitplayer" class="md-nav__link">
+    <span class="md-ellipsis">
+      onPlayerQuit(player)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onplayerchatplayer-message" class="md-nav__link">
+    <span class="md-ellipsis">
+      onPlayerChat(player, message)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onplayercommandplayer-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      onPlayerCommand(player, command)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onplayermoveplayer" class="md-nav__link">
+    <span class="md-ellipsis">
+      onPlayerMove(player)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      事件处理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="事件处理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eventcancel" class="md-nav__link">
+    <span class="md-ellipsis">
+      event.cancel()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allayoffeventtype" class="md-nav__link">
+    <span class="md-ellipsis">
+      allay.off(eventType)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allaycleanup" class="md-nav__link">
+    <span class="md-ellipsis">
+      allay.cleanup()
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      事件类型参考
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="事件类型参考">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      玩家事件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      方块事件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      实体事件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      物品与容器事件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      液体事件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      服务器事件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      其他事件
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      注意事项
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scheduler/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    调度器API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../forms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    表单API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bossbar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    BossBar API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../entities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    实体API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../items/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    物品API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    工具API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    命令API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blocks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    积木参考
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    示例脚本
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="api">事件API</h1>
+<p>事件API允许脚本响应游戏中的各种事件，如玩家加入、方块破坏、实体移动等。通过监听这些事件，脚本可以实现复杂的交互逻辑。</p>
+<h2 id="_1">脚本生命周期事件</h2>
+<h3 id="onload">onLoad()</h3>
+<p>当脚本加载时触发。</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">onLoad</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;脚本已加载&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="onenable">onEnable()</h3>
+<p>当脚本启用时触发。</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">onEnable</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;脚本已启用&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="ondisable">onDisable()</h3>
+<p>当脚本禁用时触发。</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">onDisable</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;脚本已禁用&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="onunload">onUnload()</h3>
+<p>当脚本卸载时触发。</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">onUnload</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;脚本已卸载&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h2 id="_2">玩家事件</h2>
+<h3 id="onplayerjoinplayer">onPlayerJoin(player)</h3>
+<p>当玩家加入服务器时触发。</p>
+<p><strong>参数：</strong>
+- <code>player</code> - 玩家对象</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">onPlayerJoin</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">player</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="s2">&quot;欢迎来到服务器!&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">player</span><span class="p">.</span><span class="nx">getName</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot; 已加入服务器&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="onplayerquitplayer">onPlayerQuit(player)</h3>
+<p>当玩家离开服务器时触发。</p>
+<p><strong>参数：</strong>
+- <code>player</code> - 玩家对象</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">onPlayerQuit</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">player</span><span class="p">.</span><span class="nx">getName</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot; 已离开服务器&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="onplayerchatplayer-message">onPlayerChat(player, message)</h3>
+<p>当玩家发送聊天消息时触发。</p>
+<p><strong>参数：</strong>
+- <code>player</code> - 玩家对象
+- <code>message</code> - 聊天消息内容（String）</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">onPlayerChat</span><span class="p">(</span><span class="nx">player</span><span class="p">,</span><span class="w"> </span><span class="nx">message</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">player</span><span class="p">.</span><span class="nx">getName</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">message</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// 可以修改消息内容或取消消息</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="onplayercommandplayer-command">onPlayerCommand(player, command)</h3>
+<p>当玩家执行命令时触发。</p>
+<p><strong>参数：</strong>
+- <code>player</code> - 玩家对象
+- <code>command</code> - 命令内容（String）</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">onPlayerCommand</span><span class="p">(</span><span class="nx">player</span><span class="p">,</span><span class="w"> </span><span class="nx">command</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">player</span><span class="p">.</span><span class="nx">getName</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot; 执行了命令: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">command</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// 可以修改命令或取消命令执行</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="onplayermoveplayer">onPlayerMove(player)</h3>
+<p>当玩家移动时触发。</p>
+<p><strong>参数：</strong>
+- <code>player</code> - 玩家对象</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">onPlayerMove</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">player</span><span class="p">.</span><span class="nx">getPosition</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">player</span><span class="p">.</span><span class="nx">getName</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot; 移动到了: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">pos</span><span class="p">.</span><span class="nx">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;, &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">pos</span><span class="p">.</span><span class="nx">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;, &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">pos</span><span class="p">.</span><span class="nx">z</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h2 id="_3">事件处理</h2>
+<h3 id="eventcancel">event.cancel()</h3>
+<p>取消当前事件的默认行为（仅在可取消的事件中有效）。</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">onPlayerChat</span><span class="p">(</span><span class="nx">player</span><span class="p">,</span><span class="w"> </span><span class="nx">message</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s2">&quot;敏感词&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">player</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="s2">&quot;请不要使用敏感词!&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">event</span><span class="p">.</span><span class="nx">cancel</span><span class="p">();</span><span class="w"> </span><span class="c1">// 取消消息发送</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="allayoffeventtype">allay.off(eventType)</h3>
+<p>取消监听指定事件类型。</p>
+<p><strong>参数：</strong>
+- <code>eventType</code> - 事件类型字符串</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="c1">// 取消监听玩家加入事件</span>
+<span class="nx">allay</span><span class="p">.</span><span class="nx">off</span><span class="p">(</span><span class="s2">&quot;player.join&quot;</span><span class="p">);</span>
+</code></pre></div></p>
+<h3 id="allaycleanup">allay.cleanup()</h3>
+<p>清理所有事件监听和定时任务。</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="c1">// 清理所有事件监听和定时任务</span>
+<span class="nx">allay</span><span class="p">.</span><span class="nx">cleanup</span><span class="p">();</span>
+</code></pre></div></p>
+<h2 id="_4">事件类型参考</h2>
+<p>以下是所有可用事件类型的参考：</p>
+<h3 id="_5">玩家事件</h3>
+<table>
+<thead>
+<tr>
+<th>事件类型</th>
+<th>对应的回调函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>playerJoin</td>
+<td>onPlayerJoin</td>
+<td>当玩家加入服务器时触发</td>
+</tr>
+<tr>
+<td>playerQuit</td>
+<td>onPlayerQuit</td>
+<td>当玩家离开服务器时触发</td>
+</tr>
+<tr>
+<td>playerChat</td>
+<td>onPlayerChat</td>
+<td>当玩家发送聊天消息时触发</td>
+</tr>
+<tr>
+<td>playerCommand</td>
+<td>onPlayerCommand</td>
+<td>当玩家执行命令时触发</td>
+</tr>
+<tr>
+<td>playerMove</td>
+<td>onPlayerMove</td>
+<td>当玩家移动时触发</td>
+</tr>
+<tr>
+<td>playerInteractBlock</td>
+<td>onPlayerInteractBlock</td>
+<td>当玩家与方块交互时触发</td>
+</tr>
+<tr>
+<td>playerConnect</td>
+<td>onPlayerConnect</td>
+<td>当玩家连接到服务器时触发</td>
+</tr>
+<tr>
+<td>playerDisconnect</td>
+<td>onPlayerDisconnect</td>
+<td>当玩家断开连接时触发</td>
+</tr>
+<tr>
+<td>playerLogin</td>
+<td>onPlayerLogin</td>
+<td>当玩家登录时触发</td>
+</tr>
+<tr>
+<td>playerKick</td>
+<td>onPlayerKick</td>
+<td>当玩家被踢出时触发</td>
+</tr>
+<tr>
+<td>playerSpawn</td>
+<td>onPlayerSpawn</td>
+<td>当玩家生成时触发</td>
+</tr>
+<tr>
+<td>playerDropItem</td>
+<td>onPlayerDropItem</td>
+<td>当玩家丢出物品时触发</td>
+</tr>
+<tr>
+<td>playerBlockPick</td>
+<td>onPlayerBlockPick</td>
+<td>当玩家捡起方块时触发</td>
+</tr>
+<tr>
+<td>playerBookEdit</td>
+<td>onPlayerBookEdit</td>
+<td>当玩家编辑书时触发</td>
+</tr>
+<tr>
+<td>playerBucketEmpty</td>
+<td>onPlayerBucketEmpty</td>
+<td>当玩家倒空水桶时触发</td>
+</tr>
+<tr>
+<td>playerBucketFill</td>
+<td>onPlayerBucketFill</td>
+<td>当玩家装满水桶时触发</td>
+</tr>
+<tr>
+<td>playerChangeSkin</td>
+<td>onPlayerChangeSkin</td>
+<td>当玩家改变皮肤时触发</td>
+</tr>
+<tr>
+<td>playerCraftItem</td>
+<td>onPlayerCraftItem</td>
+<td>当玩家合成物品时触发</td>
+</tr>
+<tr>
+<td>playerEat</td>
+<td>onPlayerEat</td>
+<td>当玩家吃东西时触发</td>
+</tr>
+<tr>
+<td>playerEnchantItem</td>
+<td>onPlayerEnchantItem</td>
+<td>当玩家附魔物品时触发</td>
+</tr>
+<tr>
+<td>playerExperienceLevelChange</td>
+<td>onPlayerExperienceLevelChange</td>
+<td>当玩家经验等级改变时触发</td>
+</tr>
+<tr>
+<td>playerFoodLevelChange</td>
+<td>onPlayerFoodLevelChange</td>
+<td>当玩家饥饿值改变时触发</td>
+</tr>
+<tr>
+<td>playerInteractEntity</td>
+<td>onPlayerInteractEntity</td>
+<td>当玩家与实体交互时触发</td>
+</tr>
+<tr>
+<td>playerItemHeld</td>
+<td>onPlayerItemHeld</td>
+<td>当玩家切换手持物品时触发</td>
+</tr>
+<tr>
+<td>playerPunchAir</td>
+<td>onPlayerPunchAir</td>
+<td>当玩家空手攻击时触发</td>
+</tr>
+<tr>
+<td>playerPunchBlock</td>
+<td>onPlayerPunchBlock</td>
+<td>当玩家攻击方块时触发</td>
+</tr>
+<tr>
+<td>playerToggleCrawl</td>
+<td>onPlayerToggleCrawl</td>
+<td>当玩家开始/停止爬行时触发</td>
+</tr>
+<tr>
+<td>playerToggleFlight</td>
+<td>onPlayerToggleFlight</td>
+<td>当玩家开始/停止飞行时触发</td>
+</tr>
+<tr>
+<td>playerToggleGlide</td>
+<td>onPlayerToggleGlide</td>
+<td>当玩家开始/停止滑翔时触发</td>
+</tr>
+<tr>
+<td>playerToggleSwim</td>
+<td>onPlayerToggleSwim</td>
+<td>当玩家开始/停止游泳时触发</td>
+</tr>
+<tr>
+<td>playerUseItemInAir</td>
+<td>onPlayerUseItemInAir</td>
+<td>当玩家在空中使用物品时触发</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_6">方块事件</h3>
+<table>
+<thead>
+<tr>
+<th>事件类型</th>
+<th>对应的回调函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>blockBreak</td>
+<td>onBlockBreak</td>
+<td>当方块被破坏时触发</td>
+</tr>
+<tr>
+<td>blockPlace</td>
+<td>onBlockPlace</td>
+<td>当方块被放置时触发</td>
+</tr>
+<tr>
+<td>blockBurn</td>
+<td>onBlockBurn</td>
+<td>当方块燃烧时触发</td>
+</tr>
+<tr>
+<td>blockExplode</td>
+<td>onBlockExplode</td>
+<td>当方块爆炸时触发</td>
+</tr>
+<tr>
+<td>blockFade</td>
+<td>onBlockFade</td>
+<td>当方块褪色时触发</td>
+</tr>
+<tr>
+<td>blockFall</td>
+<td>onBlockFall</td>
+<td>当方块下落时触发</td>
+</tr>
+<tr>
+<td>blockGrow</td>
+<td>onBlockGrow</td>
+<td>当方块生长时触发</td>
+</tr>
+<tr>
+<td>blockIgnite</td>
+<td>onBlockIgnite</td>
+<td>当方块被点燃时触发</td>
+</tr>
+<tr>
+<td>blockNeighborUpdate</td>
+<td>onBlockNeighborUpdate</td>
+<td>当方块邻居更新时触发</td>
+</tr>
+<tr>
+<td>blockRandomUpdate</td>
+<td>onBlockRandomUpdate</td>
+<td>当方块随机更新时触发</td>
+</tr>
+<tr>
+<td>blockScheduleUpdate</td>
+<td>onBlockScheduleUpdate</td>
+<td>当方块计划更新时触发</td>
+</tr>
+<tr>
+<td>blockSpread</td>
+<td>onBlockSpread</td>
+<td>当方块蔓延时触发</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_7">实体事件</h3>
+<table>
+<thead>
+<tr>
+<th>事件类型</th>
+<th>对应的回调函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>entityDamage</td>
+<td>onEntityDamage</td>
+<td>当实体受到伤害时触发</td>
+</tr>
+<tr>
+<td>entityDie</td>
+<td>onEntityDie</td>
+<td>当实体死亡时触发</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_8">物品与容器事件</h3>
+<table>
+<thead>
+<tr>
+<th>事件类型</th>
+<th>对应的回调函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>itemFrameUse</td>
+<td>onItemFrameUse</td>
+<td>当物品展示框被使用时触发</td>
+</tr>
+<tr>
+<td>containerOpen</td>
+<td>onContainerOpen</td>
+<td>当容器被打开时触发</td>
+</tr>
+<tr>
+<td>containerClose</td>
+<td>onContainerClose</td>
+<td>当容器被关闭时触发</td>
+</tr>
+<tr>
+<td>containerItemMove</td>
+<td>onContainerItemMove</td>
+<td>当容器内物品移动时触发</td>
+</tr>
+<tr>
+<td>containerItemPickup</td>
+<td>onContainerItemPickup</td>
+<td>当物品被放入容器时触发</td>
+</tr>
+<tr>
+<td>anvilTakeResult</td>
+<td>onAnvilTakeResult</td>
+<td>当玩家从铁砧取出物品时触发</td>
+</tr>
+<tr>
+<td>anvilDamage</td>
+<td>onAnvilDamage</td>
+<td>当铁砧受损时触发</td>
+</tr>
+<tr>
+<td>brewingStandBrew</td>
+<td>onBrewingStandBrew</td>
+<td>当酿造台酿造完成时触发</td>
+</tr>
+<tr>
+<td>brewingStandConsumeFuel</td>
+<td>onBrewingStandConsumeFuel</td>
+<td>当酿造台消耗燃料时触发</td>
+</tr>
+<tr>
+<td>brewingStandStartBrew</td>
+<td>onBrewingStandStartBrew</td>
+<td>当酿造台开始酿造时触发</td>
+</tr>
+<tr>
+<td>campfireSmelt</td>
+<td>onCampfireSmelt</td>
+<td>当营火熔炼完成时触发</td>
+</tr>
+<tr>
+<td>furnaceSmelt</td>
+<td>onFurnaceSmelt</td>
+<td>当熔炉熔炼完成时触发</td>
+</tr>
+<tr>
+<td>furnaceConsumeFuel</td>
+<td>onFurnaceConsumeFuel</td>
+<td>当熔炉消耗燃料时触发</td>
+</tr>
+<tr>
+<td>grindstoneTakeResult</td>
+<td>onGrindstoneTakeResult</td>
+<td>当玩家从砂轮取出物品时触发</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_9">液体事件</h3>
+<table>
+<thead>
+<tr>
+<th>事件类型</th>
+<th>对应的回调函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>liquidDecay</td>
+<td>onLiquidDecay</td>
+<td>当液体衰减时触发</td>
+</tr>
+<tr>
+<td>liquidFlow</td>
+<td>onLiquidFlow</td>
+<td>当液体流动时触发</td>
+</tr>
+<tr>
+<td>liquidHarden</td>
+<td>onLiquidHarden</td>
+<td>当液体硬化时触发</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_10">服务器事件</h3>
+<table>
+<thead>
+<tr>
+<th>事件类型</th>
+<th>对应的回调函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>serverStop</td>
+<td>onServerStop</td>
+<td>当服务器停止时触发</td>
+</tr>
+<tr>
+<td>commandExecute</td>
+<td>onCommandExecute</td>
+<td>当命令被执行时触发</td>
+</tr>
+<tr>
+<td>playerBan</td>
+<td>onPlayerBan</td>
+<td>当玩家被封禁时触发</td>
+</tr>
+<tr>
+<td>playerUnban</td>
+<td>onPlayerUnban</td>
+<td>当玩家被解封时触发</td>
+</tr>
+<tr>
+<td>ipBan</td>
+<td>onIpBan</td>
+<td>当IP被封禁时触发</td>
+</tr>
+<tr>
+<td>ipUnban</td>
+<td>onIpUnban</td>
+<td>当IP被解封时触发</td>
+</tr>
+<tr>
+<td>whitelistAddPlayer</td>
+<td>onWhitelistAddPlayer</td>
+<td>当玩家被加入白名单时触发</td>
+</tr>
+<tr>
+<td>whitelistRemovePlayer</td>
+<td>onWhitelistRemovePlayer</td>
+<td>当玩家被移出白名单时触发</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_11">其他事件</h3>
+<table>
+<thead>
+<tr>
+<th>事件类型</th>
+<th>对应的回调函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>signTextChange</td>
+<td>onSignTextChange</td>
+<td>当告示牌文字改变时触发</td>
+</tr>
+<tr>
+<td>signWax</td>
+<td>onSignWax</td>
+<td>当告示牌被打蜡时触发</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_12">注意事项</h2>
+<ol>
+<li>事件回调函数的名称必须与上述规定的名称完全匹配</li>
+<li>事件回调函数的参数顺序必须正确</li>
+<li>并非所有事件都可以取消，具体取决于事件类型</li>
+<li>复杂的事件处理逻辑可能会影响服务器性能，建议保持事件处理函数简洁高效</li>
+<li>在脚本卸载时，所有事件监听会自动清理，无需手动处理</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "search.suggest", "search.highlight", "content.code.annotate", "content.code.copy"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1875 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../scheduler/">
+      
+      
+        <link rel="next" href="../bossbar/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>表单API - BlocklyAllay Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#api" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="BlocklyAllay Docs" class="md-header__button md-logo" aria-label="BlocklyAllay Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BlocklyAllay Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              表单API
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../server/" class="md-tabs__link">
+          
+  
+  
+  API文档
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blocks/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  积木参考
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../examples/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  示例脚本
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="BlocklyAllay Docs" class="md-nav__button md-logo" aria-label="BlocklyAllay Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    BlocklyAllay Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    首页
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    API文档
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            API文档
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    服务器API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../players/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    玩家API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../world/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    世界API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    事件API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scheduler/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    调度器API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    表单API
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    表单API
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      表单类型
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      表单API基础
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="表单API基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#allaygetforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      allay.getForms()
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#simpleform" class="md-nav__link">
+    <span class="md-ellipsis">
+      SimpleForm（简单表单）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SimpleForm（简单表单）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#allaygetformscreatesimpleform" class="md-nav__link">
+    <span class="md-ellipsis">
+      allay.getForms().createSimpleForm()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formtitletitle" class="md-nav__link">
+    <span class="md-ellipsis">
+      form.title(title)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formcontentcontent" class="md-nav__link">
+    <span class="md-ellipsis">
+      form.content(content)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formbuttontext" class="md-nav__link">
+    <span class="md-ellipsis">
+      form.button(text)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formbuttonwithpathimagetext-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      form.buttonWithPathImage(text, path)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formbuttonwithurlimagetext-url" class="md-nav__link">
+    <span class="md-ellipsis">
+      form.buttonWithUrlImage(text, url)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formlabeltext" class="md-nav__link">
+    <span class="md-ellipsis">
+      form.label(text)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formheadertext" class="md-nav__link">
+    <span class="md-ellipsis">
+      form.header(text)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formdivider" class="md-nav__link">
+    <span class="md-ellipsis">
+      form.divider()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formonresponsecallback-thisarg" class="md-nav__link">
+    <span class="md-ellipsis">
+      form.onResponse(callback, thisArg)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formonclosecallback-thisarg" class="md-nav__link">
+    <span class="md-ellipsis">
+      form.onClose(callback, thisArg)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formshowplayer" class="md-nav__link">
+    <span class="md-ellipsis">
+      form.show(player)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modalform" class="md-nav__link">
+    <span class="md-ellipsis">
+      ModalForm（模态表单）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ModalForm（模态表单）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#allaygetformscreatemodalform" class="md-nav__link">
+    <span class="md-ellipsis">
+      allay.getForms().createModalForm()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formtitletitle_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      form.title(title)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formcontentcontent_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      form.content(content)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formtruebuttontext" class="md-nav__link">
+    <span class="md-ellipsis">
+      form.trueButton(text)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formfalsebuttontext" class="md-nav__link">
+    <span class="md-ellipsis">
+      form.falseButton(text)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formontruecallback-thisarg" class="md-nav__link">
+    <span class="md-ellipsis">
+      form.onTrue(callback, thisArg)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formonfalsecallback-thisarg" class="md-nav__link">
+    <span class="md-ellipsis">
+      form.onFalse(callback, thisArg)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formonclosecallback-thisarg_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      form.onClose(callback, thisArg)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formshowplayer_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      form.show(player)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#customform" class="md-nav__link">
+    <span class="md-ellipsis">
+      CustomForm（自定义表单）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CustomForm（自定义表单）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#allaygetformscreatecustomform" class="md-nav__link">
+    <span class="md-ellipsis">
+      allay.getForms().createCustomForm()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formtitletitle_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      form.title(title)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#forminputlabel-placeholder-defaultvalue" class="md-nav__link">
+    <span class="md-ellipsis">
+      form.input(label, placeholder, defaultValue)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formtogglelabel-defaultvalue" class="md-nav__link">
+    <span class="md-ellipsis">
+      form.toggle(label, defaultValue)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formdropdownlabel-options-defaultindex" class="md-nav__link">
+    <span class="md-ellipsis">
+      form.dropdown(label, options, defaultIndex)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formsliderlabel-min-max-step-defaultvalue" class="md-nav__link">
+    <span class="md-ellipsis">
+      form.slider(label, min, max, step, defaultValue)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formstepsliderlabel-steps-defaultstep" class="md-nav__link">
+    <span class="md-ellipsis">
+      form.stepSlider(label, steps, defaultStep)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formlabeltext_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      form.label(text)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formheadertext_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      form.header(text)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formdivider_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      form.divider()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formpathiconpath" class="md-nav__link">
+    <span class="md-ellipsis">
+      form.pathIcon(path)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formurliconurl" class="md-nav__link">
+    <span class="md-ellipsis">
+      form.urlIcon(url)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formonresponsecallback-thisarg_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      form.onResponse(callback, thisArg)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formonclosecallback-thisarg_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      form.onClose(callback, thisArg)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formshowplayer_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      form.show(player)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      示例：完整的表单系统
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      注意事项
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bossbar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    BossBar API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../entities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    实体API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../items/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    物品API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    工具API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    命令API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blocks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    积木参考
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    示例脚本
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="api">表单API</h1>
+<p>表单API允许脚本创建和显示各种类型的表单，用于与玩家进行交互，收集玩家输入或显示选项。</p>
+<h2 id="_1">表单类型</h2>
+<p>BlocklyAllay支持三种类型的表单：</p>
+<ol>
+<li><strong>SimpleForm</strong> - 简单表单，用于显示文本和按钮选项</li>
+<li><strong>ModalForm</strong> - 模态表单，用于显示确认对话框（确定/取消）</li>
+<li><strong>CustomForm</strong> - 自定义表单，用于收集玩家输入（输入框、开关、滑块等）</li>
+</ol>
+<h2 id="api_1">表单API基础</h2>
+<h3 id="allaygetforms">allay.getForms()</h3>
+<p>获取表单管理器对象。</p>
+<p><strong>返回值：</strong>
+- 表单管理器对象</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">onEnable</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">forms</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getForms</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;表单管理器已获取&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h2 id="simpleform">SimpleForm（简单表单）</h2>
+<p>SimpleForm用于显示文本内容和多个按钮选项，适合用于菜单系统。</p>
+<h3 id="allaygetformscreatesimpleform">allay.getForms().createSimpleForm()</h3>
+<p>创建一个新的简单表单。</p>
+<p><strong>返回值：</strong>
+- 简单表单对象</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getForms</span><span class="p">().</span><span class="nx">createSimpleForm</span><span class="p">();</span>
+</code></pre></div></p>
+<h3 id="formtitletitle">form.title(title)</h3>
+<p>设置表单的标题。</p>
+<p><strong>参数：</strong>
+- <code>title</code> - 表单标题（String）</p>
+<p><strong>返回值：</strong>
+- 表单对象（支持链式调用）</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getForms</span><span class="p">().</span><span class="nx">createSimpleForm</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">title</span><span class="p">(</span><span class="s2">&quot;主菜单&quot;</span><span class="p">);</span>
+</code></pre></div></p>
+<h3 id="formcontentcontent">form.content(content)</h3>
+<p>设置表单的内容文本。</p>
+<p><strong>参数：</strong>
+- <code>content</code> - 表单内容（String）</p>
+<p><strong>返回值：</strong>
+- 表单对象（支持链式调用）</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getForms</span><span class="p">().</span><span class="nx">createSimpleForm</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">title</span><span class="p">(</span><span class="s2">&quot;主菜单&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">content</span><span class="p">(</span><span class="s2">&quot;请选择一个选项：&quot;</span><span class="p">);</span>
+</code></pre></div></p>
+<h3 id="formbuttontext">form.button(text)</h3>
+<p>添加一个按钮。</p>
+<p><strong>参数：</strong>
+- <code>text</code> - 按钮文本（String）</p>
+<p><strong>返回值：</strong>
+- 表单对象（支持链式调用）</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getForms</span><span class="p">().</span><span class="nx">createSimpleForm</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">title</span><span class="p">(</span><span class="s2">&quot;主菜单&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">content</span><span class="p">(</span><span class="s2">&quot;请选择一个选项：&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">button</span><span class="p">(</span><span class="s2">&quot;查看信息&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">button</span><span class="p">(</span><span class="s2">&quot;领取奖励&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">button</span><span class="p">(</span><span class="s2">&quot;退出&quot;</span><span class="p">);</span>
+</code></pre></div></p>
+<h3 id="formbuttonwithpathimagetext-path">form.buttonWithPathImage(text, path)</h3>
+<p>添加一个带本地图片的按钮。</p>
+<p><strong>参数：</strong>
+- <code>text</code> - 按钮文本（String）
+- <code>path</code> - 图片路径（String）</p>
+<p><strong>返回值：</strong>
+- 表单对象（支持链式调用）</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getForms</span><span class="p">().</span><span class="nx">createSimpleForm</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">title</span><span class="p">(</span><span class="s2">&quot;物品商店&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">content</span><span class="p">(</span><span class="s2">&quot;请选择要购买的物品：&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">buttonWithPathImage</span><span class="p">(</span><span class="s2">&quot;钻石剑&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;textures/items/diamond_sword&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">buttonWithPathImage</span><span class="p">(</span><span class="s2">&quot;钻石镐&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;textures/items/diamond_pickaxe&quot;</span><span class="p">);</span>
+</code></pre></div></p>
+<h3 id="formbuttonwithurlimagetext-url">form.buttonWithUrlImage(text, url)</h3>
+<p>添加一个带URL图片的按钮。</p>
+<p><strong>参数：</strong>
+- <code>text</code> - 按钮文本（String）
+- <code>url</code> - 图片URL（String）</p>
+<p><strong>返回值：</strong>
+- 表单对象（支持链式调用）</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getForms</span><span class="p">().</span><span class="nx">createSimpleForm</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">title</span><span class="p">(</span><span class="s2">&quot;图片示例&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">content</span><span class="p">(</span><span class="s2">&quot;请选择一个图片：&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">buttonWithUrlImage</span><span class="p">(</span><span class="s2">&quot;图片1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;https://example.com/image1.png&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">buttonWithUrlImage</span><span class="p">(</span><span class="s2">&quot;图片2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;https://example.com/image2.png&quot;</span><span class="p">);</span>
+</code></pre></div></p>
+<h3 id="formlabeltext">form.label(text)</h3>
+<p>添加一个标签文本。</p>
+<p><strong>参数：</strong>
+- <code>text</code> - 标签文本（String）</p>
+<p><strong>返回值：</strong>
+- 表单对象（支持链式调用）</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getForms</span><span class="p">().</span><span class="nx">createSimpleForm</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">title</span><span class="p">(</span><span class="s2">&quot;信息表单&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">label</span><span class="p">(</span><span class="s2">&quot;这是一个标签&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">content</span><span class="p">(</span><span class="s2">&quot;表单内容&quot;</span><span class="p">);</span>
+</code></pre></div></p>
+<h3 id="formheadertext">form.header(text)</h3>
+<p>添加一个标题文本。</p>
+<p><strong>参数：</strong>
+- <code>text</code> - 标题文本（String）</p>
+<p><strong>返回值：</strong>
+- 表单对象（支持链式调用）</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getForms</span><span class="p">().</span><span class="nx">createSimpleForm</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">title</span><span class="p">(</span><span class="s2">&quot;标题示例&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">header</span><span class="p">(</span><span class="s2">&quot;这是一个标题&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">content</span><span class="p">(</span><span class="s2">&quot;表单内容&quot;</span><span class="p">);</span>
+</code></pre></div></p>
+<h3 id="formdivider">form.divider()</h3>
+<p>添加一个分隔线。</p>
+<p><strong>返回值：</strong>
+- 表单对象（支持链式调用）</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getForms</span><span class="p">().</span><span class="nx">createSimpleForm</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">title</span><span class="p">(</span><span class="s2">&quot;分隔线示例&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">content</span><span class="p">(</span><span class="s2">&quot;上方内容&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">divider</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">content</span><span class="p">(</span><span class="s2">&quot;下方内容&quot;</span><span class="p">);</span>
+</code></pre></div></p>
+<h3 id="formonresponsecallback-thisarg">form.onResponse(callback, thisArg)</h3>
+<p>设置表单响应回调函数。</p>
+<p><strong>参数：</strong>
+- <code>callback</code> - 按钮点击时的回调函数，接收两个参数：按钮文本（String）和按钮索引（Number）
+- <code>thisArg</code> - 回调函数中的 <code>this</code> 值（可选）</p>
+<p><strong>返回值：</strong>
+- 表单对象（支持链式调用）</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getForms</span><span class="p">().</span><span class="nx">createSimpleForm</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">title</span><span class="p">(</span><span class="s2">&quot;主菜单&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">content</span><span class="p">(</span><span class="s2">&quot;请选择一个选项：&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">button</span><span class="p">(</span><span class="s2">&quot;查看信息&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">button</span><span class="p">(</span><span class="s2">&quot;领取奖励&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">button</span><span class="p">(</span><span class="s2">&quot;退出&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">onResponse</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">buttonText</span><span class="p">,</span><span class="w"> </span><span class="nx">buttonIndex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;按钮文本: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">buttonText</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;按钮索引: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">buttonIndex</span><span class="p">);</span>
+<span class="w">        </span><span class="k">switch</span><span class="p">(</span><span class="nx">buttonIndex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mf">0</span><span class="o">:</span>
+<span class="w">                </span><span class="nx">player</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="s2">&quot;查看信息&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mf">1</span><span class="o">:</span>
+<span class="w">                </span><span class="nx">player</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="s2">&quot;领取奖励&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mf">2</span><span class="o">:</span>
+<span class="w">                </span><span class="nx">player</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="s2">&quot;退出菜单&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="k">this</span><span class="p">);</span>
+</code></pre></div></p>
+<h3 id="formonclosecallback-thisarg">form.onClose(callback, thisArg)</h3>
+<p>设置表单关闭时的回调函数。</p>
+<p><strong>参数：</strong>
+- <code>callback</code> - 表单关闭时的回调函数
+- <code>thisArg</code> - 回调函数中的 <code>this</code> 值（可选）</p>
+<p><strong>返回值：</strong>
+- 表单对象（支持链式调用）</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getForms</span><span class="p">().</span><span class="nx">createSimpleForm</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">title</span><span class="p">(</span><span class="s2">&quot;测试表单&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">content</span><span class="p">(</span><span class="s2">&quot;请关闭表单&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">onClose</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;表单已关闭&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="k">this</span><span class="p">);</span>
+</code></pre></div></p>
+<h3 id="formshowplayer">form.show(player)</h3>
+<p>显示表单给玩家。</p>
+<p><strong>参数：</strong>
+- <code>player</code> - 玩家对象</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getForms</span><span class="p">().</span><span class="nx">createSimpleForm</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">title</span><span class="p">(</span><span class="s2">&quot;主菜单&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">content</span><span class="p">(</span><span class="s2">&quot;请选择一个选项：&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">button</span><span class="p">(</span><span class="s2">&quot;选项1&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">button</span><span class="p">(</span><span class="s2">&quot;选项2&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">onResponse</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">buttonText</span><span class="p">,</span><span class="w"> </span><span class="nx">buttonIndex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">player</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="s2">&quot;你选择了: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">buttonText</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="k">this</span><span class="p">);</span>
+
+<span class="nx">form</span><span class="p">.</span><span class="nx">show</span><span class="p">(</span><span class="nx">player</span><span class="p">);</span>
+</code></pre></div></p>
+<h2 id="modalform">ModalForm（模态表单）</h2>
+<p>ModalForm用于显示确认对话框，玩家只能选择"确定"或"取消"。</p>
+<h3 id="allaygetformscreatemodalform">allay.getForms().createModalForm()</h3>
+<p>创建一个新的模态表单。</p>
+<p><strong>返回值：</strong>
+- 模态表单对象</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getForms</span><span class="p">().</span><span class="nx">createModalForm</span><span class="p">();</span>
+</code></pre></div></p>
+<h3 id="formtitletitle_1">form.title(title)</h3>
+<p>设置表单的标题。</p>
+<p><strong>参数：</strong>
+- <code>title</code> - 表单标题（String）</p>
+<p><strong>返回值：</strong>
+- 表单对象（支持链式调用）</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getForms</span><span class="p">().</span><span class="nx">createModalForm</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">title</span><span class="p">(</span><span class="s2">&quot;确认操作&quot;</span><span class="p">);</span>
+</code></pre></div></p>
+<h3 id="formcontentcontent_1">form.content(content)</h3>
+<p>设置表单的内容文本。</p>
+<p><strong>参数：</strong>
+- <code>content</code> - 表单内容（String）</p>
+<p><strong>返回值：</strong>
+- 表单对象（支持链式调用）</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getForms</span><span class="p">().</span><span class="nx">createModalForm</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">title</span><span class="p">(</span><span class="s2">&quot;确认操作&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">content</span><span class="p">(</span><span class="s2">&quot;你确定要执行这个操作吗？&quot;</span><span class="p">);</span>
+</code></pre></div></p>
+<h3 id="formtruebuttontext">form.trueButton(text)</h3>
+<p>设置确定按钮的文本。</p>
+<p><strong>参数：</strong>
+- <code>text</code> - 确定按钮文本（String）</p>
+<p><strong>返回值：</strong>
+- 表单对象（支持链式调用）</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getForms</span><span class="p">().</span><span class="nx">createModalForm</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">title</span><span class="p">(</span><span class="s2">&quot;确认操作&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">content</span><span class="p">(</span><span class="s2">&quot;你确定要执行这个操作吗？&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">trueButton</span><span class="p">(</span><span class="s2">&quot;确定&quot;</span><span class="p">);</span>
+</code></pre></div></p>
+<h3 id="formfalsebuttontext">form.falseButton(text)</h3>
+<p>设置取消按钮的文本。</p>
+<p><strong>参数：</strong>
+- <code>text</code> - 取消按钮文本（String）</p>
+<p><strong>返回值：</strong>
+- 表单对象（支持链式调用）</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getForms</span><span class="p">().</span><span class="nx">createModalForm</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">title</span><span class="p">(</span><span class="s2">&quot;确认操作&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">content</span><span class="p">(</span><span class="s2">&quot;你确定要执行这个操作吗？&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">trueButton</span><span class="p">(</span><span class="s2">&quot;确定&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">falseButton</span><span class="p">(</span><span class="s2">&quot;取消&quot;</span><span class="p">);</span>
+</code></pre></div></p>
+<h3 id="formontruecallback-thisarg">form.onTrue(callback, thisArg)</h3>
+<p>设置点击确定按钮时的回调函数。</p>
+<p><strong>参数：</strong>
+- <code>callback</code> - 点击确定按钮时的回调函数
+- <code>thisArg</code> - 回调函数中的 <code>this</code> 值（可选）</p>
+<p><strong>返回值：</strong>
+- 表单对象（支持链式调用）</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getForms</span><span class="p">().</span><span class="nx">createModalForm</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">title</span><span class="p">(</span><span class="s2">&quot;确认操作&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">content</span><span class="p">(</span><span class="s2">&quot;你确定要执行这个操作吗？&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">trueButton</span><span class="p">(</span><span class="s2">&quot;确定&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">falseButton</span><span class="p">(</span><span class="s2">&quot;取消&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">onTrue</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">player</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="s2">&quot;你点击了确定按钮&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="k">this</span><span class="p">);</span>
+</code></pre></div></p>
+<h3 id="formonfalsecallback-thisarg">form.onFalse(callback, thisArg)</h3>
+<p>设置点击取消按钮时的回调函数。</p>
+<p><strong>参数：</strong>
+- <code>callback</code> - 点击取消按钮时的回调函数
+- <code>thisArg</code> - 回调函数中的 <code>this</code> 值（可选）</p>
+<p><strong>返回值：</strong>
+- 表单对象（支持链式调用）</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getForms</span><span class="p">().</span><span class="nx">createModalForm</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">title</span><span class="p">(</span><span class="s2">&quot;确认操作&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">content</span><span class="p">(</span><span class="s2">&quot;你确定要执行这个操作吗？&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">trueButton</span><span class="p">(</span><span class="s2">&quot;确定&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">falseButton</span><span class="p">(</span><span class="s2">&quot;取消&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">onTrue</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">player</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="s2">&quot;你点击了确定按钮&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="k">this</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">onFalse</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">player</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="s2">&quot;你点击了取消按钮&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="k">this</span><span class="p">);</span>
+</code></pre></div></p>
+<h3 id="formonclosecallback-thisarg_1">form.onClose(callback, thisArg)</h3>
+<p>设置表单关闭时的回调函数。</p>
+<p><strong>参数：</strong>
+- <code>callback</code> - 表单关闭时的回调函数
+- <code>thisArg</code> - 回调函数中的 <code>this</code> 值（可选）</p>
+<p><strong>返回值：</strong>
+- 表单对象（支持链式调用）</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getForms</span><span class="p">().</span><span class="nx">createModalForm</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">title</span><span class="p">(</span><span class="s2">&quot;测试表单&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">content</span><span class="p">(</span><span class="s2">&quot;请关闭表单&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">onClose</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;表单已关闭&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="k">this</span><span class="p">);</span>
+</code></pre></div></p>
+<h3 id="formshowplayer_1">form.show(player)</h3>
+<p>显示表单给玩家。</p>
+<p><strong>参数：</strong>
+- <code>player</code> - 玩家对象</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getForms</span><span class="p">().</span><span class="nx">createModalForm</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">title</span><span class="p">(</span><span class="s2">&quot;确认删除&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">content</span><span class="p">(</span><span class="s2">&quot;你确定要删除这个物品吗？&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">trueButton</span><span class="p">(</span><span class="s2">&quot;确定&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">falseButton</span><span class="p">(</span><span class="s2">&quot;取消&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">onTrue</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">player</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="s2">&quot;物品已删除&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="k">this</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">onFalse</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">player</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="s2">&quot;删除已取消&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="k">this</span><span class="p">);</span>
+
+<span class="nx">form</span><span class="p">.</span><span class="nx">show</span><span class="p">(</span><span class="nx">player</span><span class="p">);</span>
+</code></pre></div></p>
+<h2 id="customform">CustomForm（自定义表单）</h2>
+<p>CustomForm用于收集玩家输入，支持多种输入组件。</p>
+<h3 id="allaygetformscreatecustomform">allay.getForms().createCustomForm()</h3>
+<p>创建一个新的自定义表单。</p>
+<p><strong>返回值：</strong>
+- 自定义表单对象</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getForms</span><span class="p">().</span><span class="nx">createCustomForm</span><span class="p">();</span>
+</code></pre></div></p>
+<h3 id="formtitletitle_2">form.title(title)</h3>
+<p>设置表单的标题。</p>
+<p><strong>参数：</strong>
+- <code>title</code> - 表单标题（String）</p>
+<p><strong>返回值：</strong>
+- 表单对象（支持链式调用）</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getForms</span><span class="p">().</span><span class="nx">createCustomForm</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">title</span><span class="p">(</span><span class="s2">&quot;个人信息&quot;</span><span class="p">);</span>
+</code></pre></div></p>
+<h3 id="forminputlabel-placeholder-defaultvalue">form.input(label, placeholder, defaultValue)</h3>
+<p>添加一个输入框。</p>
+<p><strong>参数：</strong>
+- <code>label</code> - 输入框标签（String）
+- <code>placeholder</code> - 占位符文本（String）
+- <code>defaultValue</code> - 默认值（String，可选）</p>
+<p><strong>返回值：</strong>
+- 表单对象（支持链式调用）</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getForms</span><span class="p">().</span><span class="nx">createCustomForm</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">title</span><span class="p">(</span><span class="s2">&quot;个人信息&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">input</span><span class="p">(</span><span class="s2">&quot;用户名&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;请输入用户名&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Steve&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">input</span><span class="p">(</span><span class="s2">&quot;邮箱&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;请输入邮箱&quot;</span><span class="p">);</span>
+</code></pre></div></p>
+<h3 id="formtogglelabel-defaultvalue">form.toggle(label, defaultValue)</h3>
+<p>添加一个开关（布尔值选择）。</p>
+<p><strong>参数：</strong>
+- <code>label</code> - 开关标签（String）
+- <code>defaultValue</code> - 默认值（Boolean，可选，默认false）</p>
+<p><strong>返回值：</strong>
+- 表单对象（支持链式调用）</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getForms</span><span class="p">().</span><span class="nx">createCustomForm</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">title</span><span class="p">(</span><span class="s2">&quot;设置&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">toggle</span><span class="p">(</span><span class="s2">&quot;启用通知&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">toggle</span><span class="p">(</span><span class="s2">&quot;启用音效&quot;</span><span class="p">);</span>
+</code></pre></div></p>
+<h3 id="formdropdownlabel-options-defaultindex">form.dropdown(label, options, defaultIndex)</h3>
+<p>添加一个下拉菜单。</p>
+<p><strong>参数：</strong>
+- <code>label</code> - 下拉菜单标签（String）
+- <code>options</code> - 选项数组（Array）
+- <code>defaultIndex</code> - 默认选中的选项索引（Number，可选，默认0）</p>
+<p><strong>返回值：</strong>
+- 表单对象（支持链式调用）</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getForms</span><span class="p">().</span><span class="nx">createCustomForm</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">title</span><span class="p">(</span><span class="s2">&quot;选择难度&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">dropdown</span><span class="p">(</span><span class="s2">&quot;难度级别&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;简单&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;普通&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;困难&quot;</span><span class="p">],</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span>
+</code></pre></div></p>
+<h3 id="formsliderlabel-min-max-step-defaultvalue">form.slider(label, min, max, step, defaultValue)</h3>
+<p>添加一个滑块。</p>
+<p><strong>参数：</strong>
+- <code>label</code> - 滑块标签（String）
+- <code>min</code> - 最小值（Number）
+- <code>max</code> - 最大值（Number）
+- <code>step</code> - 步长（Number，可选，默认1）
+- <code>defaultValue</code> - 默认值（Number，可选，默认min）</p>
+<p><strong>返回值：</strong>
+- 表单对象（支持链式调用）</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getForms</span><span class="p">().</span><span class="nx">createCustomForm</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">title</span><span class="p">(</span><span class="s2">&quot;音量设置&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">slider</span><span class="p">(</span><span class="s2">&quot;背景音乐音量&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">50</span><span class="p">);</span>
+</code></pre></div></p>
+<h3 id="formstepsliderlabel-steps-defaultstep">form.stepSlider(label, steps, defaultStep)</h3>
+<p>添加一个步进滑块。</p>
+<p><strong>参数：</strong>
+- <code>label</code> - 步进滑块标签（String）
+- <code>steps</code> - 步骤数组（Array）
+- <code>defaultStep</code> - 默认步骤索引（Number，可选，默认0）</p>
+<p><strong>返回值：</strong>
+- 表单对象（支持链式调用）</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getForms</span><span class="p">().</span><span class="nx">createCustomForm</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">title</span><span class="p">(</span><span class="s2">&quot;选择质量&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">stepSlider</span><span class="p">(</span><span class="s2">&quot;图形质量&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;低&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;中&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;高&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;极高&quot;</span><span class="p">],</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span>
+</code></pre></div></p>
+<h3 id="formlabeltext_1">form.label(text)</h3>
+<p>添加一个标签文本。</p>
+<p><strong>参数：</strong>
+- <code>text</code> - 标签文本（String）</p>
+<p><strong>返回值：</strong>
+- 表单对象（支持链式调用）</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getForms</span><span class="p">().</span><span class="nx">createCustomForm</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">title</span><span class="p">(</span><span class="s2">&quot;信息表单&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">label</span><span class="p">(</span><span class="s2">&quot;请填写以下信息&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">input</span><span class="p">(</span><span class="s2">&quot;姓名&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;请输入姓名&quot;</span><span class="p">);</span>
+</code></pre></div></p>
+<h3 id="formheadertext_1">form.header(text)</h3>
+<p>添加一个标题文本。</p>
+<p><strong>参数：</strong>
+- <code>text</code> - 标题文本（String）</p>
+<p><strong>返回值：</strong>
+- 表单对象（支持链式调用）</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getForms</span><span class="p">().</span><span class="nx">createCustomForm</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">title</span><span class="p">(</span><span class="s2">&quot;标题示例&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">header</span><span class="p">(</span><span class="s2">&quot;这是一个标题&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">input</span><span class="p">(</span><span class="s2">&quot;内容&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;请输入内容&quot;</span><span class="p">);</span>
+</code></pre></div></p>
+<h3 id="formdivider_1">form.divider()</h3>
+<p>添加一个分隔线。</p>
+<p><strong>返回值：</strong>
+- 表单对象（支持链式调用）</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getForms</span><span class="p">().</span><span class="nx">createCustomForm</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">title</span><span class="p">(</span><span class="s2">&quot;分隔线示例&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">input</span><span class="p">(</span><span class="s2">&quot;上方输入框&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;请输入&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">divider</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">input</span><span class="p">(</span><span class="s2">&quot;下方输入框&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;请输入&quot;</span><span class="p">);</span>
+</code></pre></div></p>
+<h3 id="formpathiconpath">form.pathIcon(path)</h3>
+<p>设置表单的路径图标。</p>
+<p><strong>参数：</strong>
+- <code>path</code> - 图标路径（String）</p>
+<p><strong>返回值：</strong>
+- 表单对象（支持链式调用）</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getForms</span><span class="p">().</span><span class="nx">createCustomForm</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">title</span><span class="p">(</span><span class="s2">&quot;图标示例&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">pathIcon</span><span class="p">(</span><span class="s2">&quot;textures/items/diamond&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">input</span><span class="p">(</span><span class="s2">&quot;内容&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;请输入内容&quot;</span><span class="p">);</span>
+</code></pre></div></p>
+<h3 id="formurliconurl">form.urlIcon(url)</h3>
+<p>设置表单的URL图标。</p>
+<p><strong>参数：</strong>
+- <code>url</code> - 图标URL（String）</p>
+<p><strong>返回值：</strong>
+- 表单对象（支持链式调用）</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getForms</span><span class="p">().</span><span class="nx">createCustomForm</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">title</span><span class="p">(</span><span class="s2">&quot;URL图标示例&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">urlIcon</span><span class="p">(</span><span class="s2">&quot;https://example.com/icon.png&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">input</span><span class="p">(</span><span class="s2">&quot;内容&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;请输入内容&quot;</span><span class="p">);</span>
+</code></pre></div></p>
+<h3 id="formonresponsecallback-thisarg_1">form.onResponse(callback, thisArg)</h3>
+<p>设置表单响应回调函数。</p>
+<p><strong>参数：</strong>
+- <code>callback</code> - 表单提交时的回调函数，接收一个参数：表单数据数组（Array）
+- <code>thisArg</code> - 回调函数中的 <code>this</code> 值（可选）</p>
+<p><strong>返回值：</strong>
+- 表单对象（支持链式调用）</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getForms</span><span class="p">().</span><span class="nx">createCustomForm</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">title</span><span class="p">(</span><span class="s2">&quot;个人信息&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">input</span><span class="p">(</span><span class="s2">&quot;用户名&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;请输入用户名&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Steve&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">input</span><span class="p">(</span><span class="s2">&quot;年龄&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;请输入年龄&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;20&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">toggle</span><span class="p">(</span><span class="s2">&quot;同意条款&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">dropdown</span><span class="p">(</span><span class="s2">&quot;性别&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;男&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;女&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;其他&quot;</span><span class="p">],</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">slider</span><span class="p">(</span><span class="s2">&quot;身高(cm)&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="mf">250</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">170</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">onResponse</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">responses</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">responses</span><span class="p">[</span><span class="mf">0</span><span class="p">];</span>
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">responses</span><span class="p">[</span><span class="mf">1</span><span class="p">]);</span>
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">agree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">responses</span><span class="p">[</span><span class="mf">2</span><span class="p">];</span>
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">gender</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">responses</span><span class="p">[</span><span class="mf">3</span><span class="p">];</span>
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">responses</span><span class="p">[</span><span class="mf">4</span><span class="p">];</span>
+
+<span class="w">        </span><span class="nx">player</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="s2">&quot;用户名: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">username</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">player</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="s2">&quot;年龄: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">age</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">player</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="s2">&quot;同意条款: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">agree</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">player</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="s2">&quot;性别: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">gender</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">player</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="s2">&quot;身高: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">height</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;cm&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="k">this</span><span class="p">);</span>
+</code></pre></div></p>
+<h3 id="formonclosecallback-thisarg_2">form.onClose(callback, thisArg)</h3>
+<p>设置表单关闭时的回调函数。</p>
+<p><strong>参数：</strong>
+- <code>callback</code> - 表单关闭时的回调函数
+- <code>thisArg</code> - 回调函数中的 <code>this</code> 值（可选）</p>
+<p><strong>返回值：</strong>
+- 表单对象（支持链式调用）</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getForms</span><span class="p">().</span><span class="nx">createCustomForm</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">title</span><span class="p">(</span><span class="s2">&quot;测试表单&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">content</span><span class="p">(</span><span class="s2">&quot;请关闭表单&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">onClose</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;表单已关闭&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="k">this</span><span class="p">);</span>
+</code></pre></div></p>
+<h3 id="formshowplayer_2">form.show(player)</h3>
+<p>显示表单给玩家。</p>
+<p><strong>参数：</strong>
+- <code>player</code> - 玩家对象</p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getForms</span><span class="p">().</span><span class="nx">createCustomForm</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">title</span><span class="p">(</span><span class="s2">&quot;个人信息&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">input</span><span class="p">(</span><span class="s2">&quot;用户名&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;请输入用户名&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">toggle</span><span class="p">(</span><span class="s2">&quot;同意条款&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">onResponse</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">responses</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">player</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="s2">&quot;你提交了表单&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="k">this</span><span class="p">);</span>
+
+<span class="nx">form</span><span class="p">.</span><span class="nx">show</span><span class="p">(</span><span class="nx">player</span><span class="p">);</span>
+</code></pre></div></p>
+<h2 id="_2">示例：完整的表单系统</h2>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">onPlayerJoin</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">showWelcomeForm</span><span class="p">(</span><span class="nx">player</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">onPlayerCommand</span><span class="p">(</span><span class="nx">player</span><span class="p">,</span><span class="w"> </span><span class="nx">command</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">command</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;/menu&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">showMainMenu</span><span class="p">(</span><span class="nx">player</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">event</span><span class="p">.</span><span class="nx">cancel</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">showWelcomeForm</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getForms</span><span class="p">().</span><span class="nx">createSimpleForm</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">title</span><span class="p">(</span><span class="s2">&quot;欢迎来到服务器!&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">content</span><span class="p">(</span><span class="s2">&quot;请选择一个选项开始游戏：&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">button</span><span class="p">(</span><span class="s2">&quot;开始游戏&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">button</span><span class="p">(</span><span class="s2">&quot;查看规则&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">button</span><span class="p">(</span><span class="s2">&quot;退出&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">onResponse</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">buttonText</span><span class="p">,</span><span class="w"> </span><span class="nx">buttonIndex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">switch</span><span class="p">(</span><span class="nx">buttonIndex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="mf">0</span><span class="o">:</span>
+<span class="w">                    </span><span class="nx">player</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="s2">&quot;游戏开始!&quot;</span><span class="p">);</span>
+<span class="w">                    </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="mf">1</span><span class="o">:</span>
+<span class="w">                    </span><span class="nx">showRulesForm</span><span class="p">(</span><span class="nx">player</span><span class="p">);</span>
+<span class="w">                    </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="mf">2</span><span class="o">:</span>
+<span class="w">                    </span><span class="nx">player</span><span class="p">.</span><span class="nx">kick</span><span class="p">(</span><span class="s2">&quot;欢迎下次再来!&quot;</span><span class="p">);</span>
+<span class="w">                    </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span><span class="w"> </span><span class="k">this</span><span class="p">);</span>
+
+<span class="w">    </span><span class="nx">form</span><span class="p">.</span><span class="nx">show</span><span class="p">(</span><span class="nx">player</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">showRulesForm</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getForms</span><span class="p">().</span><span class="nx">createSimpleForm</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">title</span><span class="p">(</span><span class="s2">&quot;服务器规则&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">content</span><span class="p">(</span><span class="s2">&quot;1. 禁止作弊\n2. 禁止刷屏\n3. 禁止辱骂他人\n4. 请爱护服务器环境&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">button</span><span class="p">(</span><span class="s2">&quot;我同意&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">button</span><span class="p">(</span><span class="s2">&quot;返回&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">onResponse</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">buttonText</span><span class="p">,</span><span class="w"> </span><span class="nx">buttonIndex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">buttonIndex</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">player</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="s2">&quot;感谢你遵守规则!&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="nx">showMainMenu</span><span class="p">(</span><span class="nx">player</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">showWelcomeForm</span><span class="p">(</span><span class="nx">player</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span><span class="w"> </span><span class="k">this</span><span class="p">);</span>
+
+<span class="w">    </span><span class="nx">form</span><span class="p">.</span><span class="nx">show</span><span class="p">(</span><span class="nx">player</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">showMainMenu</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getForms</span><span class="p">().</span><span class="nx">createSimpleForm</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">title</span><span class="p">(</span><span class="s2">&quot;主菜单&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">content</span><span class="p">(</span><span class="s2">&quot;请选择一个选项：&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">button</span><span class="p">(</span><span class="s2">&quot;个人信息&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">button</span><span class="p">(</span><span class="s2">&quot;设置&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">button</span><span class="p">(</span><span class="s2">&quot;商店&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">button</span><span class="p">(</span><span class="s2">&quot;退出&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">onResponse</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">buttonText</span><span class="p">,</span><span class="w"> </span><span class="nx">buttonIndex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">switch</span><span class="p">(</span><span class="nx">buttonIndex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="mf">0</span><span class="o">:</span>
+<span class="w">                    </span><span class="nx">showProfileForm</span><span class="p">(</span><span class="nx">player</span><span class="p">);</span>
+<span class="w">                    </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="mf">1</span><span class="o">:</span>
+<span class="w">                    </span><span class="nx">showSettingsForm</span><span class="p">(</span><span class="nx">player</span><span class="p">);</span>
+<span class="w">                    </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="mf">2</span><span class="o">:</span>
+<span class="w">                    </span><span class="nx">showShopForm</span><span class="p">(</span><span class="nx">player</span><span class="p">);</span>
+<span class="w">                    </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="mf">3</span><span class="o">:</span>
+<span class="w">                    </span><span class="nx">player</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="s2">&quot;已退出菜单&quot;</span><span class="p">);</span>
+<span class="w">                    </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span><span class="w"> </span><span class="k">this</span><span class="p">);</span>
+
+<span class="w">    </span><span class="nx">form</span><span class="p">.</span><span class="nx">show</span><span class="p">(</span><span class="nx">player</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">showProfileForm</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getForms</span><span class="p">().</span><span class="nx">createCustomForm</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">title</span><span class="p">(</span><span class="s2">&quot;个人信息&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">input</span><span class="p">(</span><span class="s2">&quot;昵称&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;请输入昵称&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">player</span><span class="p">.</span><span class="nx">getDisplayName</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">input</span><span class="p">(</span><span class="s2">&quot;个性签名&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;请输入个性签名&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">dropdown</span><span class="p">(</span><span class="s2">&quot;职业&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;战士&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;法师&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;射手&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;医生&quot;</span><span class="p">],</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">onResponse</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">responses</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kd">var</span><span class="w"> </span><span class="nx">nickname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">responses</span><span class="p">[</span><span class="mf">0</span><span class="p">];</span>
+<span class="w">            </span><span class="kd">var</span><span class="w"> </span><span class="nx">signature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">responses</span><span class="p">[</span><span class="mf">1</span><span class="p">];</span>
+<span class="w">            </span><span class="kd">var</span><span class="w"> </span><span class="nx">profession</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">responses</span><span class="p">[</span><span class="mf">2</span><span class="p">];</span>
+
+<span class="w">            </span><span class="nx">player</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="s2">&quot;个人信息已更新!&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="nx">player</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="s2">&quot;昵称: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">nickname</span><span class="p">);</span>
+<span class="w">            </span><span class="nx">player</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="s2">&quot;个性签名: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">signature</span><span class="p">);</span>
+<span class="w">            </span><span class="nx">player</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="s2">&quot;职业: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">profession</span><span class="p">);</span>
+<span class="w">        </span><span class="p">},</span><span class="w"> </span><span class="k">this</span><span class="p">);</span>
+
+<span class="w">    </span><span class="nx">form</span><span class="p">.</span><span class="nx">show</span><span class="p">(</span><span class="nx">player</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">showSettingsForm</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getForms</span><span class="p">().</span><span class="nx">createCustomForm</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">title</span><span class="p">(</span><span class="s2">&quot;设置&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">toggle</span><span class="p">(</span><span class="s2">&quot;启用聊天滤镜&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">toggle</span><span class="p">(</span><span class="s2">&quot;接收私人消息&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">toggle</span><span class="p">(</span><span class="s2">&quot;显示粒子效果&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">slider</span><span class="p">(</span><span class="s2">&quot;音效音量&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">50</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">onResponse</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">responses</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kd">var</span><span class="w"> </span><span class="nx">chatFilter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">responses</span><span class="p">[</span><span class="mf">0</span><span class="p">];</span>
+<span class="w">            </span><span class="kd">var</span><span class="w"> </span><span class="nx">privateMessages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">responses</span><span class="p">[</span><span class="mf">1</span><span class="p">];</span>
+<span class="w">            </span><span class="kd">var</span><span class="w"> </span><span class="nx">particles</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">responses</span><span class="p">[</span><span class="mf">2</span><span class="p">];</span>
+<span class="w">            </span><span class="kd">var</span><span class="w"> </span><span class="nx">volume</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">responses</span><span class="p">[</span><span class="mf">3</span><span class="p">];</span>
+
+<span class="w">            </span><span class="nx">player</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="s2">&quot;设置已保存!&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="c1">// 这里可以保存设置到文件</span>
+<span class="w">        </span><span class="p">},</span><span class="w"> </span><span class="k">this</span><span class="p">);</span>
+
+<span class="w">    </span><span class="nx">form</span><span class="p">.</span><span class="nx">show</span><span class="p">(</span><span class="nx">player</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">showShopForm</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getForms</span><span class="p">().</span><span class="nx">createSimpleForm</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">title</span><span class="p">(</span><span class="s2">&quot;商店&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">content</span><span class="p">(</span><span class="s2">&quot;请选择要购买的物品：&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">buttonWithPathImage</span><span class="p">(</span><span class="s2">&quot;钻石剑&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;textures/items/diamond_sword&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">buttonWithPathImage</span><span class="p">(</span><span class="s2">&quot;钻石镐&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;textures/items/diamond_pickaxe&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">buttonWithPathImage</span><span class="p">(</span><span class="s2">&quot;金苹果&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;textures/items/golden_apple&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">button</span><span class="p">(</span><span class="s2">&quot;返回&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">onResponse</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">buttonText</span><span class="p">,</span><span class="w"> </span><span class="nx">buttonIndex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">buttonIndex</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">3</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">showMainMenu</span><span class="p">(</span><span class="nx">player</span><span class="p">);</span>
+<span class="w">                </span><span class="k">return</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+
+<span class="w">            </span><span class="kd">var</span><span class="w"> </span><span class="nx">items</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;钻石剑&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;钻石镐&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;金苹果&quot;</span><span class="p">];</span>
+<span class="w">            </span><span class="kd">var</span><span class="w"> </span><span class="nx">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">items</span><span class="p">[</span><span class="nx">buttonIndex</span><span class="p">];</span>
+
+<span class="w">            </span><span class="c1">// 确认购买</span>
+<span class="w">            </span><span class="kd">var</span><span class="w"> </span><span class="nx">confirmForm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allay</span><span class="p">.</span><span class="nx">getForms</span><span class="p">().</span><span class="nx">createModalForm</span><span class="p">()</span>
+<span class="w">                </span><span class="p">.</span><span class="nx">title</span><span class="p">(</span><span class="s2">&quot;确认购买&quot;</span><span class="p">)</span>
+<span class="w">                </span><span class="p">.</span><span class="nx">content</span><span class="p">(</span><span class="s2">&quot;你确定要购买 &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">item</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot; 吗？&quot;</span><span class="p">)</span>
+<span class="w">                </span><span class="p">.</span><span class="nx">trueButton</span><span class="p">(</span><span class="s2">&quot;确定&quot;</span><span class="p">)</span>
+<span class="w">                </span><span class="p">.</span><span class="nx">falseButton</span><span class="p">(</span><span class="s2">&quot;取消&quot;</span><span class="p">)</span>
+<span class="w">                </span><span class="p">.</span><span class="nx">onTrue</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nx">player</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="s2">&quot;你已成功购买 &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">item</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;!&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="p">},</span><span class="w"> </span><span class="k">this</span><span class="p">)</span>
+<span class="w">                </span><span class="p">.</span><span class="nx">onFalse</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nx">player</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="s2">&quot;购买已取消&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="p">},</span><span class="w"> </span><span class="k">this</span><span class="p">);</span>
+
+<span class="w">            </span><span class="nx">confirmForm</span><span class="p">.</span><span class="nx">show</span><span class="p">(</span><span class="nx">player</span><span class="p">);</span>
+<span class="w">        </span><span class="p">},</span><span class="w"> </span><span class="k">this</span><span class="p">);</span>
+
+<span class="w">    </span><span class="nx">form</span><span class="p">.</span><span class="nx">show</span><span class="p">(</span><span class="nx">player</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="_3">注意事项</h2>
+<ol>
+<li>表单组件的添加顺序会影响提交数据的顺序</li>
+<li>表单标题和内容应简洁明了，避免过长</li>
+<li>按钮文本应清晰描述其功能</li>
+<li>自定义表单的组件数量不宜过多，建议不超过10个</li>
+<li>表单显示后，玩家必须完成表单才能继续游戏</li>
+<li>表单关闭事件（onClose）会在玩家关闭表单时触发，而不是提交表单时触发</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "search.suggest", "search.highlight", "content.code.annotate", "content.code.copy"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>
