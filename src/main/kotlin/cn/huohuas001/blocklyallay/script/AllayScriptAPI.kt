@@ -12,27 +12,26 @@ import cn.huohuas001.blocklyallay.script.api.util.HttpAPI
 import org.allaymc.api.player.Player
 import org.allaymc.api.server.Server
 import org.allaymc.api.world.World
-import org.mozilla.javascript.Context
-import org.mozilla.javascript.Function
-import org.mozilla.javascript.Scriptable
+import org.graalvm.polyglot.Context
+import org.graalvm.polyglot.Value
 import java.util.concurrent.ConcurrentHashMap
 
 /**
  * JavaScript脚本的Allay API绑定。
  * 将核心服务器功能暴露给Blockly生成的脚本。
- * 使用Mozilla Rhino作为JavaScript引擎。
+ * 使用GraalJS作为JavaScript引擎。
  */
 class AllayScriptAPI(private val plugin: BlocklyAllay) {
 
     private val eventHandlers = ConcurrentHashMap<String, RegisteredHandler>()
     private val eventListener = EventListener(plugin, eventHandlers)
-    private var scriptScope: Scriptable? = null
+    private var scriptContext: Context? = null
 
     /**
-     * 设置脚本作用域（用于回调执行）
+     * 设置脚本上下文（用于回调执行）
      */
-    fun setScope(scope: Scriptable) {
-        this.scriptScope = scope
+    fun setContext(context: Context) {
+        this.scriptContext = context
     }
 
     init {
@@ -40,7 +39,7 @@ class AllayScriptAPI(private val plugin: BlocklyAllay) {
     }
 
     // ==================== API 实例 ====================
-    
+
     private val fileAPI = FileAPI(plugin)
     private val httpAPI = HttpAPI(plugin)
     private val formAPI = FormAPI()
@@ -70,10 +69,10 @@ class AllayScriptAPI(private val plugin: BlocklyAllay) {
 
     // ==================== 事件 API ====================
 
-    fun on(eventName: String, callback: Any?) {
-        if (callback is Function) {
-            scriptScope?.let { scope ->
-                eventHandlers[eventName] = RegisteredHandler(callback, scope)
+    fun on(eventName: String, callback: Value) {
+        if (callback.canExecute()) {
+            scriptContext?.let { context ->
+                eventHandlers[eventName] = RegisteredHandler(callback, context)
             }
         }
     }
@@ -84,57 +83,40 @@ class AllayScriptAPI(private val plugin: BlocklyAllay) {
 
     // ==================== 调度器 API ====================
 
-    fun runLater(callback: Any?, delayTicks: Int) {
-        if (callback is Function) {
-            val scope = scriptScope ?: return
-            val func = callback
+    fun runLater(callback: Value, delayTicks: Int) {
+        if (callback.canExecute()) {
+            val context = scriptContext ?: return
             val runnable = Runnable {
-                val cx = Context.enter()
                 try {
-                    cx.optimizationLevel = -1
-                    func.call(cx, scope, scope, emptyArray())
+                    callback.execute()
                 } catch (e: Exception) {
                     plugin.pluginLogger.error("定时任务执行出错", e)
-                } finally {
-                    Context.exit()
                 }
             }
             Server.getInstance().scheduler.scheduleDelayed(plugin, runnable, delayTicks)
         }
     }
 
-    fun runRepeating(callback: Any?, periodTicks: Int) {
-        if (callback is Function) {
-            val scope = scriptScope ?: return
-            val func = callback
+    fun runRepeating(callback: Value, periodTicks: Int) {
+        if (callback.canExecute()) {
             val runnable = Runnable {
-                val cx = Context.enter()
                 try {
-                    cx.optimizationLevel = -1
-                    func.call(cx, scope, scope, emptyArray())
+                    callback.execute()
                 } catch (e: Exception) {
                     plugin.pluginLogger.error("重复任务执行出错", e)
-                } finally {
-                    Context.exit()
                 }
             }
             Server.getInstance().scheduler.scheduleRepeating(plugin, runnable, periodTicks)
         }
     }
 
-    fun runDelayedRepeating(callback: Any?, delayTicks: Int, periodTicks: Int) {
-        if (callback is Function) {
-            val scope = scriptScope ?: return
-            val func = callback
+    fun runDelayedRepeating(callback: Value, delayTicks: Int, periodTicks: Int) {
+        if (callback.canExecute()) {
             val runnable = Runnable {
-                val cx = Context.enter()
                 try {
-                    cx.optimizationLevel = -1
-                    func.call(cx, scope, scope, emptyArray())
+                    callback.execute()
                 } catch (e: Exception) {
                     plugin.pluginLogger.error("重复任务执行出错", e)
-                } finally {
-                    Context.exit()
                 }
             }
             Server.getInstance().scheduler.scheduleDelayedRepeating(plugin, runnable, delayTicks, periodTicks)
@@ -152,19 +134,19 @@ class AllayScriptAPI(private val plugin: BlocklyAllay) {
     fun getBossBarAPI(): BossBarAPI = bossBarAPI
 
     fun getBossBar(): BossBarAPI = bossBarAPI
-    
+
     // ==================== Command API ====================
 
     private val commandAPI = CommandAPI(plugin)
 
     fun getCommandAPI(): CommandAPI = commandAPI
-    
+
     fun getFiles(): FileAPI = fileAPI
-    
+
     // ==================== HTTP API ====================
-    
+
     fun getHttpAPI(): HttpAPI = httpAPI
-    
+
     fun getHttp(): HttpAPI = httpAPI
 
     fun cleanup() {

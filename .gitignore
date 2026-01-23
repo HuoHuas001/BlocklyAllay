@@ -5,6 +5,8 @@ build/
 .kotlin/
 !gradle/wrapper/gradle-wrapper.jar
 
+CLAUDE.md
+
 # IDE
 .idea/
 *.iml

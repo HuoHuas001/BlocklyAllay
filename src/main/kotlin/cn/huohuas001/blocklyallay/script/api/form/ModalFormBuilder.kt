@@ -5,9 +5,8 @@ import org.allaymc.api.form.FormCancelReason
 import org.allaymc.api.form.Forms
 import org.allaymc.api.form.type.ModalForm
 import org.allaymc.api.player.Player
-import org.mozilla.javascript.Context
-import org.mozilla.javascript.Function
-import org.mozilla.javascript.Scriptable
+import org.graalvm.polyglot.Context
+import org.graalvm.polyglot.Value
 import java.util.function.Consumer
 
 /**
@@ -15,10 +14,10 @@ import java.util.function.Consumer
  */
 class ModalFormBuilder {
     private val form: ModalForm = Forms.modal()
-    private var onTrueCallback: org.mozilla.javascript.Function? = null
-    private var onFalseCallback: org.mozilla.javascript.Function? = null
-    private var onCloseCallback: org.mozilla.javascript.Function? = null
-    private var scope: Scriptable? = null
+    private var onTrueCallback: Value? = null
+    private var onFalseCallback: Value? = null
+    private var onCloseCallback: Value? = null
+    private var context: Context? = null
 
     fun title(title: String): ModalFormBuilder {
         form.title(title)
@@ -40,21 +39,21 @@ class ModalFormBuilder {
         return this
     }
 
-    fun onTrue(callback: org.mozilla.javascript.Function, scope: Scriptable): ModalFormBuilder {
+    fun onTrue(callback: Value, ctx: Context): ModalFormBuilder {
         this.onTrueCallback = callback
-        this.scope = scope
+        this.context = ctx
         return this
     }
 
-    fun onFalse(callback: org.mozilla.javascript.Function, scope: Scriptable): ModalFormBuilder {
+    fun onFalse(callback: Value, ctx: Context): ModalFormBuilder {
         this.onFalseCallback = callback
-        this.scope = scope
+        this.context = ctx
         return this
     }
 
-    fun onClose(callback: Function, scope: Scriptable): ModalFormBuilder {
+    fun onClose(callback: Value, ctx: Context): ModalFormBuilder {
         this.onCloseCallback = callback
-        this.scope = scope
+        this.context = ctx
         return this
     }
 
@@ -65,44 +64,38 @@ class ModalFormBuilder {
 
     fun showToPlayer(player: Player): Int {
         form.onTrue {
-            val cx = Context.enter()
-            try {
-                cx.optimizationLevel = -1
-                onTrueCallback?.let { callback ->
-                    scope?.let { s ->
-                        callback.call(cx, s, s, arrayOf())
+            onTrueCallback?.let { callback ->
+                if (callback.canExecute()) {
+                    try {
+                        callback.execute()
+                    } catch (e: Exception) {
+                        e.printStackTrace()
                     }
                 }
-            } finally {
-                Context.exit()
             }
         }
 
         form.onFalse {
-            val cx = Context.enter()
-            try {
-                cx.optimizationLevel = -1
-                onFalseCallback?.let { callback ->
-                    scope?.let { s ->
-                        callback.call(cx, s, s, arrayOf())
+            onFalseCallback?.let { callback ->
+                if (callback.canExecute()) {
+                    try {
+                        callback.execute()
+                    } catch (e: Exception) {
+                        e.printStackTrace()
                     }
                 }
-            } finally {
-                Context.exit()
             }
         }
 
         form.onClose(Consumer<FormCancelReason> { _ ->
-            val cx = Context.enter()
-            try {
-                cx.optimizationLevel = -1
-                onCloseCallback?.let { callback ->
-                    scope?.let { s ->
-                        callback.call(cx, s, s, arrayOf())
+            onCloseCallback?.let { callback ->
+                if (callback.canExecute()) {
+                    try {
+                        callback.execute()
+                    } catch (e: Exception) {
+                        e.printStackTrace()
                     }
                 }
-            } finally {
-                Context.exit()
             }
         })
 

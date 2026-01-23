@@ -22,7 +22,7 @@ import org.allaymc.api.eventbus.event.plugin.*
 import org.allaymc.api.eventbus.event.scoreboard.*
 import org.allaymc.api.eventbus.event.server.*
 import org.allaymc.api.eventbus.event.world.*
-import org.mozilla.javascript.Context
+import org.graalvm.polyglot.Value
 import java.util.concurrent.ConcurrentHashMap
 
 /**
@@ -614,16 +614,11 @@ class EventListener(
 
     private fun dispatchEvent(eventName: String, vararg args: Any) {
         eventHandlers[eventName]?.let { handler ->
-            val cx = Context.enter()
             try {
-                cx.optimizationLevel = -1
-                // 将Java对象包装为JS可用对象
-                val jsArgs = args.map { Context.javaToJS(it, handler.scope) }.toTypedArray()
-                handler.function.call(cx, handler.scope, handler.scope, jsArgs)
+                // GraalJS可以直接传递Java对象，无需转换
+                handler.function.execute(*args)
             } catch (e: Exception) {
                 plugin.pluginLogger.error("处理事件时出错: $eventName", e)
-            } finally {
-                Context.exit()
             }
         }
     }

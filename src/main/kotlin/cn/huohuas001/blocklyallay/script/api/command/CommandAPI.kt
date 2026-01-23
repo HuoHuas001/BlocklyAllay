@@ -9,10 +9,8 @@ import org.allaymc.api.command.tree.CommandContext
 import org.allaymc.api.command.tree.CommandNode
 import org.allaymc.api.command.tree.CommandTree
 import org.allaymc.api.registry.Registries
-import org.mozilla.javascript.Context
-import org.mozilla.javascript.Function
-import org.mozilla.javascript.Scriptable
-import org.mozilla.javascript.ScriptableObject
+import org.graalvm.polyglot.Context
+import org.graalvm.polyglot.Value
 
 /**
  * 命令注册 API，用于在 JavaScript 脚本中注册和创建命令。
@@ -24,7 +22,7 @@ class CommandAPI(private val plugin: BlocklyAllay) {
     /**
      * 注册一个简单的命令
      */
-    fun registerCommand(name: String, description: String, callback: Any?) {
+    fun registerCommand(name: String, description: String, callback: Value) {
         val command = JSCommand(name, description, callback)
         registeredCommands.add(command)
         try{
@@ -38,7 +36,7 @@ class CommandAPI(private val plugin: BlocklyAllay) {
     /**
      * 注册一个带权限的命令
      */
-    fun registerCommand(name: String, description: String, permission: String, callback: Any?) {
+    fun registerCommand(name: String, description: String, permission: String, callback: Value) {
         val command = JSCommand(name, description, permission, callback)
         registeredCommands.add(command)
         try{
@@ -52,7 +50,7 @@ class CommandAPI(private val plugin: BlocklyAllay) {
     /**
      * 注册一个带别名的命令
      */
-    fun registerCommand(name: String, description: String, aliases: List<String>, callback: Any?) {
+    fun registerCommand(name: String, description: String, aliases: List<String>, callback: Value) {
         val command = JSCommand(name, description, aliases, callback)
         registeredCommands.add(command)
         try{
@@ -97,7 +95,7 @@ class CommandAPI(private val plugin: BlocklyAllay) {
         val description: String = "",
         val permission: String? = null,
         val aliases: List<String> = emptyList(),
-        val callback: Any? = null,
+        val callback: Value? = null,
         val requirePlayer: Boolean = false,
         val requireActualPlayer: Boolean = false
     )
@@ -110,14 +108,14 @@ class CommandAPI(private val plugin: BlocklyAllay) {
         description: String = "",
         permission: String? = null,
         aliases: List<String> = emptyList(),
-        private val callback: Any? = null,
+        private val callback: Value? = null,
         private val requirePlayer: Boolean = false,
         private val requireActualPlayer: Boolean = false
     ) : Command(name, description, permission ?: "") {
 
-        constructor(name: String, description: String, callback: Any?) : this(name, description, null, emptyList(), callback, false, false)
-        constructor(name: String, description: String, permission: String, callback: Any?) : this(name, description, permission, emptyList(), callback, false, false)
-        constructor(name: String, description: String, aliases: List<String>, callback: Any?) : this(name, description, null, aliases, callback, false, false)
+        constructor(name: String, description: String, callback: Value) : this(name, description, null, emptyList(), callback, false, false)
+        constructor(name: String, description: String, permission: String, callback: Value) : this(name, description, permission, emptyList(), callback, false, false)
+        constructor(name: String, description: String, aliases: List<String>, callback: Value) : this(name, description, null, aliases, callback, false, false)
 
         constructor(config: CommandConfig) : this(
             config.name,
@@ -161,32 +159,30 @@ class CommandAPI(private val plugin: BlocklyAllay) {
         }
 
         private fun executeCallback(context: CommandContext) {
-            if (callback is Function) {
+            if (callback != null && callback.canExecute()) {
                 // 为了使命令能够访问相同的API，我们使用插件实例中已有的API实例
-                val cx = org.mozilla.javascript.Context.enter()
-                try {
-                    cx.optimizationLevel = -1
-                    cx.languageVersion = Context.VERSION_ES6
-                    val scope = cx.initStandardObjects()
+                val cx = Context.newBuilder("js")
+                    .allowAllAccess(true)
+                    .build()
 
+                try {
                     // 创建命令上下文对象传递给 JavaScript
                     val jsContext = JSCommandContext(context)
 
                     // 创建AllayScriptAPI实例以便命令回调中可以访问API
                     val api = AllayScriptAPI(plugin)
-                    val wrappedApi = Context.javaToJS(api, scope)
-                    ScriptableObject.putProperty(scope, "allay", wrappedApi)
+                    val bindings = cx.getBindings("js")
+                    bindings.putMember("allay", api)
 
                     // 创建控制台API
                     val consoleApi = ConsoleAPI(plugin)
-                    val wrappedConsole = Context.javaToJS(consoleApi, scope)
-                    ScriptableObject.putProperty(scope, "console", wrappedConsole)
+                    bindings.putMember("console", consoleApi)
 
-                    callback.call(cx, scope, scope, arrayOf(jsContext))
+                    callback.execute(jsContext)
                 } catch (e: Exception) {
                     plugin.pluginLogger.error("命令执行出错: $name", e)
                 } finally {
-                    org.mozilla.javascript.Context.exit()
+                    cx.close()
                 }
             }
         }

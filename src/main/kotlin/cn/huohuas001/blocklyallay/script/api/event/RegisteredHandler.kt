@@ -1,12 +1,12 @@
 package cn.huohuas001.blocklyallay.script.api.event
 
-import org.mozilla.javascript.Function
-import org.mozilla.javascript.Scriptable
+import org.graalvm.polyglot.Context
+import org.graalvm.polyglot.Value
 
 /**
- * 存储注册的事件处理器及其作用域。
+ * 存储注册的事件处理器及其上下文。
  */
 data class RegisteredHandler(
-    val function: Function,
-    val scope: Scriptable
+    val function: Value,
+    val context: Context
 )

@@ -5,9 +5,8 @@ import org.allaymc.api.form.FormCancelReason
 import org.allaymc.api.form.Forms
 import org.allaymc.api.form.type.SimpleForm
 import org.allaymc.api.player.Player
-import org.mozilla.javascript.Context
-import org.mozilla.javascript.Function
-import org.mozilla.javascript.Scriptable
+import org.graalvm.polyglot.Context
+import org.graalvm.polyglot.Value
 import java.util.function.Consumer
 
 /**
@@ -15,10 +14,10 @@ import java.util.function.Consumer
  */
 class SimpleFormBuilder {
     private val form: SimpleForm = Forms.simple()
-    private var onResponseCallback: Function? = null
-    private var onCloseCallback: Function? = null
-    private var scope: Scriptable? = null
-    private val buttonCallbacks = mutableMapOf<Int, Function>()
+    private var onResponseCallback: Value? = null
+    private var onCloseCallback: Value? = null
+    private var context: Context? = null
+    private val buttonCallbacks = mutableMapOf<Int, Value>()
     private var buttonIndex = 0
 
     fun title(title: String): SimpleFormBuilder {
@@ -37,10 +36,10 @@ class SimpleFormBuilder {
         return this
     }
 
-    fun buttonWithCallback(text: String, callback: Function, scope: Scriptable): SimpleFormBuilder {
+    fun buttonWithCallback(text: String, callback: Value, ctx: Context): SimpleFormBuilder {
         form.button(text)
         buttonCallbacks[buttonIndex] = callback
-        this.scope = scope
+        this.context = ctx
         buttonIndex++
         return this
     }
@@ -72,15 +71,15 @@ class SimpleFormBuilder {
         return this
     }
 
-    fun onResponse(callback: Function, scope: Scriptable): SimpleFormBuilder {
+    fun onResponse(callback: Value, ctx: Context): SimpleFormBuilder {
         this.onResponseCallback = callback
-        this.scope = scope
+        this.context = ctx
         return this
     }
 
-    fun onClose(callback: Function, scope: Scriptable): SimpleFormBuilder {
+    fun onClose(callback: Value, ctx: Context): SimpleFormBuilder {
         this.onCloseCallback = callback
-        this.scope = scope
+        this.context = ctx
         return this
     }
 
@@ -91,36 +90,36 @@ class SimpleFormBuilder {
 
     fun showToPlayer(player: Player): Int {
         form.onResponse { button ->
-            val cx = Context.enter()
-            try {
-                cx.optimizationLevel = -1
-                val idx = form.elements.indexOf(button)
-                buttonCallbacks[idx]?.let { callback ->
-                    scope?.let { s ->
-                        callback.call(cx, s, s, arrayOf(button.text, idx))
+            val idx = form.elements.indexOf(button)
+            buttonCallbacks[idx]?.let { callback ->
+                if (callback.canExecute()) {
+                    try {
+                        callback.execute(button.text, idx)
+                    } catch (e: Exception) {
+                        e.printStackTrace()
                     }
                 }
-                onResponseCallback?.let { callback ->
-                    scope?.let { s ->
-                        callback.call(cx, s, s, arrayOf(button.text, idx))
+            }
+            onResponseCallback?.let { callback ->
+                if (callback.canExecute()) {
+                    try {
+                        callback.execute(button.text, idx)
+                    } catch (e: Exception) {
+                        e.printStackTrace()
                     }
                 }
-            } finally {
-                Context.exit()
             }
         }
 
         form.onClose(Consumer<FormCancelReason> { _ ->
-            val cx = Context.enter()
-            try {
-                cx.optimizationLevel = -1
-                onCloseCallback?.let { callback ->
-                    scope?.let { s ->
-                        callback.call(cx, s, s, arrayOf())
+            onCloseCallback?.let { callback ->
+                if (callback.canExecute()) {
+                    try {
+                        callback.execute()
+                    } catch (e: Exception) {
+                        e.printStackTrace()
                     }
                 }
-            } finally {
-                Context.exit()
             }
         })
 

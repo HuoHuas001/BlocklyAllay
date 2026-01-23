@@ -1,7 +1,8 @@
 package cn.huohuas001.blocklyallay.script
 
 import cn.huohuas001.blocklyallay.BlocklyAllay
-import org.mozilla.javascript.*
+import org.graalvm.polyglot.Context
+import org.graalvm.polyglot.Engine
 import java.nio.file.Files
 import java.nio.file.Path
 import java.util.concurrent.ConcurrentHashMap
@@ -11,13 +12,18 @@ import kotlin.io.path.name
 import kotlin.io.path.readText
 
 /**
- * 使用Mozilla Rhino管理JavaScript脚本的执行。
+ * 使用GraalJS管理JavaScript脚本的执行。
  * 处理Blockly生成的脚本的加载、执行和生命周期管理。
  */
 class ScriptManager(private val plugin: BlocklyAllay) {
 
     val scriptsDir: Path = plugin.pluginContainer.dataFolder().resolve("scripts")
     private val loadedScripts = ConcurrentHashMap<String, LoadedScript>()
+
+    // 共享引擎实例，提高性能
+    private val engine: Engine = Engine.newBuilder()
+        .option("engine.WarnInterpreterOnly", "false")
+        .build()
 
     val loadedScriptNames: Set<String>
         get() = loadedScripts.keys
@@ -54,37 +60,35 @@ class ScriptManager(private val plugin: BlocklyAllay) {
                 unloadScript(scriptName)
             }
 
-            val cx = Context.enter()
-            try {
-                cx.optimizationLevel = -1 // 使用解释模式，避免类生成问题
-                cx.languageVersion = Context.VERSION_ES6
+            // 创建GraalJS上下文
+            val cx = Context.newBuilder("js")
+                .engine(engine)
+                .allowAllAccess(true)
+                .build()
 
-                val scope = cx.initStandardObjects()
+            // 为此脚本创建API实例
+            val api = AllayScriptAPI(plugin)
 
-                // 为此脚本创建API实例
-                val api = AllayScriptAPI(plugin)
+            // 绑定API到全局对象
+            val bindings = cx.getBindings("js")
+            bindings.putMember("allay", api)
+            bindings.putMember("console", ConsoleAPI(plugin))
 
-                // 绑定API到scope
-                bindAllayAPI(cx, scope, api)
+            // 设置API的context以便回调执行
+            api.setContext(cx)
 
-                // 设置API的scope以便回调执行
-                api.setScope(scope)
+            // 读取并执行脚本
+            val scriptContent = scriptPath.readText()
+            cx.eval("js", scriptContent)
 
-                // 读取并执行脚本
-                val scriptContent = scriptPath.readText()
-                cx.evaluateString(scope, scriptContent, scriptName, 1, null)
+            // 存储已加载的脚本
+            val loadedScript = LoadedScript(scriptName, scriptPath, cx, api)
+            loadedScripts[scriptName] = loadedScript
 
-                // 存储已加载的脚本
-                val loadedScript = LoadedScript(scriptName, scriptPath, scope, api)
-                loadedScripts[scriptName] = loadedScript
+            // 如果定义了onLoad则调用
+            callScriptFunction(cx, "onLoad")
 
-                // 如果定义了onLoad则调用
-                callScriptFunction(scope, "onLoad")
-
-                plugin.pluginLogger.info("已加载脚本: $scriptName")
-            } finally {
-                Context.exit()
-            }
+            plugin.pluginLogger.info("已加载脚本: $scriptName")
 
         } catch (e: Exception) {
             plugin.pluginLogger.error("加载脚本失败: $scriptName", e)
@@ -97,13 +101,9 @@ class ScriptManager(private val plugin: BlocklyAllay) {
     fun unloadScript(scriptName: String) {
         loadedScripts.remove(scriptName)?.let { script ->
             try {
-                val cx = Context.enter()
-                try {
-                    callScriptFunction(script.scope, "onUnload")
-                } finally {
-                    Context.exit()
-                }
+                callScriptFunction(script.context, "onUnload")
                 script.api.cleanup()
+                script.context.close()
                 plugin.pluginLogger.info("已卸载脚本: $scriptName")
             } catch (e: Exception) {
                 plugin.pluginLogger.error("卸载脚本时出错: $scriptName", e)
@@ -115,13 +115,8 @@ class ScriptManager(private val plugin: BlocklyAllay) {
      * 启用所有已加载的脚本(调用onEnable)。
      */
     fun enableAllScripts() {
-        val cx = Context.enter()
-        try {
-            loadedScripts.values.forEach { script ->
-                callScriptFunction(script.scope, "onEnable")
-            }
-        } finally {
-            Context.exit()
+        loadedScripts.values.forEach { script ->
+            callScriptFunction(script.context, "onEnable")
         }
     }
 
@@ -129,13 +124,8 @@ class ScriptManager(private val plugin: BlocklyAllay) {
      * 禁用所有已加载的脚本(调用onDisable)。
      */
     fun disableAllScripts() {
-        val cx = Context.enter()
-        try {
-            loadedScripts.values.forEach { script ->
-                callScriptFunction(script.scope, "onDisable")
-            }
-        } finally {
-            Context.exit()
+        loadedScripts.values.forEach { script ->
+            callScriptFunction(script.context, "onDisable")
         }
     }
 
@@ -144,53 +134,38 @@ class ScriptManager(private val plugin: BlocklyAllay) {
      */
     fun shutdown() {
         disableAllScripts()
-        val cx = Context.enter()
-        try {
-            loadedScripts.values.forEach { script ->
-                try {
-                    callScriptFunction(script.scope, "onUnload")
-                    script.api.cleanup()
-                } catch (e: Exception) {
-                    plugin.pluginLogger.error("关闭脚本上下文时出错: ${script.name}", e)
-                }
+        loadedScripts.values.forEach { script ->
+            try {
+                callScriptFunction(script.context, "onUnload")
+                script.api.cleanup()
+                script.context.close()
+            } catch (e: Exception) {
+                plugin.pluginLogger.error("关闭脚本上下文时出错: ${script.name}", e)
             }
-        } finally {
-            Context.exit()
         }
         loadedScripts.clear()
+        engine.close()
     }
 
     /**
      * 如果脚本中存在该函数则调用。
      */
-    private fun callScriptFunction(scope: Scriptable, functionName: String) {
+    private fun callScriptFunction(context: Context, functionName: String) {
         try {
-            val func = scope.get(functionName, scope)
-            if (func is org.mozilla.javascript.Function) {
-                func.call(Context.getCurrentContext(), scope, scope, emptyArray<Any>())
+            val bindings = context.getBindings("js")
+            val func = bindings.getMember(functionName)
+            if (func.canExecute()) {
+                func.execute()
             }
         } catch (e: Exception) {
             plugin.pluginLogger.error("调用函数 $functionName 时出错", e)
         }
     }
 
-    /**
-     * 将Allay API对象绑定到JavaScript作用域。
-     */
-    private fun bindAllayAPI(cx: Context, scope: Scriptable, api: AllayScriptAPI) {
-        // 包装Java对象为JS可用对象
-        val wrappedApi = Context.javaToJS(api, scope)
-        ScriptableObject.putProperty(scope, "allay", wrappedApi)
-
-        val consoleApi = ConsoleAPI(plugin)
-        val wrappedConsole = Context.javaToJS(consoleApi, scope)
-        ScriptableObject.putProperty(scope, "console", wrappedConsole)
-    }
-
     private data class LoadedScript(
         val name: String,
         val path: Path,
-        val scope: Scriptable,
+        val context: Context,
         val api: AllayScriptAPI
     )
 }

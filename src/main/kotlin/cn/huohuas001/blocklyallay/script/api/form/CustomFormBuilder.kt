@@ -5,9 +5,8 @@ import org.allaymc.api.form.FormCancelReason
 import org.allaymc.api.form.Forms
 import org.allaymc.api.form.type.CustomForm
 import org.allaymc.api.player.Player
-import org.mozilla.javascript.Context
-import org.mozilla.javascript.Function
-import org.mozilla.javascript.Scriptable
+import org.graalvm.polyglot.Context
+import org.graalvm.polyglot.Value
 import java.util.function.Consumer
 
 /**
@@ -15,9 +14,9 @@ import java.util.function.Consumer
  */
 class CustomFormBuilder {
     private val form: CustomForm = Forms.custom()
-    private var onResponseCallback: org.mozilla.javascript.Function? = null
-    private var onCloseCallback: org.mozilla.javascript.Function? = null
-    private var scope: Scriptable? = null
+    private var onResponseCallback: Value? = null
+    private var onCloseCallback: Value? = null
+    private var context: Context? = null
 
     fun title(title: String): CustomFormBuilder {
         form.title(title)
@@ -109,15 +108,15 @@ class CustomFormBuilder {
         return this
     }
 
-    fun onResponse(callback: org.mozilla.javascript.Function, scope: Scriptable): CustomFormBuilder {
+    fun onResponse(callback: Value, ctx: Context): CustomFormBuilder {
         this.onResponseCallback = callback
-        this.scope = scope
+        this.context = ctx
         return this
     }
 
-    fun onClose(callback: Function, scope: Scriptable): CustomFormBuilder {
+    fun onClose(callback: Value, ctx: Context): CustomFormBuilder {
         this.onCloseCallback = callback
-        this.scope = scope
+        this.context = ctx
         return this
     }
 
@@ -128,31 +127,26 @@ class CustomFormBuilder {
 
     fun showToPlayer(player: Player): Int {
         form.onResponse { responses ->
-            val cx = Context.enter()
-            try {
-                cx.optimizationLevel = -1
-                onResponseCallback?.let { callback ->
-                    scope?.let { s ->
-                        val jsArray = cx.newArray(s, responses.toTypedArray())
-                        callback.call(cx, s, s, arrayOf(jsArray))
+            onResponseCallback?.let { callback ->
+                if (callback.canExecute()) {
+                    try {
+                        callback.execute(responses.toTypedArray())
+                    } catch (e: Exception) {
+                        e.printStackTrace()
                     }
                 }
-            } finally {
-                Context.exit()
             }
         }
 
         form.onClose(Consumer<FormCancelReason> { _ ->
-            val cx = Context.enter()
-            try {
-                cx.optimizationLevel = -1
-                onCloseCallback?.let { callback ->
-                    scope?.let { s ->
-                        callback.call(cx, s, s, arrayOf())
+            onCloseCallback?.let { callback ->
+                if (callback.canExecute()) {
+                    try {
+                        callback.execute()
+                    } catch (e: Exception) {
+                        e.printStackTrace()
                     }
                 }
-            } finally {
-                Context.exit()
             }
         })
 

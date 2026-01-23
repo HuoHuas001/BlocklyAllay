@@ -32,8 +32,11 @@ allay {
 }
 
 dependencies {
-    // Mozilla Rhino - 轻量级JavaScript引擎 (~3MB)
-    implementation("org.mozilla:rhino:1.9.0")
+    // GraalJS JavaScript engine
+    // Polyglot API for GraalVM
+    implementation("org.graalvm.polyglot:polyglot:25.0.2")
+    // GraalJS implementation (uses org.graalvm.js group ID)
+    implementation(platform("org.graalvm.polyglot:js:25.0.2"))
 }
 
 tasks.shadowJar {
