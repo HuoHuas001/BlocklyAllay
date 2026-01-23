@@ -1,226 +1,228 @@
 # BlocklyAllay
 
-基于 Blockly 的 Allay 服务器可视化脚本编辑器，让你无需编写复杂代码即可创建强大的游戏脚本！
+English | [简体中文](README_zh.md)
 
-## 📋 项目介绍
+A visual script editor plugin for Allay servers based on Blockly, allowing you to create powerful game scripts without writing complex code!
 
-BlocklyAllay 是一个为 Allay 服务器设计的可视化脚本编辑插件，它将 Google 的 Blockly 可视化编程工具集成到 Allay 服务器中，让玩家和管理员可以通过拖拽积木块的方式创建游戏脚本，无需编写复杂的代码。
+## 📋 Project Introduction
 
-## ✨ 功能特性
+BlocklyAllay is a visual script editor plugin designed for Allay servers. It integrates Google's Blockly visual programming tool into the Allay server, allowing players and administrators to create game scripts by dragging and dropping blocks without writing complex code.
 
-### 🎮 可视化编程
-- 基于 Blockly 的直观拖拽式编程界面
-- 支持多种积木块类型：事件、玩家、世界、实体、物品等
-- 实时生成 JavaScript 代码
-- 支持代码复制和导出
+## ✨ Features
 
-### 🎯 丰富的 API
-- **事件系统**：支持 60+ 种服务器事件监听
-- **玩家管理**：获取玩家信息、发送消息、设置属性等
-- **世界操作**：设置时间、广播消息、获取世界信息
-- **实体管理**：获取实体信息、设置属性
-- **物品系统**：获取物品信息、管理物品
-- **表单系统**：创建简单表单、模态表单、自定义表单
-- **BossBar**：创建和管理 Boss 血条
-- **定时器**：支持延迟执行、重复执行等
-- **工具函数**：日志记录、事件取消等
+### 🎮 Visual Programming
+- Intuitive drag-and-drop programming interface based on Blockly
+- Supports multiple block types: events, players, world, entities, items, etc.
+- Real-time JavaScript code generation
+- Supports code copying and exporting
 
-### 🔧 开发工具
-- 内置 Web 编辑器，可直接在浏览器中编辑脚本
-- 支持脚本的保存、加载和导出
-- 实时代码生成和语法检查
-- 支持多种脚本生命周期事件
+### 🎯 Rich API
+- **Event System**: Supports 60+ server event listeners
+- **Player Management**: Get player info, send messages, set properties, etc.
+- **World Operations**: Set time, broadcast messages, get world info
+- **Entity Management**: Get entity info, set properties
+- **Item System**: Get item info, manage items
+- **Form System**: Create simple forms, modal forms, custom forms
+- **BossBar**: Create and manage boss bars
+- **Scheduler**: Supports delayed execution, repeating execution, etc.
+- **Utility Functions**: Logging, event cancellation, etc.
 
-## 📦 安装方法
+### 🔧 Development Tools
+- Built-in Web editor for editing scripts directly in the browser
+- Supports script saving, loading, and exporting
+- Real-time code generation and syntax checking
+- Supports multiple script lifecycle events
 
-### 前置条件
-- Allay 服务器
-- Java 17 或更高版本
+## 📦 Installation
 
-### 安装步骤
-1. 下载最新版本的 BlocklyAllay 插件 JAR 文件
-2. 将 JAR 文件放入服务器的 `plugins/BlocklyAllay/scripts/` 目录
-3. 启动服务器，插件会自动初始化
-4. 访问 `https://blocklyallay.txssb.cn` 进入 Web 编辑器
+### Prerequisites
+- Allay Server
+- Java 17 or higher
 
-## 🚀 使用说明
+### Installation Steps
+1. Download the latest version of the BlocklyAllay plugin JAR file
+2. Place the JAR file in the server's `plugins/BlocklyAllay/scripts/` directory
+3. Start the server, the plugin will initialize automatically
+4. Visit `https://blocklyallay.txssb.cn` to access the Web editor
 
-### 1. 访问 Web 编辑器
-在浏览器中输入 `https://blocklyallay.txssb.cn` 访问 BlocklyAllay 编辑器。
+## 🚀 Usage
 
-### 2. 创建新脚本
-- 点击顶部工具栏的 "新建" 按钮
-- 从左侧工具箱拖拽积木块到工作区
-- 连接积木块创建逻辑
+### 1. Access the Web Editor
+Enter `https://blocklyallay.txssb.cn` in your browser to access the BlocklyAllay editor.
 
-### 3. 保存和导出脚本
-- 点击 "保存" 按钮保存脚本到服务器
-- 点击 "导出JS" 按钮导出脚本为 JavaScript 文件
-- 点击 "加载" 按钮加载已保存的脚本
+### 2. Create a New Script
+- Click the "New" button in the top toolbar
+- Drag blocks from the left toolbox to the workspace
+- Connect blocks to create logic
 
-### 4. 查看生成的代码
-- 点击右侧代码面板的切换按钮查看生成的 JavaScript 代码
-- 点击 "复制代码" 按钮复制代码到剪贴板
+### 3. Save and Export Scripts
+- Click the "Save" button to save the script to the server
+- Click the "Export JS" button to export the script as a JavaScript file
+- Click the "Load" button to load a saved script
 
-## 📖 积木块分类
+### 4. View Generated Code
+- Click the toggle button on the right code panel to view the generated JavaScript code
+- Click the "Copy Code" button to copy the code to clipboard
 
-### 🎬 事件
-- **服务器事件**：玩家连接、断开连接、登录等
-- **玩家事件**：加入、离开、聊天、命令等
-- **方块事件**：破坏、放置、燃烧、爆炸等
-- **命令事件**：命令执行
-- **容器事件**：打开、关闭、物品移动等
-- **实体事件**：伤害、死亡、生成、移动等
-- **计分板事件**：添加、移除、值变化等
-- **世界事件**：区块加载、卸载、时间变化等
-- **插件事件**：插件启用、禁用、脚本生命周期等
+## 📖 Block Categories
 
-### 🧑 玩家
-- 获取玩家信息：名称、显示名称、位置等
-- 玩家操作：发送消息、传送、设置生命值等
-- 玩家管理：获取在线玩家、根据名称获取玩家等
+### 🎬 Events
+- **Server Events**: Player connect, disconnect, login, etc.
+- **Player Events**: Join, leave, chat, command, etc.
+- **Block Events**: Break, place, burn, explode, etc.
+- **Command Events**: Command execution
+- **Container Events**: Open, close, item move, etc.
+- **Entity Events**: Damage, death, spawn, move, etc.
+- **Scoreboard Events**: Add, remove, value change, etc.
+- **World Events**: Chunk load/unload, time change, etc.
+- **Plugin Events**: Plugin enable/disable, script lifecycle, etc.
 
-### 🌍 世界
-- 世界信息：获取世界列表、根据名称获取世界
-- 世界操作：设置时间、广播消息
-- 服务器信息：在线玩家数量、最大玩家数、当前 tick
+### 🧑 Players
+- Get Player Info: Name, display name, location, etc.
+- Player Operations: Send message, teleport, set health, etc.
+- Player Management: Get online players, get player by name, etc.
 
-### 🧟 实体
-- 实体信息：获取类型、位置、生命值
-- 实体操作：设置生命值
+### 🌍 World
+- World Info: Get world list, get world by name
+- World Operations: Set time, broadcast message
+- Server Info: Online player count, max players, current tick
 
-### 🎒 物品
-- 物品信息：获取类型、数量、名称
+### 🧟 Entities
+- Entity Info: Get type, location, health
+- Entity Operations: Set health
 
-### 📋 表单
-- 简单表单：添加按钮、标签、标题等
-- 模态表单：确认对话框
-- 自定义表单：输入框、开关、下拉菜单、滑块等
+### 🎒 Items
+- Item Info: Get type, count, name
+
+### 📋 Forms
+- Simple Forms: Add buttons, labels, titles, etc.
+- Modal Forms: Confirmation dialogs
+- Custom Forms: Input fields, toggles, dropdowns, sliders, etc.
 
 ### 📊 BossBar
-- 创建 BossBar：设置标题、进度、颜色
-- BossBar 操作：显示、隐藏、获取信息
+- Create BossBar: Set title, progress, color
+- BossBar Operations: Show, hide, get info
 
-### ⏰ 定时器
-- 延迟执行：延迟指定 tick 后执行
-- 重复执行：每隔指定 tick 重复执行
-- 延迟后重复执行：延迟指定 tick 后开始重复执行
+### ⏰ Scheduler
+- Delayed Execution: Execute after specified ticks
+- Repeating Execution: Repeat every specified ticks
+- Delayed Repeating: Start repeating after specified ticks
 
-### 🛠️ 工具
-- 日志记录：打印不同级别日志
-- 事件处理：取消事件、移除事件监听
-- 资源清理：清理所有事件监听和定时器
+### 🛠️ Utilities
+- Logging: Print logs at different levels
+- Event Handling: Cancel events, remove event listeners
+- Resource Cleanup: Clean up all event listeners and timers
 
-## 📝 脚本示例
+## 📝 Script Examples
 
-### 欢迎脚本
+### Welcome Script
 ```javascript
 function onEnable() {
-    console.log("欢迎脚本已启用!");
+    console.log("Welcome script enabled!");
 }
 
 function onDisable() {
-    console.log("欢迎脚本已禁用!");
+    console.log("Welcome script disabled!");
 }
 
 allay.on('playerJoin', function(player) {
-    player.sendMessage("欢迎来到服务器!");
+    player.sendMessage("Welcome to the server!");
 });
 ```
 
-### 聊天过滤
+### Chat Filter
 ```javascript
 allay.on('playerChat', function(event) {
     var player = event.getPlayer();
     var message = event.getMessage();
     if (message.includes("badword")) {
         event.cancel();
-        player.sendMessage("请文明发言!");
+        player.sendMessage("Please speak politely!");
     }
 });
 ```
 
-### 定时任务
+### Scheduled Task
 ```javascript
 function onEnable() {
     allay.runRepeating(200, function() {
-        allay.broadcast("服务器运行正常!");
+        allay.broadcast("Server is running normally!");
     }, this);
 }
 ```
 
-## 🔧 开发指南
+## 🔧 Development Guide
 
-### 项目结构
+### Project Structure
 ```
 BlocklyAllay/
-├── BlocklyWeb/          # Web 编辑器前端代码
-│   ├── css/             # 样式文件
-│   ├── js/              # JavaScript 代码
-│   │   ├── blocks/      # 积木块定义
-│   │   ├── generators/  # 代码生成器
-│   │   ├── main.js      # 主程序
-│   │   └── toolbox.js   # 工具箱配置
-│   └── index.html       # 主页面
-├── src/                 # 后端 Kotlin 代码
-│   ├── main/            # 主源码
-│   │   ├── kotlin/      # Kotlin 代码
-│   │   └── resources/   # 资源文件
-│   └── test/            # 测试代码
-├── build.gradle.kts     # Gradle 配置
-└── README.md            # 项目文档
+├── BlocklyWeb/          # Web editor frontend code
+│   ├── css/             # Style files
+│   ├── js/              # JavaScript code
+│   │   ├── blocks/      # Block definitions
+│   │   ├── generators/  # Code generators
+│   │   ├── main.js      # Main program
+│   │   └── toolbox.js   # Toolbox configuration
+│   └── index.html       # Main page
+├── src/                 # Backend Kotlin code
+│   ├── main/            # Main source
+│   │   ├── kotlin/      # Kotlin code
+│   │   └── resources/   # Resource files
+│   └── test/            # Test code
+├── build.gradle.kts     # Gradle configuration
+└── README.md            # Project documentation
 ```
 
-### 编译项目
+### Building the Project
 ```bash
-# 编译项目
+# Build the project
 ./gradlew build
 
-# 运行测试
+# Run tests
 ./gradlew test
 
-# 生成文档
+# Generate documentation
 ./gradlew javadoc
 ```
 
-### 添加新的积木块
-1. 在 `BlocklyWeb/js/blocks/` 目录下创建新的积木块定义
-2. 在 `BlocklyWeb/js/generators/` 目录下创建对应的代码生成器
-3. 在 `BlocklyWeb/js/toolbox.js` 中添加到工具箱
+### Adding New Blocks
+1. Create new block definitions in the `BlocklyWeb/js/blocks/` directory
+2. Create corresponding code generators in the `BlocklyWeb/js/generators/` directory
+3. Add to the toolbox in `BlocklyWeb/js/toolbox.js`
 
-## 🤝 贡献方式
+## 🤝 Contributing
 
-欢迎参与 BlocklyAllay 的开发！
+Welcome to contribute to BlocklyAllay!
 
-### 贡献步骤
-1. Fork 本仓库
-2. 创建新的分支 `git checkout -b feature/your-feature`
-3. 提交你的更改 `git commit -m "Add your feature"`
-4. 推送到分支 `git push origin feature/your-feature`
-5. 创建 Pull Request
+### Contribution Steps
+1. Fork this repository
+2. Create a new branch `git checkout -b feature/your-feature`
+3. Commit your changes `git commit -m "Add your feature"`
+4. Push to the branch `git push origin feature/your-feature`
+5. Create a Pull Request
 
-### 代码规范
-- 遵循 Kotlin 代码规范
-- 代码注释清晰
-- 添加适当的测试
-- 更新文档
+### Code Standards
+- Follow Kotlin code standards
+- Clear code comments
+- Add appropriate tests
+- Update documentation
 
-## 📄 许可证
+## 📄 License
 
-本项目采用 [GNU General Public License v3.0](LICENSE) 许可证。
+This project is licensed under the [GNU General Public License v3.0](LICENSE).
 
-## 📞 联系方式
+## 📞 Contact
 
-- **作者**: HuoHuas001
+- **Author**: HuoHuas001
 - **GitHub**: https://github.com/HuoHuas001/BlocklyAllay
-- **Issue 跟踪**: https://github.com/HuoHuas001/BlocklyAllay/issues
+- **Issue Tracker**: https://github.com/HuoHuas001/BlocklyAllay/issues
 
-## 🙏 致谢
+## 🙏 Acknowledgments
 
-- [Allay 项目](https://allaymc.org/) - 基于 Minecraft Bedrock 协议的开源服务器
-- [Blockly 项目](https://developers.google.com/blockly) - Google 开源的可视化编程工具
-- [Cloudflare Pages](https://pages.cloudflare.com/) - Web 编辑器部署平台
+- [Allay Project](https://allaymc.org/) - Open source server based on Minecraft Bedrock protocol
+- [Blockly Project](https://developers.google.com/blockly) - Google's open source visual programming tool
+- [Cloudflare Pages](https://pages.cloudflare.com/) - Web editor deployment platform
 
 ---
 
-**BlocklyAllay - 让 Allay 服务器编程更简单！** 🎉
+**BlocklyAllay - Making Allay server programming easier!** 🎉
