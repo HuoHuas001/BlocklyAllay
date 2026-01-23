@@ -122,4 +122,4 @@ function onPlayerChat(player, message) {
 
 - 报告问题：[GitHub Issues](https://github.com/huohuas001/BlocklyAllay/issues)
 - 讨论交流：[Discord](https://discord.gg/your-discord-link)
-- 文档：[https://docs.blocklyallay.txssb.cn](https://docs.blocklyallay.txssb.cn)
+- 文档：[https://badoc.txssb.cn](https://docs.blocklyallay.txssb.cn)

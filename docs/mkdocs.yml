@@ -21,6 +21,8 @@ nav:
 
 theme:
   name: material
+  favicon: favicon-32x32.png
+  logo: icon-512x512.png
   features:
     - navigation.tabs
     - navigation.sections
@@ -29,6 +31,17 @@ theme:
     - search.highlight
     - content.code.annotate
     - content.code.copy
+  extra:
+    analytics:
+      feedback:
+        title: Was this page helpful?
+        ratings:
+          - icon: material/thumb-up-outline
+            name: This page was helpful
+            data: 1
+          - icon: material/thumb-down-outline
+            name: This page could be improved
+            data: 0
 
 markdown_extensions:
   - admonition

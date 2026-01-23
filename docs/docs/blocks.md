@@ -1,137 +1,137 @@
-# Blockly Blocks
+# Blockly 积木参考
 
-BlocklyAllay provides a variety of Blockly blocks that you can use to create scripts for your Minecraft-like server. These blocks are organized into categories based on their functionality.
+BlocklyAllay 提供了各种 Blockly 积木块，您可以使用它们为 Minecraft 类服务器创建脚本。这些积木块根据其功能按类别组织。
 
-## Block Categories
+## 积木类别
 
-### Events
+### 事件
 
-Events blocks allow you to respond to various server and player events:
+事件积木块允许您响应各种服务器和玩家事件：
 
-- **Script Load**: Runs when the script is first loaded
-- **Script Unload**: Runs when the script is unloaded
-- **Player Join**: Runs when a player joins the server
-- **Player Leave**: Runs when a player leaves the server
-- **Player Chat**: Runs when a player sends a chat message
-- **Player Interact**: Runs when a player interacts with the world
+- **脚本加载**：脚本首次加载时运行
+- **脚本卸载**：脚本卸载时运行
+- **玩家加入**：玩家加入服务器时运行
+- **玩家离开**：玩家离开服务器时运行
+- **玩家聊天**：玩家发送聊天消息时运行
+- **玩家交互**：玩家与世界交互时运行
 
-### Forms
+### 表单
 
-Forms blocks allow you to create interactive forms for players:
+表单积木块允许您为玩家创建交互式表单：
 
-- **Create Simple Form**: Creates a simple form with text and buttons
-- **Create Modal Form**: Creates a yes/no confirmation dialog
-- **Create Custom Form**: Creates a form with various input fields
-- **Show Form to Player**: Displays a form to a specific player
-- **Form Submit Handler**: Handles form submissions from players
+- **创建简单表单**：创建带有文本和按钮的简单表单
+- **创建模态表单**：创建是/否确认对话框
+- **创建自定义表单**：创建带有各种输入字段的表单
+- **向玩家显示表单**：向特定玩家显示表单
+- **表单提交处理**：处理玩家的表单提交
 
-### World
+### 世界
 
-World blocks allow you to interact with the game world:
+世界积木块允许您与游戏世界交互：
 
-- **Get All Worlds**: Retrieves all available worlds on the server
-- **Get World by Name**: Gets a specific world by its name
-- **Get World Time**: Retrieves the current time of day in a world
-- **Set World Time**: Changes the time of day in a world
-- **Get World Weather**: Retrieves the current weather in a world
-- **Set World Weather**: Changes the weather in a world
+- **获取所有世界**：检索服务器上所有可用的世界
+- **按名称获取世界**：通过名称获取特定世界
+- **获取世界时间**：检索世界中当前的时间
+- **设置世界时间**：更改世界中的时间
+- **获取世界天气**：检索世界中当前的天气
+- **设置世界天气**：更改世界中的天气
 
-### Players
+### 玩家
 
-Players blocks allow you to interact with players on the server:
+玩家积木块允许您与服务器上的玩家交互：
 
-- **Get Online Players**: Retrieves all currently online players
-- **Get Player by Name**: Gets a specific player by their username
-- **Send Message to Player**: Sends a chat message to a player
-- **Kick Player**: Removes a player from the server
-- **Give Item to Player**: Gives an item to a player
-- **Get Player Position**: Retrieves a player's current position
-- **Teleport Player**: Moves a player to a specific location
+- **获取在线玩家**：检索所有当前在线的玩家
+- **按名称获取玩家**：通过用户名获取特定玩家
+- **向玩家发送消息**：向玩家发送聊天消息
+- **踢出玩家**：从服务器移除玩家
+- **给予玩家物品**：给予玩家物品
+- **获取玩家位置**：检索玩家当前位置
+- **传送玩家**：将玩家移动到特定位置
 
-### Scheduler
+### 调度器
 
-Scheduler blocks allow you to schedule tasks to run at specific times:
+调度器积木块允许您安排任务在特定时间运行：
 
-- **Run Later**: Runs a task once after a delay
-- **Run Repeating**: Runs a task repeatedly with a fixed interval
-- **Run Delayed Repeating**: Runs a task repeatedly after an initial delay
+- **延迟执行**：延迟后运行任务一次
+- **重复执行**：以固定间隔重复运行任务
+- **延迟重复执行**：在初始延迟后重复运行任务
 
-### BossBar
+### Boss 血条
 
-BossBar blocks allow you to create and manage boss bars:
+Boss 血条积木块允许您创建和管理 Boss 血条：
 
-- **Create BossBar**: Creates a new boss bar with a title
-- **Set BossBar Title**: Changes the title of an existing boss bar
-- **Set BossBar Progress**: Sets the progress of a boss bar (0.0-1.0)
-- **Set BossBar Color**: Changes the color of a boss bar
-- **Set BossBar Style**: Changes the style of a boss bar
-- **Show BossBar to Player**: Displays a boss bar to a player
-- **Hide BossBar from Player**: Hides a boss bar from a player
+- **创建 Boss 血条**：创建带有标题的新 Boss 血条
+- **设置 Boss 血条标题**：更改现有 Boss 血条的标题
+- **设置 Boss 血条进度**：设置 Boss 血条的进度（0.0-1.0）
+- **设置 Boss 血条颜色**：更改 Boss 血条的颜色
+- **设置 Boss 血条样式**：更改 Boss 血条的样式
+- **向玩家显示 Boss 血条**：向玩家显示 Boss 血条
+- **从玩家隐藏 Boss 血条**：从玩家隐藏 Boss 血条
 
-### Commands
+### 命令
 
-Commands blocks allow you to register custom commands:
+命令积木块允许您注册自定义命令：
 
-- **Register Simple Command**: Registers a basic command with a handler
-- **Register Command with Aliases**: Registers a command with alternate names
-- **Command Sender Check**: Checks if the command sender is a player or console
-- **Send Message to Command Sender**: Sends a message to whoever ran the command
+- **注册简单命令**：注册带有处理程序的基本命令
+- **注册带别名的命令**：注册带有替代名称的命令
+- **命令发送者检查**：检查命令发送者是玩家还是控制台
+- **向命令发送者发送消息**：向运行命令的人发送消息
 
-### Entities
+### 实体
 
-Entities blocks allow you to interact with entities in the world:
+实体积木块允许您与世界中的实体交互：
 
-- **Get Entity Type**: Retrieves the type of an entity
-- **Get Entity Position**: Gets the coordinates of an entity
-- **Get Entity Health**: Retrieves an entity's health
-- **Set Entity Health**: Changes an entity's health
+- **获取实体类型**：检索实体的类型
+- **获取实体位置**：获取实体的坐标
+- **获取实体生命值**：检索实体的生命值
+- **设置实体生命值**：更改实体的生命值
 
-### Items
+### 物品
 
-Items blocks allow you to interact with items:
+物品积木块允许您与物品交互：
 
-- **Get Item Type**: Retrieves the type of an item
-- **Get Item Count**: Gets the number of items in a stack
-- **Get Item Custom Name**: Retrieves the custom name of an item
+- **获取物品类型**：检索物品的类型
+- **获取物品数量**：获取物品堆中的物品数量
+- **获取物品自定义名称**：检索物品的自定义名称
 
-### Utils
+### 工具
 
-Utils blocks provide various utility functions:
+工具积木块提供各种实用功能：
 
-- **Log Message**: Writes a message to the server logs
-- **Read File**: Reads content from a file
-- **Write File**: Writes content to a file
-- **HTTP Request**: Makes an HTTP request to a URL
-- **Parse JSON**: Converts a JSON string to an object
-- **Stringify JSON**: Converts an object to a JSON string
+- **日志消息**：将消息写入服务器日志
+- **读取文件**：从文件中读取内容
+- **写入文件**：将内容写入文件
+- **HTTP 请求**：向 URL 发出 HTTP 请求
+- **解析 JSON**：将 JSON 字符串转换为对象
+- **序列化 JSON**：将对象转换为 JSON 字符串
 
-## Blockly Workspace
+## Blockly 工作区
 
-When you open BlocklyAllay, you'll see the Blockly workspace where you can drag and drop blocks to create scripts. The blocks are organized into categories in the toolbox on the left side of the screen.
+当您打开 BlocklyAllay 时，您将看到 Blockly 工作区，您可以在其中拖放积木块来创建脚本。积木块在屏幕左侧工具箱中按类别组织。
 
-To create a script:
+要创建脚本：
 
-1. Drag blocks from the toolbox onto the workspace
-2. Connect blocks together to form a logical sequence
-3. Configure block properties by clicking on them
-4. Test your script by running it on the server
+1. 从工具箱将积木块拖到工作区上
+2. 连接积木块以形成逻辑序列
+3. 通过单击积木块来配置积木块属性
+4. 通过在服务器上运行脚本来测试
 
-## Example Block Script
+## 积木脚本示例
 
-Here's a simple example of a Blockly script that sends a welcome message to players when they join:
+这是一个简单的 Blockly 脚本示例，在玩家加入时向他们发送欢迎消息：
 
 ```
-when player joins
-    get event player
-    send message "Welcome to the server!" to player
+当玩家加入时
+    获取事件玩家
+    向玩家发送消息 "欢迎来到服务器！"
 ```
 
-This script uses the "Player Join" event block, the "Get Event Player" block, and the "Send Message to Player" block to create a simple welcome message system.
+此脚本使用"玩家加入"事件积木块、"获取事件玩家"积木块和"向玩家发送消息"积木块来创建一个简单的欢迎消息系统。
 
-## Best Practices
+## 最佳实践
 
-- Keep your scripts organized by using comments and logical grouping
-- Test your scripts thoroughly before deploying them to a production server
-- Use descriptive variable names to make your scripts more readable
-- Take advantage of events to create responsive gameplay experiences
-- Use forms to create interactive interfaces for players
+- 使用注释和逻辑分组来保持脚本的组织
+- 在将脚本部署到生产服务器之前彻底测试
+- 使用描述性变量名使脚本更具可读性
+- 利用事件创建响应式游戏体验
+- 使用表单为玩家创建交互式界面

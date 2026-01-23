@@ -87,6 +87,19 @@ body {
     background-color: var(--primary-hover);
 }
 
+.btn-docs {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    color: white;
+    text-decoration: none;
+}
+
+.btn-docs:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+    color: white;
+}
+
 .btn-small {
     padding: 4px 8px;
     border: none;
