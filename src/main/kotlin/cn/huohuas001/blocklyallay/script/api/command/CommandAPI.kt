@@ -1,6 +1,7 @@
 package cn.huohuas001.blocklyallay.script.api.command
 
 import cn.huohuas001.blocklyallay.BlocklyAllay
+import cn.huohuas001.blocklyallay.TrKeys
 import cn.huohuas001.blocklyallay.script.AllayScriptAPI
 import cn.huohuas001.blocklyallay.script.ConsoleAPI
 import org.allaymc.api.command.Command
@@ -8,6 +9,7 @@ import org.allaymc.api.command.SenderType
 import org.allaymc.api.command.tree.CommandContext
 import org.allaymc.api.command.tree.CommandNode
 import org.allaymc.api.command.tree.CommandTree
+import org.allaymc.api.message.I18n
 import org.allaymc.api.registry.Registries
 import org.graalvm.polyglot.Context
 import org.graalvm.polyglot.Value
@@ -18,6 +20,14 @@ import org.graalvm.polyglot.Value
 class CommandAPI(private val plugin: BlocklyAllay) {
 
     private val registeredCommands = mutableListOf<JSCommand>()
+    private var pluginName: String? = null
+
+    /**
+     * 设置插件名称（用于日志输出前缀）
+     */
+    fun setPluginName(name: String) {
+        this.pluginName = name
+    }
 
     /**
      * 注册一个简单的命令
@@ -27,9 +37,10 @@ class CommandAPI(private val plugin: BlocklyAllay) {
         registeredCommands.add(command)
         try{
             Registries.COMMANDS.register(command)
-            plugin.pluginLogger.info("已注册命令: $name - $description")
+            val prefix = if (pluginName != null) "[$pluginName] " else ""
+            plugin.pluginLogger.info(prefix + I18n.get().tr(TrKeys.COMMAND_REGISTER_SUCCESS, "/$name", description))
         } catch (e: Exception) {
-            plugin.pluginLogger.error("命令注册出错: $name", e)
+            plugin.pluginLogger.error(I18n.get().tr(TrKeys.COMMAND_REGISTER_ERROR, "/$name"), e)
         }
     }
 
@@ -41,9 +52,10 @@ class CommandAPI(private val plugin: BlocklyAllay) {
         registeredCommands.add(command)
         try{
             Registries.COMMANDS.register(command)
-            plugin.pluginLogger.info("已注册命令: $name - $description")
+            val prefix = if (pluginName != null) "[$pluginName] " else ""
+            plugin.pluginLogger.info(prefix + I18n.get().tr(TrKeys.COMMAND_REGISTER_SUCCESS, "/$name", description))
         } catch (e: Exception) {
-            plugin.pluginLogger.error("命令注册出错: $name", e)
+            plugin.pluginLogger.error(I18n.get().tr(TrKeys.COMMAND_REGISTER_ERROR, "/$name"), e)
         }
     }
 
@@ -55,9 +67,10 @@ class CommandAPI(private val plugin: BlocklyAllay) {
         registeredCommands.add(command)
         try{
             Registries.COMMANDS.register(command)
-            plugin.pluginLogger.info("已注册命令: $name - $description")
+            val prefix = if (pluginName != null) "[$pluginName] " else ""
+            plugin.pluginLogger.info(prefix + I18n.get().tr(TrKeys.COMMAND_REGISTER_SUCCESS, "/$name", description))
         } catch (e: Exception) {
-            plugin.pluginLogger.error("命令注册出错: $name", e)
+            plugin.pluginLogger.error(I18n.get().tr(TrKeys.COMMAND_REGISTER_ERROR, "/$name"), e)
         }
     }
 
@@ -71,9 +84,10 @@ class CommandAPI(private val plugin: BlocklyAllay) {
         val description = config.description
         try{
             Registries.COMMANDS.register(command)
-            plugin.pluginLogger.info("已注册命令: $name - $description")
+            val prefix = if (pluginName != null) "[$pluginName] " else ""
+            plugin.pluginLogger.info(prefix + I18n.get().tr(TrKeys.COMMAND_REGISTER_SUCCESS, name, description))
         } catch (e: Exception) {
-            plugin.pluginLogger.error("命令注册出错: $name", e)
+            plugin.pluginLogger.error(I18n.get().tr(TrKeys.COMMAND_REGISTER_ERROR, name), e)
         }
     }
 
@@ -180,7 +194,7 @@ class CommandAPI(private val plugin: BlocklyAllay) {
 
                     callback.execute(jsContext)
                 } catch (e: Exception) {
-                    plugin.pluginLogger.error("命令执行出错: $name", e)
+                    plugin.pluginLogger.error(I18n.get().tr(TrKeys.COMMAND_EXECUTE_ERROR, name), e)
                 } finally {
                     cx.close()
                 }

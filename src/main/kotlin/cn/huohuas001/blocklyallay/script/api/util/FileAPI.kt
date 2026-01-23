@@ -1,6 +1,8 @@
 package cn.huohuas001.blocklyallay.script.api.util
 
 import cn.huohuas001.blocklyallay.BlocklyAllay
+import cn.huohuas001.blocklyallay.TrKeys
+import org.allaymc.api.message.I18n
 import java.io.File
 import java.io.IOException
 import java.nio.charset.StandardCharsets
@@ -32,7 +34,7 @@ class FileAPI(private val plugin: BlocklyAllay) {
                 null
             }
         } catch (e: IOException) {
-            plugin.pluginLogger.error("读取文件失败: $path", e)
+            plugin.pluginLogger.error(I18n.get().tr(TrKeys.FILE_READ_ERROR, path), e)
             null
         }
     }
@@ -57,11 +59,11 @@ class FileAPI(private val plugin: BlocklyAllay) {
             }
             true
         } catch (e: IOException) {
-            plugin.pluginLogger.error("写入文件失败: $path", e)
+            plugin.pluginLogger.error(I18n.get().tr(TrKeys.FILE_WRITE_ERROR, path), e)
             false
         }
     }
-    
+
     /**
      * 检查文件是否存在
      * @param path 文件路径，相对于插件数据目录
@@ -71,7 +73,7 @@ class FileAPI(private val plugin: BlocklyAllay) {
         val file = File(dataDir, path)
         return file.exists() && file.isFile
     }
-    
+
     /**
      * 删除文件
      * @param path 文件路径，相对于插件数据目录
@@ -82,11 +84,11 @@ class FileAPI(private val plugin: BlocklyAllay) {
         return try {
             file.delete()
         } catch (e: Exception) {
-            plugin.pluginLogger.error("删除文件失败: $path", e)
+            plugin.pluginLogger.error(I18n.get().tr(TrKeys.FILE_DELETE_ERROR, path), e)
             false
         }
     }
-    
+
     /**
      * 列出目录中的文件
      * @param path 目录路径，相对于插件数据目录
@@ -101,11 +103,11 @@ class FileAPI(private val plugin: BlocklyAllay) {
                 null
             }
         } catch (e: Exception) {
-            plugin.pluginLogger.error("列出文件失败: $path", e)
+            plugin.pluginLogger.error(I18n.get().tr(TrKeys.FILE_LIST_ERROR, path), e)
             null
         }
     }
-    
+
     /**
      * 创建目录
      * @param path 目录路径，相对于插件数据目录
@@ -116,7 +118,7 @@ class FileAPI(private val plugin: BlocklyAllay) {
         return try {
             dir.mkdirs()
         } catch (e: Exception) {
-            plugin.pluginLogger.error("创建目录失败: $path", e)
+            plugin.pluginLogger.error(I18n.get().tr(TrKeys.FILE_MKDIR_ERROR, path), e)
             false
         }
     }

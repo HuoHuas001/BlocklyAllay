@@ -264,6 +264,39 @@ Blockly.Blocks['http_post'] = {
     }
 };
 
+Blockly.Blocks['http_get_with_headers'] = {
+    init: function () {
+        this.appendValueInput('URL')
+            .setCheck('String')
+            .appendField('HTTP GET请求（带自定义头）');
+        this.appendValueInput('HEADERS')
+            .setCheck(null)
+            .appendField('请求头');
+        this.setOutput(true, 'String');
+        this.setColour('#4169E1');
+        this.setTooltip('发送带有自定义请求头的HTTP GET请求，返回响应内容或null');
+        this.setHelpUrl('');
+    }
+};
+
+Blockly.Blocks['http_post_with_headers'] = {
+    init: function () {
+        this.appendValueInput('URL')
+            .setCheck('String')
+            .appendField('HTTP POST请求（带自定义头）');
+        this.appendValueInput('BODY')
+            .setCheck('String')
+            .appendField('正文');
+        this.appendValueInput('HEADERS')
+            .setCheck(null)
+            .appendField('请求头');
+        this.setOutput(true, 'String');
+        this.setColour('#4169E1');
+        this.setTooltip('发送带有自定义请求头的HTTP POST请求，返回响应内容或null');
+        this.setHelpUrl('');
+    }
+};
+
 // ==================== JSON处理积木块 ====================
 
 Blockly.Blocks['json_parse'] = {
@@ -364,6 +397,28 @@ Blockly.Blocks['object_delete_property'] = {
         this.setNextStatement(true, null);
         this.setColour('#FF6B6B');
         this.setTooltip('删除对象的指定属性');
+        this.setHelpUrl('');
+    }
+};
+
+// ==================== 插件注册积木块 ====================
+
+Blockly.Blocks['plugin_register'] = {
+    init: function () {
+        this.appendValueInput('PLUGIN_NAME')
+            .setCheck('String')
+            .appendField('注册插件')
+            .appendField('名称');
+        this.appendValueInput('PLUGIN_VERSION')
+            .setCheck('String')
+            .appendField('版本');
+        this.appendValueInput('AUTHOR')
+            .setCheck('String')
+            .appendField('作者');
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour('#FF9800');
+        this.setTooltip('注册插件信息（名称、版本、作者）');
         this.setHelpUrl('');
     }
 };

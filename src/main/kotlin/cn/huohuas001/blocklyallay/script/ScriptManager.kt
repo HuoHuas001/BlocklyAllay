@@ -1,6 +1,8 @@
 package cn.huohuas001.blocklyallay.script
 
 import cn.huohuas001.blocklyallay.BlocklyAllay
+import cn.huohuas001.blocklyallay.TrKeys
+import org.allaymc.api.message.I18n
 import org.graalvm.polyglot.Context
 import org.graalvm.polyglot.Engine
 import java.nio.file.Files
@@ -34,7 +36,7 @@ class ScriptManager(private val plugin: BlocklyAllay) {
     fun init() {
         if (!scriptsDir.exists()) {
             Files.createDirectories(scriptsDir)
-            plugin.pluginLogger.info("已创建脚本目录: $scriptsDir")
+            plugin.pluginLogger.info(I18n.get().tr(TrKeys.SCRIPT_DIR_CREATED, scriptsDir))
         }
         loadAllScripts()
     }
@@ -69,10 +71,19 @@ class ScriptManager(private val plugin: BlocklyAllay) {
             // 为此脚本创建API实例
             val api = AllayScriptAPI(plugin)
 
+            // 先用默认的脚本名创建logger，这样脚本执行时就可以使用
+            val defaultPluginName = scriptName.removeSuffix(".js")
+            api.registerPlugin(defaultPluginName, "1.0.0", "Unknown")
+
             // 绑定API到全局对象
             val bindings = cx.getBindings("js")
             bindings.putMember("allay", api)
             bindings.putMember("console", ConsoleAPI(plugin))
+
+            // 将脚本的专属logger暴露给JavaScript上下文
+            api.getLogger()?.let { logger ->
+                bindings.putMember("logger", logger)
+            }
 
             // 设置API的context以便回调执行
             api.setContext(cx)
@@ -88,10 +99,10 @@ class ScriptManager(private val plugin: BlocklyAllay) {
             // 如果定义了onLoad则调用
             callScriptFunction(cx, "onLoad")
 
-            plugin.pluginLogger.info("已加载脚本: $scriptName")
+            plugin.pluginLogger.info(I18n.get().tr(TrKeys.SCRIPT_LOADED, scriptName))
 
         } catch (e: Exception) {
-            plugin.pluginLogger.error("加载脚本失败: $scriptName", e)
+            plugin.pluginLogger.error(I18n.get().tr(TrKeys.SCRIPT_ERROR_LOAD, scriptName), e)
         }
     }
 
@@ -104,9 +115,9 @@ class ScriptManager(private val plugin: BlocklyAllay) {
                 callScriptFunction(script.context, "onUnload")
                 script.api.cleanup()
                 script.context.close()
-                plugin.pluginLogger.info("已卸载脚本: $scriptName")
+                plugin.pluginLogger.info(I18n.get().tr(TrKeys.SCRIPT_UNLOADED, scriptName))
             } catch (e: Exception) {
-                plugin.pluginLogger.error("卸载脚本时出错: $scriptName", e)
+                plugin.pluginLogger.error(I18n.get().tr(TrKeys.SCRIPT_ERROR_UNLOAD, scriptName), e)
             }
         }
     }
@@ -130,6 +141,63 @@ class ScriptManager(private val plugin: BlocklyAllay) {
     }
 
     /**
+     * 加载指定名称的脚本
+     * @param scriptName 脚本文件名（如 "test.js"）
+     * @return 是否加载成功
+     */
+    fun loadScriptByName(scriptName: String): Boolean {
+        val scriptPath = scriptsDir.resolve(scriptName)
+        if (!scriptPath.exists()) {
+            plugin.pluginLogger.warn(I18n.get().tr(TrKeys.SCRIPT_ERROR_NOTFOUND, scriptName))
+            return false
+        }
+        loadScript(scriptPath)
+        return true
+    }
+
+    /**
+     * 卸载指定名称的脚本
+     * @param scriptName 脚本名称
+     * @return 是否卸载成功
+     */
+    fun unloadScriptByName(scriptName: String): Boolean {
+        if (!loadedScripts.containsKey(scriptName)) {
+            plugin.pluginLogger.warn(I18n.get().tr(TrKeys.SCRIPT_ERROR_NOTLOADED, scriptName))
+            return false
+        }
+        unloadScript(scriptName)
+        return true
+    }
+
+    /**
+     * 重载单个脚本
+     * @param scriptName 脚本名称
+     * @return 是否重载成功
+     */
+    fun reloadScript(scriptName: String): Boolean {
+        if (!loadedScripts.containsKey(scriptName)) {
+            plugin.pluginLogger.warn(I18n.get().tr(TrKeys.SCRIPT_ERROR_NOTLOADED, scriptName))
+            return false
+        }
+        val scriptPath = scriptsDir.resolve(scriptName)
+        if (!scriptPath.exists()) {
+            plugin.pluginLogger.warn(I18n.get().tr(TrKeys.SCRIPT_ERROR_NOTFOUND, scriptName))
+            return false
+        }
+        loadScript(scriptPath)  // loadScript 内部会先卸载再加载
+        return true
+    }
+
+    /**
+     * 重载所有脚本
+     */
+    fun reloadAllScripts() {
+        loadedScripts.keys.toList().forEach { scriptName ->
+            reloadScript(scriptName)
+        }
+    }
+
+    /**
      * 关闭脚本管理器。
      */
     fun shutdown() {
@@ -140,7 +208,7 @@ class ScriptManager(private val plugin: BlocklyAllay) {
                 script.api.cleanup()
                 script.context.close()
             } catch (e: Exception) {
-                plugin.pluginLogger.error("关闭脚本上下文时出错: ${script.name}", e)
+                plugin.pluginLogger.error(I18n.get().tr(TrKeys.SCRIPT_ERROR_CLOSE, script.name), e)
             }
         }
         loadedScripts.clear()
@@ -154,11 +222,12 @@ class ScriptManager(private val plugin: BlocklyAllay) {
         try {
             val bindings = context.getBindings("js")
             val func = bindings.getMember(functionName)
-            if (func.canExecute()) {
+            // GraalJS: 需要先检查函数是否存在（非null且非undefined）
+            if (func != null && !func.isNull && func.canExecute()) {
                 func.execute()
             }
         } catch (e: Exception) {
-            plugin.pluginLogger.error("调用函数 $functionName 时出错", e)
+            plugin.pluginLogger.error(I18n.get().tr(TrKeys.SCRIPT_ERROR_FUNCTION_CALL, functionName), e)
         }
     }
 

@@ -35,13 +35,18 @@ dependencies {
     // GraalJS JavaScript engine
     // Polyglot API for GraalVM
     implementation("org.graalvm.polyglot:polyglot:25.0.2")
-    // GraalJS implementation (uses org.graalvm.js group ID)
-    implementation(platform("org.graalvm.polyglot:js:25.0.2"))
+    // GraalJS implementation (the actual implementation, not the POM wrapper)
+    implementation("org.graalvm.js:js:25.0.2")
 }
 
 tasks.shadowJar {
     archiveClassifier.set("")
     mergeServiceFiles()
+
+    // GraalJS requires excluding native-image resources
+    exclude("META-INF/native-image/**")
+    exclude("org graalvm/**")
+    exclude("com oracle truffle /**")
 }
 
 tasks.build {

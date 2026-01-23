@@ -1,6 +1,7 @@
 package cn.huohuas001.blocklyallay.script.api.event
 
 import cn.huohuas001.blocklyallay.BlocklyAllay
+import cn.huohuas001.blocklyallay.TrKeys
 import cn.huohuas001.blocklyallay.script.api.event.block.*
 import cn.huohuas001.blocklyallay.script.api.event.command.CommandExecuteEventData
 import cn.huohuas001.blocklyallay.script.api.event.container.*
@@ -13,6 +14,7 @@ import cn.huohuas001.blocklyallay.script.api.event.world.*
 import cn.huohuas001.blocklyallay.script.api.wrapper.EntityPlayerWrapper
 import cn.huohuas001.blocklyallay.script.api.wrapper.PlayerWrapper
 import org.allaymc.api.eventbus.EventHandler
+import org.allaymc.api.message.I18n
 import org.allaymc.api.eventbus.event.block.*
 import org.allaymc.api.eventbus.event.command.CommandExecuteEvent
 import org.allaymc.api.eventbus.event.container.*
@@ -618,7 +620,7 @@ class EventListener(
                 // GraalJS可以直接传递Java对象，无需转换
                 handler.function.execute(*args)
             } catch (e: Exception) {
-                plugin.pluginLogger.error("处理事件时出错: $eventName", e)
+                plugin.pluginLogger.error(I18n.get().tr(TrKeys.EVENT_HANDLER_ERROR, eventName), e)
             }
         }
     }

@@ -334,6 +334,8 @@ const TOOLBOX = {
             name: '工具',
             colour: '#808080',
             contents: [
+                { kind: 'block', type: 'plugin_register' },
+                { kind: 'sep' },
                 { kind: 'block', type: 'util_log' },
                 { kind: 'block', type: 'util_info' },
                 { kind: 'block', type: 'util_warn' },
@@ -351,6 +353,8 @@ const TOOLBOX = {
                 { kind: 'sep' },
                 { kind: 'block', type: 'http_get' },
                 { kind: 'block', type: 'http_post' },
+                { kind: 'block', type: 'http_get_with_headers' },
+                { kind: 'block', type: 'http_post_with_headers' },
                 { kind: 'sep' },
                 { kind: 'block', type: 'json_parse' },
                 { kind: 'block', type: 'json_stringify' },

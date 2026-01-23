@@ -9,27 +9,27 @@
 
     generator.forBlock['util_log'] = function (block, gen) {
         const message = gen.valueToCode(block, 'MESSAGE', Order) || '""';
-        return `console.log(${message});\n`;
+        return `logger.log(${message});\n`;
     };
 
     generator.forBlock['util_info'] = function (block, gen) {
         const message = gen.valueToCode(block, 'MESSAGE', Order) || '""';
-        return `console.info(${message});\n`;
+        return `logger.info(${message});\n`;
     };
 
     generator.forBlock['util_warn'] = function (block, gen) {
         const message = gen.valueToCode(block, 'MESSAGE', Order) || '""';
-        return `console.warn(${message});\n`;
+        return `logger.warn(${message});\n`;
     };
 
     generator.forBlock['util_error'] = function (block, gen) {
         const message = gen.valueToCode(block, 'MESSAGE', Order) || '""';
-        return `console.error(${message});\n`;
+        return `logger.error(${message});\n`;
     };
 
     generator.forBlock['util_debug'] = function (block, gen) {
         const message = gen.valueToCode(block, 'MESSAGE', Order) || '""';
-        return `console.debug(${message});\n`;
+        return `logger.debug(${message});\n`;
     };
 
     generator.forBlock['util_cancel_event'] = function (block, gen) {
@@ -145,8 +145,20 @@
     generator.forBlock['http_post'] = function (block, gen) {
         const url = gen.valueToCode(block, 'URL', Order) || '""';
         const body = gen.valueToCode(block, 'BODY', Order) || '""';
-        const contentType = gen.valueToCode(block, 'CONTENT_TYPE', Order) || '"application/json"';
-        return [`allay.getHttp().post(${url}, ${body}, ${contentType})`, gen.ORDER_NONE];
+        return [`allay.getHttp().post(${url}, ${body})`, gen.ORDER_NONE];
+    };
+
+    generator.forBlock['http_get_with_headers'] = function (block, gen) {
+        const url = gen.valueToCode(block, 'URL', Order) || '""';
+        const headers = gen.valueToCode(block, 'HEADERS', Order) || '{}';
+        return [`allay.getHttp().getWithHeaders(${url}, ${headers})`, gen.ORDER_NONE];
+    };
+
+    generator.forBlock['http_post_with_headers'] = function (block, gen) {
+        const url = gen.valueToCode(block, 'URL', Order) || '""';
+        const body = gen.valueToCode(block, 'BODY', Order) || '""';
+        const headers = gen.valueToCode(block, 'HEADERS', Order) || '{}';
+        return [`allay.getHttp().postWithHeaders(${url}, ${body}, "application/json", ${headers})`, gen.ORDER_NONE];
     };
 
     // ==================== JSON 处理生成器 ====================
@@ -190,5 +202,15 @@
         const obj = gen.valueToCode(block, 'OBJECT', Order) || '{}';
         const prop = gen.valueToCode(block, 'PROPERTY', Order) || '""';
         return `delete ${obj}[${prop}];\n`;
+    };
+
+    // ==================== 插件注册生成器 ====================
+
+    generator.forBlock['plugin_register'] = function (block, gen) {
+        const pluginName = gen.valueToCode(block, 'PLUGIN_NAME', Order) || '"Unknown"';
+        const pluginVersion = gen.valueToCode(block, 'PLUGIN_VERSION', Order) || '"1.0.0"';
+        const author = gen.valueToCode(block, 'AUTHOR', Order) || '"Unknown"';
+
+        return `allay.registerPlugin(${pluginName}, ${pluginVersion}, ${author});\n`;
     };
 })();

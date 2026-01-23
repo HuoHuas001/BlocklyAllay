@@ -68,19 +68,19 @@
         const sender = gen.valueToCode(block, 'SENDER', Order);
         const permission = gen.valueToCode(block, 'PERMISSION', Order);
 
-        return `${sender}.hasPermission(${permission});\n`;
+        return [`${sender}.hasPermission(${permission})`, Order];
     };
 
     generator.forBlock['command_is_player'] = function (block, gen) {
         const sender = gen.valueToCode(block, 'SENDER', Order);
 
-        return `${sender}.isPlayer();\n`;
+        return [`${sender}.isPlayer()`, Order];
     };
 
     generator.forBlock['command_is_console'] = function (block, gen) {
         const sender = gen.valueToCode(block, 'SENDER', Order);
 
-        return `${sender}.isConsole();\n`;
+        return [`${sender}.isConsole()`, Order];
     };
 
     generator.forBlock['command_handler_function'] = function (block, gen) {
@@ -95,6 +95,6 @@ ${body}}
     generator.forBlock['command_get_player'] = function (block, gen) {
         const sender = gen.valueToCode(block, 'SENDER', Order);
 
-        return `${sender}.asPlayer();\n`;
+        return [`${sender}.asPlayer()`, Order];
     };
 })();
