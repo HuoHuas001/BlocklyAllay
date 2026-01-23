@@ -42,6 +42,6 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs/site  # Directory containing the built docs
-          cname:  doca.blocklyallay.txssb.cn # Optional: Add your custom domain here if needed
+          cname:  docs.blocklyallay.txssb.cn # Optional: Add your custom domain here if needed
           force_orphan: true  # Create a clean history on gh-pages branch
           commit_message: "Deploy docs: ${{ github.event.head_commit.message }}"
