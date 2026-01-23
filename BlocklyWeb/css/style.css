@@ -51,7 +51,9 @@ body {
 }
 
 .logo-icon {
-    font-size: 24px;
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
 }
 
 .nav-buttons {
@@ -208,10 +210,16 @@ body {
 /* Blockly Customization */
 .blocklyToolboxDiv {
     background-color: var(--bg-secondary) !important;
+    border-right: 1px solid var(--border-color) !important;
 }
 
 .blocklyTreeRow {
     padding: 4px 8px !important;
+    color: var(--text-color) !important;
+}
+
+.blocklyTreeRow:hover {
+    background-color: var(--bg-tertiary) !important;
 }
 
 .blocklyTreeLabel {
@@ -220,6 +228,87 @@ body {
 
 .blocklyFlyoutBackground {
     fill: var(--bg-tertiary) !important;
+}
+
+.blocklyFlyoutScrollbar {
+    background-color: var(--bg-tertiary) !important;
+}
+
+.blocklyMainBackground {
+    stroke-width: 0;
+}
+
+/* Dark theme scrollbar for Blockly */
+.blocklyWidgetDiv .blocklyDropdownMenu {
+    background-color: var(--bg-tertiary) !important;
+    border: 1px solid var(--border-color) !important;
+}
+
+.blocklyWidgetDiv .blocklyDropdownMenu .blocklyMenuItem {
+    color: var(--text-color) !important;
+}
+
+.blocklyWidgetDiv .blocklyDropdownMenu .blocklyMenuItem:hover {
+    background-color: var(--border-color) !important;
+}
+
+/* Context menu */
+.blocklyContextMenu {
+    background-color: var(--bg-tertiary) !important;
+    border: 1px solid var(--border-color) !important;
+}
+
+.blocklyContextMenu .blocklyMenuItem {
+    color: var(--text-color) !important;
+}
+
+.blocklyContextMenu .blocklyMenuItem:hover {
+    background-color: var(--border-color) !important;
+}
+
+/* Modal dialogs */
+.blocklyModalOverlay {
+    fill-opacity: 0.5 !important;
+}
+
+.blocklyModalDialog {
+    background-color: var(--bg-secondary) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 8px !important;
+}
+
+/* Workspace */
+.blocklyWorkspace {
+    background-color: var(--bg-color) !important;
+}
+
+/* Scrollbar */
+.blocklyScrollbarBackground {
+    fill: var(--bg-color) !important;
+}
+
+.blocklyScrollbarHandle {
+    fill: var(--border-color) !important;
+}
+
+.blocklyScrollbarHandle:hover {
+    fill: var(--text-secondary) !important;
+}
+
+/* Comments */
+.blocklyCommentTextarea {
+    background-color: var(--bg-tertiary) !important;
+    color: var(--text-color) !important;
+    border: 1px solid var(--border-color) !important;
+}
+
+/* Warning and errors */
+.blocklyWarning {
+    background-color: var(--warning-color) !important;
+}
+
+.blocklyError {
+    background-color: var(--error-color) !important;
 }
 
 /* Scrollbar */
